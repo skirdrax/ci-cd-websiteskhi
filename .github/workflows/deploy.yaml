@@ -22,7 +22,7 @@ jobs:
 
       - name: Test SSH
         run: |
-          ssh -i ~/.ssh/tes_server_polindra -p 8022 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "echo CONNECTEDn"
+          ssh -i ~/.ssh/tes_server_polindra -p 8022 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "echo CONNECTED"
 
       - name: Deploy to Server
         run: |
