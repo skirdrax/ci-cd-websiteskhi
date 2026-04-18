@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sakhi Ardra Handaru — Creative Developer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+      <div class="loader-inner">
+        <div class="loader-bar"></div>
+        <span class="loader-text">INITIALIZING</span>
+      </div>
+    </div>
+
+    <!-- Noise Overlay -->
+    <div class="noise"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+      <div class="nav-logo">
+        <span class="logo-text">AR</span>
+        <div class="logo-dot"></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link" data-text="About">About</a></li>
+        <li>
+          <a href="#skills" class="nav-link" data-text="Skills">Skills</a>
+        </li>
+        <li>
+          <a href="#projects" class="nav-link" data-text="Projects">Projects</a>
+        </li>
+        <li>
+          <a href="#experience" class="nav-link" data-text="Experience"
+            >Experience</a
+          >
+        </li>
+        <li>
+          <a href="#contact" class="nav-link" data-text="Contact">Contact</a>
+        </li>
+      </ul>
+      <a href="#contact" class="nav-cta">Hire Me</a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#about" class="mobile-link">About</a></li>
+        <li><a href="#skills" class="mobile-link">Skills</a></li>
+        <li><a href="#projects" class="mobile-link">Projects</a></li>
+        <li><a href="#experience" class="mobile-link">Experience</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <canvas id="particleCanvas"></canvas>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Available for Work</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="title-line" data-delay="0">Software</span>
+          <span class="title-line italic" data-delay="100">Enginnering</span>
+          <span class="title-line" data-delay="200">& Designer</span>
+        </h1>
+        <p class="hero-sub">
+          I craft digital experiences that sit at the intersection of<br />
+          <span class="typed-wrapper"><span id="typed"></span></span>
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <span>View Work</span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#contact" class="btn btn-ghost">
+            <span>Let's Talk</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num" data-target="2">0</span><span>+</span>
+            <span class="stat-label">Years Exp.</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="4">0</span><span>+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="2">0</span><span>+</span>
+            <span class="stat-label">Clients</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">01 / About</span>
+          <h2 class="section-title">Turning ideas into <em>reality</em></h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-visual">
+            <div class="about-img-wrap">
+              <div class="about-img-glow"></div>
+              <div class="about-img-placeholder">
+                <div class="placeholder-avatar">
+                  <svg viewBox="0 0 100 100" fill="none">
+                    <circle
+                      cx="50"
+                      cy="35"
+                      r="18"
+                      stroke="currentColor"
+                      stroke-width="2" />
+                    <path
+                      d="M15 90c0-19.33 15.67-35 35-35s35 15.67 35 35"
+                      stroke="currentColor"
+                      stroke-width="2" />
+                  </svg>
+                </div>
+              </div>
+              <div class="about-badge-float">
+                <span>⚡</span> Full Stack Dev
+              </div>
+            </div>
+          </div>
+          <div class="about-content">
+            <p class="about-lead">
+              Hey, I'm <strong>Sakhi Ardra Handaru </strong> — a full-stack
+              developer and UI/UX designer with a passion for building products
+              that are both functional and beautiful.
+            </p>
+            <p class="about-body">
+              With 5+ years of experience across web and mobile, I specialize in
+              creating high-performance applications with clean architecture and
+              stunning interfaces. I believe great software should feel
+              effortless to use.
+            </p>
+            <div class="about-tags">
+              <span class="tag">React / Next.js</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Figma</span>
+              <span class="tag">AWS</span>
+              <span class="tag">Python</span>
+            </div>
+            <div class="about-links">
+              <a href="#" class="link-glow"
+                >Download CV
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2">
+                  <path
+                    d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" /></svg
+              ></a>
+              <a href="#" class="link-glow"
+                >GitHub
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">02 / Skills</span>
+          <h2 class="section-title">Tools & <em>Technologies</em></h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card" data-aos>
+            <div class="skill-icon">🎨</div>
+            <h3>Frontend</h3>
+            <div class="skill-bars">
+              <div class="skill-bar-item">
+                <span>React / Next.js</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="95"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>TypeScript</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="90"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>Tailwind / CSS</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="92"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>Framer Motion</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="85"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-card" data-aos>
+            <div class="skill-icon">⚙️</div>
+            <h3>Backend</h3>
+            <div class="skill-bars">
+              <div class="skill-bar-item">
+                <span>Node.js / Express</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="90"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>Python / Django</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="80"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>PostgreSQL</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="85"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>GraphQL</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="78"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-card" data-aos>
+            <div class="skill-icon">🚀</div>
+            <h3>DevOps & Cloud</h3>
+            <div class="skill-bars">
+              <div class="skill-bar-item">
+                <span>AWS / GCP</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="82"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>Docker / K8s</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="75"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>CI/CD</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="88"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>Linux / Bash</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="80"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-card" data-aos>
+            <div class="skill-icon">🎯</div>
+            <h3>Design</h3>
+            <div class="skill-bars">
+              <div class="skill-bar-item">
+                <span>Figma</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="93"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>UI/UX Design</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="88"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>Motion Design</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="75"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <span>Branding</span>
+                <div class="bar-track">
+                  <div class="bar-fill" data-w="70"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tech Marquee -->
+        <div class="marquee-wrap">
+          <div class="marquee">
+            <span>React</span><span>•</span><span>Next.js</span><span>•</span
+            ><span>TypeScript</span><span>•</span><span>Node.js</span
+            ><span>•</span><span>Python</span><span>•</span><span>AWS</span
+            ><span>•</span><span>Docker</span><span>•</span><span>Figma</span
+            ><span>•</span><span>GraphQL</span><span>•</span><span>MongoDB</span
+            ><span>•</span><span>Redis</span><span>•</span><span>Tailwind</span
+            ><span>•</span> <span>React</span><span>•</span><span>Next.js</span
+            ><span>•</span><span>TypeScript</span><span>•</span
+            ><span>Node.js</span><span>•</span><span>Python</span><span>•</span
+            ><span>AWS</span><span>•</span><span>Docker</span><span>•</span
+            ><span>Figma</span><span>•</span><span>GraphQL</span><span>•</span
+            ><span>MongoDB</span><span>•</span><span>Redis</span><span>•</span
+            ><span>Tailwind</span><span>•</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">03 / Work</span>
+          <h2 class="section-title">Featured <em>Projects</em></h2>
+        </div>
+        <!-- Filter Buttons -->
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web App</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <button class="filter-btn" data-filter="design">Design</button>
+        </div>
+        <div class="projects-grid" id="projectsGrid">
+          <div class="project-card featured" data-category="web" data-aos>
+            <div class="project-glow"></div>
+            <div class="project-img">
+              <div
+                class="project-img-inner"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    #0f2027,
+                    #203a43,
+                    #2c5364
+                  );
+                ">
+                <div class="project-mockup">
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-lines">
+                    <span></span><span></span><span style="width: 60%"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <a href="#" class="project-link"
+                  >View Project
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                      d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg
+                ></a>
+                <a href="#" class="project-link-gh">GitHub</a>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-year">2024</span>
+                <span class="project-cat">Web App</span>
+              </div>
+              <h3>FinTrack Dashboard</h3>
+              <p>
+                Real-time financial analytics platform with AI-powered insights
+                and beautiful data visualizations.
+              </p>
+              <div class="project-tech">
+                <span>Next.js</span><span>D3.js</span><span>Supabase</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="mobile" data-aos>
+            <div class="project-glow"></div>
+            <div class="project-img">
+              <div
+                class="project-img-inner"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    #1a0533,
+                    #2d1b69,
+                    #11998e
+                  );
+                ">
+                <div class="project-mockup phone">
+                  <div class="mockup-notch"></div>
+                  <div class="mockup-lines">
+                    <span
+                      style="width: 50%; margin: 0 auto; display: block"></span>
+                    <span></span><span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <a href="#" class="project-link"
+                  >View Project
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                      d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg
+                ></a>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-year">2024</span>
+                <span class="project-cat">Mobile</span>
+              </div>
+              <h3>MindFlow App</h3>
+              <p>
+                Meditation & wellness mobile app with personalized journeys and
+                mood tracking.
+              </p>
+              <div class="project-tech">
+                <span>React Native</span><span>Firebase</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="design" data-aos>
+            <div class="project-glow"></div>
+            <div class="project-img">
+              <div
+                class="project-img-inner"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    #0d0d0d,
+                    #1a1a2e,
+                    #c94b4b
+                  );
+                ">
+                <div class="project-mockup design-preview">
+                  <div style="display: flex; gap: 8px; padding: 20px">
+                    <div
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 8px;
+                        background: rgba(201, 75, 75, 0.6);
+                      "></div>
+                    <div style="flex: 1">
+                      <div
+                        style="
+                          height: 8px;
+                          background: rgba(255, 255, 255, 0.3);
+                          border-radius: 4px;
+                          margin-bottom: 6px;
+                        "></div>
+                      <div
+                        style="
+                          height: 6px;
+                          background: rgba(255, 255, 255, 0.15);
+                          border-radius: 4px;
+                          width: 70%;
+                        "></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <a href="#" class="project-link"
+                  >View Designs
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                      d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg
+                ></a>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-year">2023</span>
+                <span class="project-cat">Design</span>
+              </div>
+              <h3>Lumina Brand System</h3>
+              <p>
+                Complete brand identity & design system for a luxury tech
+                startup, spanning 80+ components.
+              </p>
+              <div class="project-tech">
+                <span>Figma</span><span>Design System</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="web" data-aos>
+            <div class="project-glow"></div>
+            <div class="project-img">
+              <div
+                class="project-img-inner"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    #0f0c29,
+                    #302b63,
+                    #24243e
+                  );
+                ">
+                <div class="project-mockup">
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-grid">
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <a href="#" class="project-link"
+                  >View Project
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                      d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg
+                ></a>
+                <a href="#" class="project-link-gh">GitHub</a>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-year">2023</span>
+                <span class="project-cat">Web App</span>
+              </div>
+              <h3>DevCollab Platform</h3>
+              <p>
+                Real-time collaborative coding environment with AI pair
+                programming assistant.
+              </p>
+              <div class="project-tech">
+                <span>React</span><span>Socket.io</span><span>OpenAI</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="web" data-aos>
+            <div class="project-glow"></div>
+            <div class="project-img">
+              <div
+                class="project-img-inner"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    #093028,
+                    #237a57,
+                    #1a1a2e
+                  );
+                ">
+                <div class="project-mockup">
+                  <div style="padding: 20px">
+                    <div
+                      style="
+                        height: 10px;
+                        background: rgba(35, 122, 87, 0.8);
+                        border-radius: 4px;
+                        margin-bottom: 8px;
+                        width: 80%;
+                      "></div>
+                    <div
+                      style="
+                        height: 6px;
+                        background: rgba(255, 255, 255, 0.2);
+                        border-radius: 4px;
+                        margin-bottom: 6px;
+                      "></div>
+                    <div
+                      style="
+                        height: 6px;
+                        background: rgba(255, 255, 255, 0.15);
+                        border-radius: 4px;
+                        width: 60%;
+                      "></div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <a href="#" class="project-link"
+                  >View Project
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                      d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg
+                ></a>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-year">2023</span>
+                <span class="project-cat">Web App</span>
+              </div>
+              <h3>EcoTrack</h3>
+              <p>
+                Carbon footprint tracker with gamification features and
+                community challenges.
+              </p>
+              <div class="project-tech">
+                <span>Vue.js</span><span>Node.js</span><span>MongoDB</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="mobile" data-aos>
+            <div class="project-glow"></div>
+            <div class="project-img">
+              <div
+                class="project-img-inner"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    #1f0036,
+                    #6a0572,
+                    #ab83a1
+                  );
+                ">
+                <div class="project-mockup phone">
+                  <div class="mockup-notch"></div>
+                  <div style="padding: 20px">
+                    <div
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background: rgba(171, 131, 161, 0.6);
+                        margin: 0 auto 10px;
+                      "></div>
+                    <div
+                      style="
+                        height: 6px;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 4px;
+                        margin-bottom: 5px;
+                      "></div>
+                    <div
+                      style="
+                        height: 6px;
+                        background: rgba(255, 255, 255, 0.15);
+                        border-radius: 4px;
+                        width: 70%;
+                        margin: 0 auto;
+                      "></div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <a href="#" class="project-link"
+                  >View Project
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                      d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg
+                ></a>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-year">2022</span>
+                <span class="project-cat">Mobile</span>
+              </div>
+              <h3>Aura Social</h3>
+              <p>
+                Social platform focused on authenticity with ephemeral content
+                and mood-based matching.
+              </p>
+              <div class="project-tech">
+                <span>Flutter</span><span>Firebase</span><span>ML Kit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">04 / Journey</span>
+          <h2 class="section-title">Work <em>Experience</em></h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-item" data-aos>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="tl-header">
+                <div>
+                  <h3>Senior Full Stack Developer</h3>
+                  <span class="tl-company">Nexus Labs</span>
+                </div>
+                <span class="tl-period">2022 — Present</span>
+              </div>
+              <p>
+                Led development of microservices architecture serving 2M+ users.
+                Managed a team of 6 developers, reduced API response times by
+                65%, and spearheaded the migration to Next.js 14.
+              </p>
+              <div class="tl-tags">
+                <span>Next.js</span><span>AWS</span><span>Team Lead</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="tl-header">
+                <div>
+                  <h3>UI/UX Designer & Developer</h3>
+                  <span class="tl-company">Pixel Studios</span>
+                </div>
+                <span class="tl-period">2020 — 2022</span>
+              </div>
+              <p>
+                Designed and developed 12 client products end-to-end.
+                Established the company's design system, improved client NPS
+                score by 40%, and mentored 3 junior developers.
+              </p>
+              <div class="tl-tags">
+                <span>Figma</span><span>React</span><span>Design Systems</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="tl-header">
+                <div>
+                  <h3>Frontend Developer</h3>
+                  <span class="tl-company">TechVenture Co.</span>
+                </div>
+                <span class="tl-period">2019 — 2020</span>
+              </div>
+              <p>
+                Built responsive web applications for e-commerce clients.
+                Implemented performance optimizations that reduced page load
+                times by 50% and boosted conversion rates.
+              </p>
+              <div class="tl-tags">
+                <span>Vue.js</span><span>SASS</span><span>Performance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="tl-header">
+                <div>
+                  <h3>Computer Science, B.Sc.</h3>
+                  <span class="tl-company">State University of Technology</span>
+                </div>
+                <span class="tl-period">2015 — 2019</span>
+              </div>
+              <p>
+                Graduated with honors. Focused on software engineering and
+                human-computer interaction. Led the university's web development
+                club.
+              </p>
+              <div class="tl-tags">
+                <span>Algorithms</span><span>HCI</span><span>Honors</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">05 / Reviews</span>
+          <h2 class="section-title">What clients <em>say</em></h2>
+        </div>
+        <div class="testimonials-slider" id="testimonialsSlider">
+          <div class="testimonial-card active">
+            <div class="quote-icon">"</div>
+            <p>
+              "Alex transformed our product completely. The attention to detail
+              and technical execution were exceptional. Our users couldn't be
+              happier with the new interface."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">SM</div>
+              <div>
+                <strong>Sarah Mitchell</strong>
+                <span>CEO, Nexus Labs</span>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <p>
+              "Working with Alex was a game changer. He delivered the project
+              ahead of schedule and the code quality was impeccable. Will
+              definitely work together again."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JK</div>
+              <div>
+                <strong>James Ko</strong>
+                <span>CTO, FinTrack</span>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <p>
+              "Brilliant developer and designer in one package. Alex understood
+              our vision instantly and exceeded our expectations with a
+              beautiful, performant product."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">RP</div>
+              <div>
+                <strong>Rachel Park</strong>
+                <span>Founder, Lumina Studio</span>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-nav">
+          <button class="tl-prev" id="tlPrev">←</button>
+          <div class="tl-dots" id="tlDots">
+            <span class="tl-dot active"></span>
+            <span class="tl-dot"></span>
+            <span class="tl-dot"></span>
+          </div>
+          <button class="tl-next" id="tlNext">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">06 / Contact</span>
+          <h2 class="section-title">Let's build something <em>great</em></h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p class="contact-lead">
+              Have a project in mind or want to collaborate? I'd love to hear
+              from you.
+            </p>
+            <div class="contact-details">
+              <a href="mailto:alex@example.com" class="contact-item">
+                <div class="ci-icon">✉</div>
+                <div>
+                  <span class="ci-label">Email</span>
+                  <span class="ci-value">alex@example.com</span>
+                </div>
+              </a>
+              <a href="#" class="contact-item">
+                <div class="ci-icon">📍</div>
+                <div>
+                  <span class="ci-label">Location</span>
+                  <span class="ci-value">San Francisco, CA</span>
+                </div>
+              </a>
+              <a href="#" class="contact-item">
+                <div class="ci-icon">💼</div>
+                <div>
+                  <span class="ci-label">LinkedIn</span>
+                  <span class="ci-value">linkedin.com/in/alexreeves</span>
+                </div>
+              </a>
+            </div>
+            <div class="social-links">
+              <a href="#" class="social-btn" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+              <a href="#" class="social-btn" title="Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+              <a href="#" class="social-btn" title="Dribbble">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="contact-form-wrap">
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <input type="text" id="name" placeholder=" " required />
+                <label for="name">Your Name</label>
+                <div class="form-line"></div>
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" placeholder=" " required />
+                <label for="email">Email Address</label>
+                <div class="form-line"></div>
+              </div>
+              <div class="form-group">
+                <input type="text" id="subject" placeholder=" " />
+                <label for="subject">Subject</label>
+                <div class="form-line"></div>
+              </div>
+              <div class="form-group">
+                <textarea
+                  id="message"
+                  placeholder=" "
+                  rows="4"
+                  required></textarea>
+                <label for="message">Your Message</label>
+                <div class="form-line"></div>
+              </div>
+              <button type="submit" class="btn btn-primary form-submit">
+                <span class="submit-text">Send Message</span>
+                <span class="submit-loading" style="display: none"
+                  >Sending...</span
+                >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                </svg>
+              </button>
+              <div class="form-success" id="formSuccess">
+                <span>✓</span> Message sent! I'll get back to you soon.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <span class="logo-text">AR</span>
+            <div class="logo-dot"></div>
+          </div>
+          <p class="footer-tagline">
+            Crafting digital experiences, one pixel at a time.
+          </p>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2024 Alex Reeves. All rights reserved.</span>
+          <span>Made with ♥ and lots of coffee</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-icon">☀</span>
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
