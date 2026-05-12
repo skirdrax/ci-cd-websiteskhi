@@ -5,7 +5,7 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>Seberapa Buzzer kamu? | WAJIB 10 SOAL</title>
+    <title>Seberapa Buzzer kamu? | CEK SKOR BUZZER</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
       * {
@@ -142,6 +142,12 @@
       .nama-input:focus {
         border-color: cyan;
         box-shadow: 0 0 15px cyan;
+      }
+
+      .nama-input::placeholder {
+        color: #88c0ff;
+        font-weight: normal;
+        opacity: 0.7;
       }
 
       .btn-random {
@@ -445,7 +451,7 @@
             type="text"
             id="namaUser"
             class="nama-input"
-            placeholder="NAMA / NICKNAME"
+            placeholder="Isi nama / nickname bebas"
             maxlength="30" />
           <button id="randomNamaBtn" class="btn-random">🎲 RANDOM</button>
         </div>
@@ -698,7 +704,7 @@
         } else {
           kirimBtn.disabled = true;
           kirimBtn.classList.remove('btn-send-ready');
-          kirimBtn.innerHTML = '📤 KIRIM SKOR (Selesaikan 10 soal dulu)';
+          kirimBtn.innerHTML = '📤 KIRIM SKOR (Selesaikan 10 soal)';
         }
       }
 
@@ -803,7 +809,7 @@
         updateKirimButton();
         kirimBtn.classList.remove('btn-send-ready');
         kirimBtn.disabled = true;
-        kirimBtn.innerHTML = '📤 KIRIM SKOR (Selesaikan 10 soal dulu)';
+        kirimBtn.innerHTML = '📤 KIRIM SKOR (Selesaikan 10 soal)';
       }
 
       async function kirimSkorKeSheet() {
@@ -923,7 +929,7 @@
       kirimBtn.onclick = kirimSkorKeSheet;
       refreshLeaderBtn.onclick = refreshLeaderboard;
 
-      if (!namaInput.value) namaInput.value = generateRandomName();
+      // NAMA DEFAULT KOSONG (tidak otomatis terisi)
       questions = questionsRaw.map((q) => shuffleOptions(q));
       loadQuestion();
       refreshLeaderboard();
