@@ -5,7 +5,7 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>🧠 TEKA-TEKI LUCU | Asah Otak</title>
+    <title>🤡 SEBERAPA BUZZER KAMU?</title>
     <style>
       * {
         margin: 0;
@@ -15,230 +15,423 @@
 
       body {
         min-height: 100vh;
-        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        background: radial-gradient(
+          circle at 10% 20%,
+          rgb(0, 0, 0) 0%,
+          rgb(30, 30, 60) 90%
+        );
         display: flex;
         justify-content: center;
         align-items: center;
-        font-family: 'Courier New', monospace;
-        padding: 16px;
+        font-family: 'Poppins', 'Segoe UI', system-ui, monospace;
+        padding: 20px;
       }
 
       .game-box {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 40px;
-        padding: 25px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        background: rgba(15, 20, 35, 0.75);
+        backdrop-filter: blur(12px);
+        border-radius: 60px;
+        padding: 30px 25px;
+        box-shadow:
+          0 25px 45px rgba(0, 0, 0, 0.5),
+          0 0 0 2px rgba(255, 215, 0, 0.2);
         text-align: center;
-        max-width: 550px;
+        max-width: 700px;
         width: 100%;
+        transition: all 0.2s;
       }
 
       h1 {
-        font-size: 1.8rem;
-        color: #1e3c72;
-        margin-bottom: 10px;
+        font-size: 2rem;
+        background: linear-gradient(135deg, #ffd700, #ffb347);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        letter-spacing: 2px;
       }
 
-      .question-box {
-        background: #f0f0f0;
-        border-radius: 30px;
-        padding: 30px;
-        margin: 20px 0;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+      .sub {
+        color: #c0c0c0;
+        font-size: 0.85rem;
+        margin-top: 8px;
+        border-top: 1px dashed gold;
+        display: inline-block;
+        padding-top: 6px;
+      }
+
+      .question-card {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 48px;
+        padding: 30px 20px;
+        margin: 25px 0;
+        border: 1px solid rgba(255, 215, 0, 0.5);
+        box-shadow:
+          inset 0 0 12px rgba(255, 215, 0, 0.1),
+          0 10px 20px rgba(0, 0, 0, 0.2);
       }
 
       .question {
         font-size: 1.5rem;
         font-weight: bold;
-        color: #333;
-        margin-bottom: 20px;
+        color: #ffe484;
+        margin-bottom: 28px;
+        line-height: 1.3;
       }
 
       .options {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin-bottom: 20px;
+        gap: 14px;
+        margin-bottom: 10px;
       }
 
       .option-btn {
-        background: #2a5298;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 50px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1.5px solid #ffd966;
+        padding: 14px 16px;
+        border-radius: 100px;
         font-size: 1rem;
-        font-weight: bold;
-        color: white;
+        font-weight: 600;
+        color: #f8f3e0;
         cursor: pointer;
         transition: 0.2s;
-        font-family: monospace;
+        font-family: 'Segoe UI', monospace;
+        backdrop-filter: blur(4px);
       }
 
       .option-btn:hover {
-        transform: scale(1.02);
-        background: #1e3c72;
-      }
-
-      .option-btn.disabled {
-        background: #aaa;
-        cursor: not-allowed;
+        transform: scale(1.01);
+        background: #ffd700;
+        color: #0a0f1e;
+        border-color: white;
+        box-shadow: 0 0 12px gold;
       }
 
       .feedback {
-        font-size: 1.2rem;
-        margin: 15px 0;
-        padding: 10px;
-        border-radius: 30px;
+        font-size: 1rem;
+        margin: 15px 0 5px;
+        padding: 12px;
+        border-radius: 40px;
+        font-weight: bold;
       }
 
       .feedback.benar {
-        background: #4caf50;
-        color: white;
+        background: #2e7d32;
+        color: #ffffff;
+        box-shadow: 0 0 6px #4caf50;
       }
 
       .feedback.salah {
-        background: #f44336;
-        color: white;
+        background: #b71c1c;
+        color: #ffe0e0;
+        box-shadow: 0 0 6px #f44336;
       }
 
-      .score-box {
+      /* Panel skor + tombol - dipisah rapi */
+      .score-panel {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 48px;
+        padding: 12px 20px;
+        margin-top: 15px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
         gap: 15px;
-        margin-top: 20px;
-        padding: 15px;
-        background: #1e3c72;
-        border-radius: 50px;
-        color: white;
+        border: 1px solid rgba(255, 215, 0, 0.5);
+      }
+
+      .score-stats {
+        display: flex;
+        gap: 20px;
         flex-wrap: wrap;
         justify-content: center;
       }
 
       .score-item {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: bold;
+        color: #ffd966;
+        background: #0c0f1c;
+        padding: 5px 18px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
 
       .score-item span {
         background: gold;
-        color: #1e3c72;
-        padding: 5px 15px;
+        color: #1a1f2e;
+        padding: 3px 14px;
         border-radius: 30px;
-        margin-left: 8px;
+        font-size: 1.2rem;
+        font-weight: 800;
       }
 
-      button {
-        background: #ffd700;
+      /* Tombol aksi dipisah dan dijauhkan */
+      .action-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 12px;
+      }
+
+      .btn-next {
+        background: linear-gradient(95deg, #ffb347, #ff8c00);
         border: none;
-        padding: 10px 25px;
+        padding: 10px 28px;
         border-radius: 40px;
-        font-size: 1rem;
         font-weight: bold;
+        font-size: 1rem;
         cursor: pointer;
         transition: 0.2s;
+        color: #1e1e2a;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        font-family: monospace;
       }
 
-      button:hover {
-        transform: scale(1.05);
-        background: #ffa500;
+      .btn-restart {
+        background: rgba(30, 30, 60, 0.9);
+        border: 1.5px solid #ffb347;
+        padding: 10px 28px;
+        border-radius: 40px;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.2s;
+        color: #ffcd7e;
+        font-family: monospace;
       }
 
-      @media (max-width: 600px) {
-        h1 {
-          font-size: 1.3rem;
+      .btn-next:hover {
+        transform: scale(1.03);
+        background: #ffaa33;
+        box-shadow: 0 0 12px orange;
+      }
+
+      .btn-restart:hover {
+        background: #ffb347;
+        color: #1e1e2a;
+        border-color: white;
+      }
+
+      /* MODAL */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.88);
+        backdrop-filter: blur(5px);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background: radial-gradient(circle at 30% 20%, #1e1b2c, #0b0d1a);
+        border-radius: 48px;
+        padding: 28px 22px;
+        text-align: center;
+        max-width: 340px;
+        width: 85%;
+        border: 2px solid gold;
+        animation: naik 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      }
+
+      .modal-content h3 {
+        color: gold;
+        font-size: 1.7rem;
+        margin-bottom: 15px;
+      }
+
+      .modal-content p {
+        color: #f0ede8;
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+
+      .modal-content button {
+        background: gold;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 60px;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      @keyframes naik {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 550px) {
+        .game-box {
+          padding: 20px 16px;
         }
         .question {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
         }
         .option-btn {
-          padding: 8px 15px;
+          padding: 10px 12px;
           font-size: 0.8rem;
         }
         .score-item {
-          font-size: 0.9rem;
+          font-size: 0.8rem;
+          padding: 3px 10px;
+        }
+        .btn-next,
+        .btn-restart {
+          padding: 7px 18px;
+          font-size: 0.8rem;
         }
       }
     </style>
   </head>
   <body>
     <div class="game-box">
-      <h1>🧠 TEKA-TEKI LUCU 🧠</h1>
-      <div class="question-box">
-        <div class="question" id="question">...</div>
+      <h1>🤡 SEBERAPA BUZZER KAMU?</h1>
+      <div class="sub">✨ TEST LOYALITAS PRO PEMERINTAH ✨</div>
+
+      <div class="question-card">
+        <div class="question" id="question">Memuat soal...</div>
         <div class="options" id="options"></div>
         <div class="feedback" id="feedback"></div>
       </div>
-      <div class="score-box">
-        <div class="score-item">🎯 SKOR: <span id="score">0</span></div>
-        <div class="score-item">
-          📊 NOMOR: <span id="qNum">1</span>/<span id="total">10</span>
+
+      <div class="score-panel">
+        <div class="score-stats">
+          <div class="score-item">🎯 SKOR BUZZER <span id="score">0</span></div>
+          <div class="score-item">
+            📋 SOAL <span id="qNum">1</span>/<span id="total">8</span>
+          </div>
         </div>
-        <button id="nextBtn">➡️ SOAL BERIKUTNYA</button>
-        <button id="restartBtn">🔄 ULANG</button>
+      </div>
+
+      <!-- Tombol: Next di kiri, Restart di kanan - gak bakal salah pencet! -->
+      <div class="action-buttons">
+        <button id="nextBtn" class="btn-next">➡️ LANJUTKAN ⬅️</button>
+        <button id="restartBtn" class="btn-restart">🔄 RESET & ULANG</button>
+      </div>
+    </div>
+
+    <!-- Modal Popup jawaban -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h3 id="modalTitle"></h3>
+        <p id="modalText"></p>
+        <button onclick="closeModal()">OK, LANJUTKAN</button>
       </div>
     </div>
 
     <script>
       const questions = [
         {
-          question: 'Apa yang bisa naik tapi tidak bisa turun?',
-          options: ['Usia', 'Pohon', 'Burung', 'Tangga'],
+          question: '📢 Pemerintah naikin harga bahan pokok, sikap kamu?',
+          options: [
+            '🇮🇩 TETAP DUKUNG! DEMI PEMBANGUNAN!',
+            '🤫 DIAM SAJA... ntar dipanggil RT',
+            '🤡 PROSES DULU, YANG PENTING TETAP SEMANGAT',
+            '😤 KOK NAIK TERUS? KERJA KERAS RAKYAT',
+          ],
           answer: 0,
+          buzzWord: '🔥 BUZZER LEGEND! SIAP BELA KAPAN PUN! 🔥',
         },
         {
-          question: 'Semakin banyak diambil, semakin besar jadinya. Apa itu?',
-          options: ['Lubang', 'Utang', 'Nafsu', 'Harta'],
+          question: '🛣️ Jalan rusak bertahun-tahun, kamu bilang?',
+          options: [
+            '🏗️ BUTUH WAKTU, APBN TERBATAS',
+            '💪 PEMERINTAH PASTI ADA CARA',
+            '🤬 PENGEN DEMO TAPI MAU MAKAN',
+            '😎 YANG PENTING JALAN MASIH ADA',
+          ],
           answer: 0,
+          buzzWord: '🤝 TULENAN BUZZER! PANTANG MENYERAH! 🤝',
         },
         {
-          question:
-            'Apa yang selalu ada di depan tapi tak pernah bisa dilihat?',
-          options: ['Bayangan', 'Masa depan', 'Cermin', 'Mata'],
-          answer: 1,
-        },
-        {
-          question: 'Benda apa yang kalau diputar malah jadi panjang?',
-          options: ['Pensil', 'Rambut', 'Kaset', 'Kunci'],
-          answer: 2,
-        },
-        {
-          question: 'Apa yang bisa kamu pegang tapi tidak bisa kamu sentuh?',
-          options: ['Hati', 'Bola', 'Air', 'Angin'],
+          question: '🗣️ Pejabat keliru ngomong di TV, reaksi kamu?',
+          options: [
+            '❤️ WAJAR MANUSIA, MALAH LUCU',
+            '📢 MASIH LEBIH BAIK DARIPADA YG LAIN',
+            '😂 BUAT MEME AJA SANTUY',
+            '🤦 YANG PENTING BUKAN KORUPSI',
+          ],
           answer: 0,
+          buzzWord: '👑 BUZZER HEBAT! SABAR & SETIA 👑',
         },
         {
-          question: 'Apa huruf ke-5 dalam alfabet?',
-          options: ['D', 'E', 'F', 'G'],
-          answer: 1,
-        },
-        {
-          question: 'Makin banyak kamu ambil, makin besar itu. Apa?',
-          options: ['Lubang', 'Kue', 'Nasi', 'Air'],
+          question: '💰 Proyek negara molor & melebihi anggaran, kata kamu?',
+          options: [
+            '⚙️ DEMI KUALITAS DAN MASA DEPAN',
+            '🙏 SEMOGA CEPAT RAMPUNG, DOAKAN SAJA',
+            '🧠 PASTI ADA HIKMAHNYA',
+            '😭 UANG RAKYAT KEMANA AJA?',
+          ],
           answer: 0,
+          buzzWord: '🧧 GOCAP! PEMERINTAH NO 1 🧧',
         },
         {
-          question: 'Apa yang tidak bisa basah meski terkena air?',
-          options: ['Batu', 'Bayangan', 'Api', 'Es'],
-          answer: 1,
+          question: '📉 Perekonomian lesu tapi stok pangan aman, reaksi?',
+          options: [
+            '🏆 PRESIDEN HEBAT, SWASEMBADA PANGAN',
+            '💊 SABAR, EKONOMI LAGI PEMULIHAN',
+            '📉 HARUS DIKEJAR LAGI KERJA KERAS',
+            '🇮🇩 TAPI HARGA LAPANGAN TETAP MAHAL',
+          ],
+          answer: 0,
+          buzzWord: '🇮🇩 BUZZER SEJATI! DUNIA KAGUM 🇮🇩',
         },
         {
-          question: 'Apa yang punya leher tapi tidak punya kepala?',
-          options: ['Botol', 'Baju', 'Pintu', 'Gitar'],
-          answer: 3,
+          question: '👮‍♂️ Demonstrasi rakyat ditindak tegas?',
+          options: [
+            '✅ NEGARA BUTUH STABILITAS',
+            '🤔 TERGANTUNG ESKALASI',
+            '💔 HAM DIPERHATIKAN TAPI HUKUM TETAP JALAN',
+            '😠 KURANG ADIL!',
+          ],
+          answer: 0,
+          buzzWord:
+            '🛡️ BUZZER SUPER! HUKUM TAJAM KE BAWAH TAPI INI DEMI KEAMANAN 🛡️',
         },
         {
-          question: 'Apa yang selalu jatuh tapi tidak pernah luka?',
-          options: ['Daun', 'Hujan', 'Malam', 'Salju'],
-          answer: 1,
+          question: '📈 Iklan pemerintah terlalu banyak di TV, kamu?',
+          options: [
+            '📺 EDUKASI BANGSA, PENTING SEKALI',
+            '😊 YANG PENTING KARYA ANAK BANGSA',
+            '😴 DYOR TIDUR AJA',
+            '🤯 APBN LUMBUYUNG ',
+          ],
+          answer: 0,
+          buzzWord: '🎬 BUZZER POPULER! SERBU TERUS! 🎬',
+        },
+        {
+          question: '🔁 Janji kampanye harus ditepati?',
+          options: [
+            '⏳ BUTUH PROSES, KERJA BERTAHAP',
+            '🤝 PERCAYA SAMA PEMERINTAH',
+            '💪 MASIH ADA WAKTU',
+            '⚡ CEPETAN DONG!',
+          ],
+          answer: 0,
+          buzzWord: '⏰ BUZZER SUKSES! SEMUA PASTI BAIK ⏰',
         },
       ];
 
-      let currentIndex = 0;
-      let score = 0;
-      let answered = false;
-      let totalQuestions = questions.length;
-
+      let currentIndex = 0,
+        score = 0,
+        answered = false,
+        totalQ = questions.length;
       const questionEl = document.getElementById('question');
       const optionsEl = document.getElementById('options');
       const feedbackEl = document.getElementById('feedback');
@@ -247,87 +440,114 @@
       const totalEl = document.getElementById('total');
       const nextBtn = document.getElementById('nextBtn');
       const restartBtn = document.getElementById('restartBtn');
+      const modal = document.getElementById('modal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalText = document.getElementById('modalText');
 
-      totalEl.innerText = totalQuestions;
+      totalEl.innerText = totalQ;
 
-      function loadQuestion() {
+      function closeModal() {
+        modal.style.display = 'none';
+      }
+
+      function tampilModal(judul, pesan) {
+        modalTitle.innerText = judul;
+        modalText.innerText = pesan;
+        modal.style.display = 'flex';
+      }
+
+      function muatSoal() {
         answered = false;
         feedbackEl.innerHTML = '';
         feedbackEl.className = 'feedback';
-
         const q = questions[currentIndex];
         questionEl.innerText = q.question;
-
         optionsEl.innerHTML = '';
         q.options.forEach((opt, idx) => {
-          const btn = document.createElement('button');
-          btn.className = 'option-btn';
-          btn.innerText = opt;
-          btn.onclick = () => checkAnswer(idx);
-          optionsEl.appendChild(btn);
+          const tombol = document.createElement('button');
+          tombol.className = 'option-btn';
+          tombol.innerText = opt;
+          tombol.onclick = () => jawab(idx);
+          optionsEl.appendChild(tombol);
         });
-
         qNumEl.innerText = currentIndex + 1;
       }
 
-      function checkAnswer(selected) {
+      function jawab(pilih) {
         if (answered) return;
+        const soal = questions[currentIndex];
+        const benar = pilih === soal.answer;
 
-        const q = questions[currentIndex];
-        const isCorrect = selected === q.answer;
-
-        if (isCorrect) {
+        if (benar) {
           score++;
           scoreEl.innerText = score;
-          feedbackEl.innerHTML = '✅ BENAR! +1 poin ✅';
+          feedbackEl.innerHTML = '✅ BUZZER MANTAP! +1 POIN ✅';
           feedbackEl.className = 'feedback benar';
+          tampilModal(
+            '🎤 BUZZER BERKELAS 🎤',
+            `${soal.buzzWord}\n✨ SKOR BUZZER ANDA NAIK! ✨`,
+          );
         } else {
-          const jawabanBenar = q.options[q.answer];
-          feedbackEl.innerHTML = `❌ SALAH! Jawaban: ${jawabanBenar} ❌`;
+          const jawabanBenar = soal.options[soal.answer];
+          feedbackEl.innerHTML = `❌ KURANG BUZZER! JAWABANNYA: "${jawabanBenar}" ❌`;
           feedbackEl.className = 'feedback salah';
+          tampilModal(
+            '❗ GAGAL BUZZER ❗',
+            `Jawabannya harusnya: "${jawabanBenar}"\n${soal.buzzWord}`,
+          );
         }
-
         answered = true;
-
-        const allBtns = document.querySelectorAll('.option-btn');
-        allBtns.forEach((btn) => {
+        const btns = document.querySelectorAll('.option-btn');
+        btns.forEach((btn) => {
           btn.disabled = true;
-          btn.style.opacity = '0.6';
+          btn.style.opacity = '0.7';
         });
       }
 
-      function nextQuestion() {
+      function lanjutSoal() {
         if (!answered) {
-          feedbackEl.innerHTML = '⚠️ Jawab dulu soalnya! ⚠️';
+          feedbackEl.innerHTML = '⚠️ JAWAB DULU, BARU LANJUT! ⚠️';
           feedbackEl.className = 'feedback salah';
           return;
         }
-
-        if (currentIndex + 1 < totalQuestions) {
+        if (currentIndex + 1 < totalQ) {
           currentIndex++;
-          loadQuestion();
+          muatSoal();
         } else {
-          feedbackEl.innerHTML = `🏆 SELESAI! Skor akhir: ${score}/${totalQuestions} 🏆`;
+          let gelar = '';
+          let komen = '';
+          if (score === totalQ) {
+            gelar = '🏆 BUZZER LEGEND 🏆';
+            komen = `GILA! SKOR ${score}/${totalQ} . KAMU BUZZER ASLI, SIAP DAPAT JATAH!`;
+          } else if (score >= 5) {
+            gelar = '🎙️ BUZZER KANDIDAT 🎙️';
+            komen = `SKOR ${score}/${totalQ}. LUMATAN BANGET, NAIKIN LAGI LOYALITAS!`;
+          } else {
+            gelar = '😭 BUZZER ABAL 🥀';
+            komen = `SKOR ${score}/${totalQ}. YAH KURANG PRO PEMERINTAH, BELAJAR LAGI!`;
+          }
+          feedbackEl.innerHTML = `🏁 ${gelar} | SKOR AKHIR: ${score}/${totalQ} 🏁`;
           feedbackEl.className = 'feedback benar';
           nextBtn.disabled = true;
           nextBtn.style.opacity = '0.5';
+          tampilModal(gelar, komen);
         }
       }
 
-      function restartGame() {
+      function resetGame() {
         currentIndex = 0;
         score = 0;
         answered = false;
         scoreEl.innerText = score;
         nextBtn.disabled = false;
         nextBtn.style.opacity = '1';
-        loadQuestion();
+        muatSoal();
+        closeModal();
       }
 
-      nextBtn.onclick = nextQuestion;
-      restartBtn.onclick = restartGame;
-
-      loadQuestion();
+      nextBtn.onclick = lanjutSoal;
+      restartBtn.onclick = resetGame;
+      muatSoal();
     </script>
   </body>
 </html>
