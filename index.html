@@ -4,22 +4,35 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>🎮 3 GAME SERU | Ringan & Keren</title>
+      content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>🎮 3 GAME SERU | Arcade Hub</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="main-container">
+      <h1 class="game-title">✨ ARCADE HUB ✨</h1>
+
       <div class="game-menu">
-        <button class="game-btn" data-game="catcher">🐱 CATCHER GAME</button>
-        <button class="game-btn" data-game="clicker">💥 CLICKER CHAOS</button>
-        <button class="game-btn" data-game="runner">🏃 DODGE RUNNER</button>
+        <button class="game-btn" data-game="catcher">
+          <span class="btn-icon">🐱</span>
+          <span>CATCHER</span>
+        </button>
+        <button class="game-btn" data-game="clicker">
+          <span class="btn-icon">💥</span>
+          <span>CLICKER</span>
+        </button>
+        <button class="game-btn" data-game="runner">
+          <span class="btn-icon">🏃</span>
+          <span>RUNNER</span>
+        </button>
       </div>
 
-      <canvas id="gameCanvas" width="800" height="500"></canvas>
+      <div class="canvas-wrapper">
+        <canvas id="gameCanvas" width="800" height="500"></canvas>
+      </div>
 
-      <div class="info">
-        🎮 Pilih game di atas | 🖱️ Mouse/kontrol sesuai game | ✨ Seru & ringan!
+      <div class="info" id="gameInfo">
+        🖱️ Geser mouse / sentuh untuk bermain
       </div>
     </div>
 
