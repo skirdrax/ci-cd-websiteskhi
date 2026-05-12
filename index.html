@@ -333,6 +333,12 @@
         color: white;
       }
 
+      .btn-send:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
       .btn-refresh {
         background: #005c99;
         border: 1px solid cyan;
@@ -657,8 +663,8 @@
         answered = false,
         totalSoal = 10,
         gameCompleted = false;
+      let isSending = false; // CEK DOUBLE KLIK
 
-      // DOM
       const questionEl = document.getElementById('question');
       const optionsEl = document.getElementById('options');
       const feedbackEl = document.getElementById('feedback');
@@ -755,6 +761,9 @@
           feedbackEl.className = 'feedback benar';
           nextBtn.disabled = true;
           nextBtn.style.opacity = '0.5';
+          // Enable kirim button setelah game selesai
+          kirimBtn.disabled = false;
+          kirimBtn.style.opacity = '1';
         }
       }
 
@@ -763,9 +772,12 @@
         userScore = 0;
         answered = false;
         gameCompleted = false;
+        isSending = false;
         scoreSpan.innerText = userScore;
         nextBtn.disabled = false;
         nextBtn.style.opacity = '1';
+        kirimBtn.disabled = false; // Reset tombol kirim
+        kirimBtn.style.opacity = '1';
         questions = questionsRaw.map((q) => shuffleOptions(q));
         loadQuestion();
         feedbackEl.innerHTML = '';
@@ -773,6 +785,20 @@
       }
 
       async function kirimSkorKeSheet() {
+        // CEGAH DOUBLE KLIK
+        if (isSending) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Proses sedang berjalan!',
+            text: 'Tunggu sebentar, skor sedang dikirim... Jangan double klik!',
+            background: '#0a1022',
+            color: '#FFD966',
+            confirmButtonColor: '#FFB347',
+            timer: 2000,
+          });
+          return;
+        }
+
         let nama = namaInput.value.trim();
         if (!nama) {
           Swal.fire({
@@ -796,6 +822,12 @@
           });
           return;
         }
+
+        isSending = true;
+        kirimBtn.disabled = true;
+        kirimBtn.style.opacity = '0.5';
+        kirimBtn.innerText = '📤 MENGIRIM...';
+
         const kat = getKategori(userScore);
         const data = {
           nama: nama,
@@ -803,6 +835,7 @@
           tanggal: new Date().toLocaleString('id-ID'),
           kategori: kat.nama,
         };
+
         try {
           const res = await fetch(API_URL, {
             method: 'POST',
@@ -812,13 +845,15 @@
           if (res.ok) {
             Swal.fire({
               icon: 'success',
-              title: 'BERHASIL!',
-              html: `🎉 ${nama} - ${kat.icon} ${kat.nama}<br>Skor: ${userScore}`,
+              title: '✅ BERHASIL TERKIRIM! ✅',
+              html: `🎉 <strong>${nama}</strong><br>${kat.icon} ${kat.nama}<br>Skor: <strong>${userScore}</strong><br><br>⚠️ Jangan kirim lagi ya! Skor sudah tersimpan.`,
               background: '#0a1022',
               color: '#FFD966',
               confirmButtonColor: '#FFB347',
             });
             refreshLeaderboard();
+            // Tombol tetap disabled karena udah berhasil kirim
+            kirimBtn.innerText = '✅ SUDAH TERKIRIM';
           } else throw new Error();
         } catch (err) {
           Swal.fire({
@@ -829,6 +864,10 @@
             color: '#FFD966',
             confirmButtonColor: '#FFB347',
           });
+          isSending = false;
+          kirimBtn.disabled = false;
+          kirimBtn.style.opacity = '1';
+          kirimBtn.innerText = '📤 KIRIM SKOR';
         }
       }
 
@@ -866,6 +905,8 @@
       restartBtn.onclick = restartGame;
       kirimBtn.onclick = kirimSkorKeSheet;
       refreshLeaderBtn.onclick = refreshLeaderboard;
+      kirimBtn.disabled = true; // Awalnya disable, baru aktif setelah game selesai
+      kirimBtn.style.opacity = '0.5';
 
       if (!namaInput.value) namaInput.value = generateRandomName();
       questions = questionsRaw.map((q) => shuffleOptions(q));
