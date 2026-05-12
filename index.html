@@ -2,45 +2,219 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio Saya</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>🐦 GAME LUCU</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #87ceeb, #98d8c8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Courier New', monospace;
+        padding: 16px;
+      }
+      .game-box {
+        background: rgba(255, 255, 200, 0.95);
+        border-radius: 50px;
+        padding: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+      canvas {
+        display: block;
+        margin: 0 auto;
+        border-radius: 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        max-width: 100%;
+        height: auto;
+      }
+      .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        margin-top: 20px;
+        padding: 10px 25px;
+        background: #ffe4b5;
+        border-radius: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .stat {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #8b4513;
+      }
+      .stat span {
+        background: white;
+        padding: 5px 15px;
+        border-radius: 30px;
+        margin-left: 8px;
+      }
+      button {
+        background: #ffd700;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 40px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #8b4513;
+        cursor: pointer;
+      }
+      button:hover {
+        transform: scale(1.05);
+        background: #ffa500;
+      }
+      @media (max-width: 600px) {
+        .stat {
+          font-size: 1rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <h1 id="greeting">
-        Halo, Saya <span class="highlight">Mahasiswa Polindra</span> 👋
-      </h1>
-      <p class="subtitle">
-        Selamat datang di website portofolio sederhana saya
-      </p>
-
-      <div class="card">
-        <img
-          src="https://via.placeholder.com/150"
-          alt="Profile"
-          class="profile-img" />
-        <h2>Nama Saya</h2>
-        <p class="bio">
-          Saya sedang belajar CI/CD dengan GitHub Actions dan deployment ke VPS.
-        </p>
-
-        <div class="skills">
-          <span class="skill">HTML</span>
-          <span class="skill">CSS</span>
-          <span class="skill">JavaScript</span>
-          <span class="skill">Git</span>
-        </div>
-
-        <button id="clickMeBtn" class="btn">Klik Saya!</button>
-        <p id="message" class="message"></p>
+    <div class="game-box">
+      <div style="font-size: 1.8rem; margin-bottom: 10px">
+        🐦 KASIH MAKAN BURUNG 🍞
       </div>
-
-      <footer>
-        <p>&copy; 2024 - Website Statis dengan CI/CD</p>
-      </footer>
+      <canvas id="gameCanvas" width="600" height="400"></canvas>
+      <div class="info">
+        <div class="stat">🍞 SKOR: <span id="score">0</span></div>
+        <div class="stat">💔 NYAWA: <span id="lives">3</span></div>
+        <button id="restartBtn">🔄 ULANG</button>
+      </div>
+      <div style="margin-top: 10px; color: #5d3a1a">
+        🖱️ Klik burung! Jangan kotoran 💩
+      </div>
     </div>
+    <script>
+      const canvas = document.getElementById('gameCanvas');
+      const ctx = canvas.getContext('2d');
+      let score = 0,
+        lives = 3,
+        gameRunning = true;
+      let bird = { x: 300, y: 200, radius: 25 };
+      let poops = [];
 
-    <script src="script.js"></script>
+      function randomPos() {
+        return {
+          x: 50 + Math.random() * (canvas.width - 100),
+          y: 50 + Math.random() * (canvas.height - 100),
+        };
+      }
+
+      function moveBird() {
+        if (!gameRunning) return;
+        bird.x += (Math.random() - 0.5) * 4;
+        bird.y += (Math.random() - 0.5) * 3;
+        bird.x = Math.min(Math.max(bird.x, 40), canvas.width - 40);
+        bird.y = Math.min(Math.max(bird.y, 40), canvas.height - 40);
+      }
+
+      function draw() {
+        ctx.fillStyle = '#98FB98';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#8B4513';
+        for (let p of poops) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#5D3A1A';
+          ctx.fillText('💩', p.x - 8, p.y - 5);
+          ctx.fillStyle = '#8B4513';
+        }
+        ctx.fillStyle = '#FFD700';
+        ctx.beginPath();
+        ctx.arc(bird.x, bird.y, bird.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FF8C00';
+        ctx.beginPath();
+        ctx.moveTo(bird.x + 15, bird.y - 5);
+        ctx.lineTo(bird.x + 30, bird.y);
+        ctx.lineTo(bird.x + 15, bird.y + 5);
+        ctx.fill();
+        ctx.fillStyle = '#000';
+        ctx.beginPath();
+        ctx.arc(bird.x - 8, bird.y - 5, 4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(bird.x - 10, bird.y - 7, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.font = '20px monospace';
+        ctx.fillStyle = '#8B4513';
+        ctx.fillText('🐦', bird.x - 15, bird.y - 12);
+        if (!gameRunning) {
+          ctx.font = 'bold 24px monospace';
+          ctx.fillStyle = 'red';
+          ctx.fillText(
+            '💀 GAME OVER 💀',
+            canvas.width / 2 - 120,
+            canvas.height / 2,
+          );
+        }
+      }
+
+      function checkClick(e) {
+        if (!gameRunning) return;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        let clientX, clientY;
+        if (e.touches) {
+          clientX = e.touches[0].clientX;
+          clientY = e.touches[0].clientY;
+        } else {
+          clientX = e.clientX;
+          clientY = e.clientY;
+        }
+        const clickX = (clientX - rect.left) * scaleX;
+        const clickY = (clientY - rect.top) * scaleY;
+        const dx = clickX - bird.x,
+          dy = clickY - bird.y;
+        if (Math.sqrt(dx * dx + dy * dy) < bird.radius) {
+          score++;
+          document.getElementById('score').innerText = score;
+          bird.x = randomPos().x;
+          bird.y = randomPos().y;
+        } else {
+          lives--;
+          document.getElementById('lives').innerText = lives;
+          if (lives <= 0) gameRunning = false;
+        }
+      }
+
+      function restart() {
+        score = 0;
+        lives = 3;
+        gameRunning = true;
+        poops = [];
+        bird.x = canvas.width / 2;
+        bird.y = canvas.height / 2;
+        document.getElementById('score').innerText = score;
+        document.getElementById('lives').innerText = lives;
+      }
+
+      canvas.addEventListener('click', checkClick);
+      canvas.addEventListener('touchstart', checkClick);
+      document.getElementById('restartBtn').onclick = () => restart();
+
+      function gameLoop() {
+        if (gameRunning) moveBird();
+        draw();
+        requestAnimationFrame(gameLoop);
+      }
+      gameLoop();
+    </script>
   </body>
 </html>
+EOF
