@@ -5,7 +5,7 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>Seberapa Buzzer kamu? | CEK SKOR BUZZER</title>
+    <title>Seberapa Buzzer kamu? | WAJIB 10 SOAL</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
       * {
@@ -65,11 +65,6 @@
         transition: all 0.3s;
       }
 
-      .game-panel:hover {
-        border-color: rgba(255, 215, 0, 0.7);
-        box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
-      }
-
       .leader-panel {
         flex: 0.6;
         min-width: 260px;
@@ -100,7 +95,6 @@
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        text-shadow: 0 0 10px rgba(255, 200, 0, 0.3);
         letter-spacing: 2px;
       }
 
@@ -123,7 +117,6 @@
         font-size: 1rem;
         margin-bottom: 12px;
         text-align: center;
-        font-weight: 600;
       }
 
       .nama-wrapper {
@@ -144,7 +137,6 @@
         outline: none;
         font-weight: 600;
         text-align: center;
-        transition: 0.2s;
       }
 
       .nama-input:focus {
@@ -184,7 +176,6 @@
         font-weight: bold;
         color: cyan;
         font-size: 0.8rem;
-        letter-spacing: 1px;
       }
 
       .question-card {
@@ -202,7 +193,6 @@
         color: #ffe69a;
         margin-bottom: 22px;
         line-height: 1.5;
-        text-shadow: 0 0 5px black;
       }
 
       .options {
@@ -336,7 +326,24 @@
       .btn-send:disabled {
         opacity: 0.5;
         cursor: not-allowed;
-        transform: none;
+      }
+
+      .btn-send-ready {
+        background: linear-gradient(95deg, #ff8c00, #ff5500);
+        border: 1px solid gold;
+        animation: pulse 1s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(255, 140, 0, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 140, 0, 0);
+        }
       }
 
       .btn-refresh {
@@ -465,7 +472,9 @@
         <div class="btn-group">
           <button id="nextBtn" class="btn btn-next">➡️ LANJUTKAN</button>
           <button id="restartBtn" class="btn btn-restart">🔄 ULANG GAME</button>
-          <button id="kirimSkorBtn" class="btn btn-send">📤 KIRIM SKOR</button>
+          <button id="kirimSkorBtn" class="btn btn-send" disabled>
+            📤 KIRIM SKOR (Selesaikan 10 soal)
+          </button>
         </div>
       </div>
 
@@ -478,7 +487,7 @@
           </button>
         </div>
         <div class="sub" style="margin-top: 10px">
-          ✨ Kirim skor setelah 10 soal ✨
+          ✨ Kirim skor otomatis aktif setelah 10 soal ✨
         </div>
       </div>
     </div>
@@ -663,7 +672,7 @@
         answered = false,
         totalSoal = 10,
         gameCompleted = false;
-      let isSending = false; // CEK DOUBLE KLIK
+      let isSending = false;
 
       const questionEl = document.getElementById('question');
       const optionsEl = document.getElementById('options');
@@ -681,6 +690,18 @@
 
       randomBtn.onclick = () => (namaInput.value = generateRandomName());
 
+      function updateKirimButton() {
+        if (gameCompleted) {
+          kirimBtn.disabled = false;
+          kirimBtn.classList.add('btn-send-ready');
+          kirimBtn.innerHTML = '✅ KIRIM SKOR (Siap dikirim!) ✅';
+        } else {
+          kirimBtn.disabled = true;
+          kirimBtn.classList.remove('btn-send-ready');
+          kirimBtn.innerHTML = '📤 KIRIM SKOR (Selesaikan 10 soal dulu)';
+        }
+      }
+
       function updateKategori() {
         if (!gameCompleted && currentIndex < totalSoal - 1) {
           kategoriEl.innerHTML = `🔷 Belum selesai main (${currentIndex + 1}/${totalSoal}) 🔷`;
@@ -689,6 +710,7 @@
         const kat = getKategori(userScore);
         kategoriEl.innerHTML = `${kat.icon} ${kat.nama} ${kat.icon}`;
         kategoriEl.style.color = kat.warna;
+        if (gameCompleted) updateKirimButton();
       }
 
       function loadQuestion() {
@@ -751,8 +773,8 @@
           updateKategori();
           Swal.fire({
             icon: 'success',
-            title: 'GAME SELESAI!',
-            html: `<strong>${kat.icon} ${kat.nama}</strong><br>Skor: ${userScore}/${totalSoal * 10}`,
+            title: '🎉 10 SOAL SELESAI! 🎉',
+            html: `<strong>${kat.icon} ${kat.nama}</strong><br>Skor: ${userScore}/${totalSoal * 10}<br><br>✅ Tombol KIRIM SKOR sudah aktif! ✅`,
             background: '#0a1022',
             color: '#FFD966',
             confirmButtonColor: '#FFB347',
@@ -761,9 +783,7 @@
           feedbackEl.className = 'feedback benar';
           nextBtn.disabled = true;
           nextBtn.style.opacity = '0.5';
-          // Enable kirim button setelah game selesai
-          kirimBtn.disabled = false;
-          kirimBtn.style.opacity = '1';
+          updateKirimButton();
         }
       }
 
@@ -776,21 +796,22 @@
         scoreSpan.innerText = userScore;
         nextBtn.disabled = false;
         nextBtn.style.opacity = '1';
-        kirimBtn.disabled = false; // Reset tombol kirim
-        kirimBtn.style.opacity = '1';
         questions = questionsRaw.map((q) => shuffleOptions(q));
         loadQuestion();
         feedbackEl.innerHTML = '';
         updateKategori();
+        updateKirimButton();
+        kirimBtn.classList.remove('btn-send-ready');
+        kirimBtn.disabled = true;
+        kirimBtn.innerHTML = '📤 KIRIM SKOR (Selesaikan 10 soal dulu)';
       }
 
       async function kirimSkorKeSheet() {
-        // CEGAH DOUBLE KLIK
         if (isSending) {
           Swal.fire({
             icon: 'warning',
             title: 'Proses sedang berjalan!',
-            text: 'Tunggu sebentar, skor sedang dikirim... Jangan double klik!',
+            text: 'Tunggu sebentar, jangan double klik!',
             background: '#0a1022',
             color: '#FFD966',
             confirmButtonColor: '#FFB347',
@@ -798,7 +819,17 @@
           });
           return;
         }
-
+        if (!gameCompleted) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Belum selesai!',
+            text: 'Selesaikan 10 soal dulu!',
+            background: '#0a1022',
+            color: '#FFD966',
+            confirmButtonColor: '#FFB347',
+          });
+          return;
+        }
         let nama = namaInput.value.trim();
         if (!nama) {
           Swal.fire({
@@ -811,22 +842,10 @@
           });
           return;
         }
-        if (!gameCompleted) {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Belum selesai!',
-            text: 'Selesaikan 10 soal dulu sebelum kirim skor! 🎯',
-            background: '#0a1022',
-            color: '#FFD966',
-            confirmButtonColor: '#FFB347',
-          });
-          return;
-        }
 
         isSending = true;
         kirimBtn.disabled = true;
-        kirimBtn.style.opacity = '0.5';
-        kirimBtn.innerText = '📤 MENGIRIM...';
+        kirimBtn.innerHTML = '📤 MENGIRIM...';
 
         const kat = getKategori(userScore);
         const data = {
@@ -846,14 +865,13 @@
             Swal.fire({
               icon: 'success',
               title: '✅ BERHASIL TERKIRIM! ✅',
-              html: `🎉 <strong>${nama}</strong><br>${kat.icon} ${kat.nama}<br>Skor: <strong>${userScore}</strong><br><br>⚠️ Jangan kirim lagi ya! Skor sudah tersimpan.`,
+              html: `🎉 <strong>${nama}</strong><br>${kat.icon} ${kat.nama}<br>Skor: <strong>${userScore}</strong><br><br>⚠️ Jangan kirim lagi ya!`,
               background: '#0a1022',
               color: '#FFD966',
               confirmButtonColor: '#FFB347',
             });
             refreshLeaderboard();
-            // Tombol tetap disabled karena udah berhasil kirim
-            kirimBtn.innerText = '✅ SUDAH TERKIRIM';
+            kirimBtn.innerHTML = '✅ SUDAH TERKIRIM';
           } else throw new Error();
         } catch (err) {
           Swal.fire({
@@ -864,10 +882,9 @@
             color: '#FFD966',
             confirmButtonColor: '#FFB347',
           });
-          isSending = false;
           kirimBtn.disabled = false;
-          kirimBtn.style.opacity = '1';
-          kirimBtn.innerText = '📤 KIRIM SKOR';
+          kirimBtn.innerHTML = '✅ KIRIM SKOR (Siap dikirim!)';
+          isSending = false;
         }
       }
 
@@ -905,13 +922,12 @@
       restartBtn.onclick = restartGame;
       kirimBtn.onclick = kirimSkorKeSheet;
       refreshLeaderBtn.onclick = refreshLeaderboard;
-      kirimBtn.disabled = true; // Awalnya disable, baru aktif setelah game selesai
-      kirimBtn.style.opacity = '0.5';
 
       if (!namaInput.value) namaInput.value = generateRandomName();
       questions = questionsRaw.map((q) => shuffleOptions(q));
       loadQuestion();
       refreshLeaderboard();
+      updateKirimButton();
     </script>
   </body>
 </html>
