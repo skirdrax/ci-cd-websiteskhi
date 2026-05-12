@@ -2,40 +2,45 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>🎮 3 GAME SERU | Arcade Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Saya</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="main-container">
-      <h1 class="game-title">✨ ARCADE HUB ✨</h1>
+    <div class="container">
+      <h1 id="greeting">
+        Halo, Saya <span class="highlight">Mahasiswa Polindra</span> 👋
+      </h1>
+      <p class="subtitle">
+        Selamat datang di website portofolio sederhana saya
+      </p>
 
-      <div class="game-menu">
-        <button class="game-btn" data-game="catcher">
-          <span class="btn-icon">🐱</span>
-          <span>CATCHER</span>
-        </button>
-        <button class="game-btn" data-game="clicker">
-          <span class="btn-icon">💥</span>
-          <span>CLICKER</span>
-        </button>
-        <button class="game-btn" data-game="runner">
-          <span class="btn-icon">🏃</span>
-          <span>RUNNER</span>
-        </button>
+      <div class="card">
+        <img
+          src="https://via.placeholder.com/150"
+          alt="Profile"
+          class="profile-img" />
+        <h2>Nama Saya</h2>
+        <p class="bio">
+          Saya sedang belajar CI/CD dengan GitHub Actions dan deployment ke VPS.
+        </p>
+
+        <div class="skills">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">Git</span>
+        </div>
+
+        <button id="clickMeBtn" class="btn">Klik Saya!</button>
+        <p id="message" class="message"></p>
       </div>
 
-      <div class="canvas-wrapper">
-        <canvas id="gameCanvas" width="800" height="500"></canvas>
-      </div>
-
-      <div class="info" id="gameInfo">
-        🖱️ Geser mousei / sentuh untuk bermain
-      </div>
+      <footer>
+        <p>&copy; 2024 - Website Statis dengan CI/CD</p>
+      </footer>
     </div>
 
-    <script src="game.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
