@@ -5,7 +5,7 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>Seberapa Buzzer kamu? | CEK SKOR BUZZER</title>
+    <title>Seberapa Buzzer Kamu? | Cek Skor</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
       * {
@@ -16,95 +16,57 @@
 
       body {
         min-height: 100vh;
-        background: radial-gradient(ellipse at 30% 40%, #0a0f2a, #050811);
-        font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+        background: linear-gradient(145deg, #1e3c72 0%, #2a5298 100%);
+        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
         padding: 24px;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
-      }
-
-      body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image:
-          linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-        background-size: 35px 35px;
-        pointer-events: none;
-        z-index: 0;
       }
 
       .app-wrap {
-        max-width: 1300px;
+        max-width: 1200px;
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        gap: 28px;
+        gap: 24px;
         justify-content: center;
-        position: relative;
-        z-index: 2;
       }
 
       .game-panel {
         flex: 1.6;
-        min-width: 340px;
-        background: rgba(8, 12, 28, 0.75);
-        backdrop-filter: blur(14px);
-        border-radius: 56px;
+        min-width: 300px;
+        background: rgba(255, 255, 255, 0.96);
+        border-radius: 32px;
         padding: 28px;
-        border: 2px solid rgba(0, 255, 255, 0.5);
-        box-shadow:
-          0 20px 45px rgba(0, 0, 0, 0.6),
-          0 0 40px rgba(0, 255, 255, 0.15);
-        transition: all 0.3s;
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s;
       }
 
       .leader-panel {
-        flex: 0.6;
+        flex: 0.7;
         min-width: 260px;
-        background: rgba(6, 10, 22, 0.8);
-        backdrop-filter: blur(12px);
-        border-radius: 40px;
-        padding: 18px;
-        border: 1px solid cyan;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .leader-panel::before {
-        content: '⚡';
-        position: absolute;
-        top: -5px;
-        right: -5px;
-        font-size: 45px;
-        opacity: 0.2;
-        pointer-events: none;
+        background: rgba(255, 255, 255, 0.94);
+        border-radius: 32px;
+        padding: 20px;
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
       }
 
       h1 {
         font-size: 1.7rem;
         text-align: center;
-        background: linear-gradient(135deg, #ffd966, #ffb347, #ff8c00);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        letter-spacing: 2px;
+        color: #1e3c72;
+        letter-spacing: -0.5px;
+        margin-bottom: 6px;
       }
 
       .sub {
         text-align: center;
-        color: #88c0ff;
-        margin-bottom: 15px;
-        font-size: 0.7rem;
-        letter-spacing: 2px;
-        border-bottom: 1px dashed cyan;
+        color: #3a6b9b;
+        margin-bottom: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border-bottom: 2px solid #ffcd7e;
         display: inline-block;
         width: auto;
         margin-left: auto;
@@ -113,107 +75,100 @@
       }
 
       h2 {
-        color: cyan;
-        font-size: 1rem;
-        margin-bottom: 12px;
+        color: #1e3c72;
+        font-size: 1.2rem;
+        margin-bottom: 16px;
         text-align: center;
+        font-weight: 700;
       }
 
       .nama-wrapper {
         display: flex;
         gap: 10px;
-        margin-bottom: 22px;
+        margin-bottom: 24px;
         flex-wrap: wrap;
       }
 
       .nama-input {
         flex: 2;
-        padding: 12px 18px;
-        border-radius: 48px;
-        border: 1.5px solid #ffb347;
-        background: #0a1022;
-        color: #ffe9c7;
+        padding: 12px 16px;
+        border-radius: 60px;
+        border: 2px solid #b4cde0;
+        background: #ffffff;
+        color: #1e3c72;
         font-size: 0.9rem;
         outline: none;
-        font-weight: 600;
+        font-weight: 500;
         text-align: center;
+        transition: 0.2s;
       }
 
       .nama-input:focus {
-        border-color: cyan;
-        box-shadow: 0 0 15px cyan;
+        border-color: #ff9f4a;
+        box-shadow: 0 0 0 3px rgba(255, 159, 74, 0.2);
       }
 
       .nama-input::placeholder {
-        color: #88c0ff;
-        font-weight: normal;
-        opacity: 0.7;
+        color: #8eb3ce;
       }
 
       .btn-random {
-        background: #1e2a4a;
-        border: 1px solid cyan;
-        padding: 0 20px;
+        background: #ffecd6;
+        border: 1px solid #ffcd7e;
+        padding: 0 22px;
         border-radius: 60px;
-        color: white;
-        font-weight: bold;
+        color: #c97e2a;
+        font-weight: 700;
         cursor: pointer;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         transition: 0.2s;
       }
 
       .btn-random:hover {
-        background: cyan;
-        color: black;
-        box-shadow: 0 0 15px cyan;
+        background: #ffdfb3;
+        transform: scale(1.02);
       }
 
       .indikator-soal {
         text-align: center;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(0, 255, 255, 0.2),
-          transparent
-        );
+        background: #d9eafb;
         padding: 8px;
-        border-radius: 40px;
+        border-radius: 60px;
         margin-bottom: 18px;
-        font-weight: bold;
-        color: cyan;
+        font-weight: 700;
+        color: #1e5c8b;
         font-size: 0.8rem;
       }
 
       .question-card {
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 40px;
+        background: #f2f7ff;
+        border-radius: 28px;
         padding: 20px;
         margin: 15px 0;
-        border: 1px solid rgba(255, 215, 0, 0.5);
-        backdrop-filter: blur(4px);
+        border: 1px solid #cddff2;
       }
 
       .question {
         font-size: 1rem;
         font-weight: 700;
-        color: #ffe69a;
-        margin-bottom: 22px;
-        line-height: 1.5;
+        color: #0f2c4f;
+        margin-bottom: 20px;
+        line-height: 1.45;
       }
 
       .options {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
       }
 
       .option-btn {
-        background: linear-gradient(95deg, #0f142e, #181e3a);
-        border: 1px solid rgba(255, 180, 70, 0.6);
-        padding: 12px 18px;
-        border-radius: 50px;
-        font-weight: 700;
-        color: #f5e6c8;
+        background: white;
+        border: 1px solid #c2d6e8;
+        padding: 12px 16px;
+        border-radius: 60px;
+        font-weight: 600;
+        color: #1f4870;
         cursor: pointer;
         transition: 0.2s;
         font-size: 0.85rem;
@@ -221,11 +176,9 @@
       }
 
       .option-btn:hover:not(:disabled) {
-        background: linear-gradient(95deg, #ffb347, #ff8c00);
-        color: black;
+        background: #ffecd6;
+        border-color: #ffaa55;
         transform: scale(1.01);
-        border-color: white;
-        box-shadow: 0 0 12px orange;
       }
 
       .option-btn:disabled {
@@ -234,64 +187,49 @@
       }
 
       .feedback {
-        margin-top: 12px;
+        margin-top: 14px;
         padding: 10px;
-        border-radius: 40px;
+        border-radius: 60px;
         text-align: center;
-        font-weight: bold;
+        font-weight: 700;
         font-size: 0.85rem;
       }
 
       .feedback.benar {
-        background: #1b5e2a;
-        color: #e8f5e9;
-        animation: blinkGreen 0.3s ease;
+        background: #c3e9d4;
+        color: #146b3a;
       }
 
       .feedback.salah {
-        background: #a51c30;
-        color: #fff0f0;
-      }
-
-      @keyframes blinkGreen {
-        0% {
-          transform: scale(1);
-          background: #2e8b3a;
-        }
-        50% {
-          transform: scale(1.02);
-          background: #4caf50;
-        }
-        100% {
-          transform: scale(1);
-          background: #1b5e2a;
-        }
+        background: #ffe0dd;
+        color: #bc4e2c;
       }
 
       .score-badge {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        gap: 10px;
-        background: #00000066;
+        gap: 12px;
+        background: #f4f9fe;
         border-radius: 60px;
-        padding: 6px 18px;
-        margin: 12px 0 5px;
+        padding: 8px 18px;
+        margin: 15px 0 8px;
         flex-wrap: wrap;
+        border: 1px solid #cde1f0;
       }
 
       .score-badge span:first-child {
-        color: #ffd966;
-        font-weight: bold;
+        color: #1e3c72;
+        font-weight: 700;
       }
 
       .score-badge span:last-child {
-        background: linear-gradient(135deg, gold, #ffa500);
+        background: #2a6b9c;
         padding: 4px 20px;
         border-radius: 60px;
         font-size: 1.3rem;
-        font-weight: bold;
-        color: black;
+        font-weight: 800;
+        color: white;
       }
 
       .btn-group {
@@ -304,28 +242,36 @@
 
       .btn {
         border: none;
-        padding: 8px 22px;
-        border-radius: 40px;
-        font-weight: bold;
+        padding: 10px 22px;
+        border-radius: 60px;
+        font-weight: 700;
         cursor: pointer;
         transition: 0.2s;
         font-size: 0.8rem;
       }
 
       .btn-next {
-        background: linear-gradient(95deg, gold, #ffae42);
-        color: #1e1e2a;
+        background: #ffaa55;
+        color: #2c3e4e;
+      }
+
+      .btn-next:hover {
+        background: #ff9933;
+        transform: scale(1.02);
       }
 
       .btn-restart {
-        background: #2a2a4a;
-        border: 1px solid cyan;
-        color: cyan;
+        background: #e9f0f7;
+        color: #2a5f8a;
+        border: 1px solid #bdd6ec;
+      }
+
+      .btn-restart:hover {
+        background: #d4e3f5;
       }
 
       .btn-send {
-        background: #0f6b3a;
-        border: 1px solid #25d865;
+        background: #2f7d5c;
         color: white;
       }
 
@@ -335,49 +281,44 @@
       }
 
       .btn-send-ready {
-        background: linear-gradient(95deg, #ff8c00, #ff5500);
-        border: 1px solid gold;
-        animation: pulse 1s infinite;
+        background: #3ea373;
+        animation: gentlePulse 1s infinite;
       }
 
-      @keyframes pulse {
+      @keyframes gentlePulse {
         0% {
-          box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.7);
+          box-shadow: 0 0 0 0 rgba(62, 163, 115, 0.4);
         }
         70% {
-          box-shadow: 0 0 0 10px rgba(255, 140, 0, 0);
+          box-shadow: 0 0 0 8px rgba(62, 163, 115, 0);
         }
         100% {
-          box-shadow: 0 0 0 0 rgba(255, 140, 0, 0);
+          box-shadow: 0 0 0 0 rgba(62, 163, 115, 0);
         }
       }
 
       .btn-refresh {
-        background: #005c99;
-        border: 1px solid cyan;
-        color: white;
-        padding: 5px 12px;
+        background: #eef3fc;
+        border: 1px solid #bdd1e5;
+        color: #2a5f8a;
+        padding: 6px 14px;
         font-size: 0.7rem;
       }
 
       .kategori-badge {
         text-align: center;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(0, 255, 200, 0.15),
-          transparent
-        );
-        border-radius: 40px;
+        background: #fcf2e3;
+        border-radius: 60px;
         padding: 8px;
         margin: 12px 0;
         font-size: 0.75rem;
-        font-weight: bold;
-        color: #ffd966;
+        font-weight: 700;
+        color: #c27e2e;
+        border: 1px solid #ffe1b3;
       }
 
       .leader-list {
-        max-height: 280px;
+        max-height: 340px;
         overflow-y: auto;
         margin-top: 8px;
       }
@@ -385,42 +326,40 @@
       .leader-item {
         display: flex;
         justify-content: space-between;
-        background: rgba(0, 255, 255, 0.1);
-        margin: 5px 0;
-        padding: 6px 10px;
-        border-radius: 40px;
-        border-left: 3px solid cyan;
-        font-weight: bold;
-        font-size: 0.7rem;
+        background: #f9fdfe;
+        margin: 8px 0;
+        padding: 8px 12px;
+        border-radius: 60px;
+        border-left: 5px solid #ffaa55;
+        font-weight: 600;
+        font-size: 0.75rem;
+        color: #1f4870;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
       }
 
       .rank {
-        color: cyan;
-        font-weight: bold;
-        min-width: 30px;
+        font-weight: 800;
+        color: #ff8c42;
       }
 
       .leader-name {
-        color: #ffd966;
-        text-transform: capitalize;
         flex: 1;
-        margin-left: 8px;
+        margin-left: 10px;
       }
 
       .leader-score {
-        background: gold;
-        padding: 2px 8px;
-        border-radius: 30px;
-        color: black;
-        font-size: 0.7rem;
-        font-weight: bold;
+        background: #ffe4bc;
+        padding: 2px 12px;
+        border-radius: 40px;
+        font-weight: 800;
+        color: #a45900;
       }
 
       .loading {
         text-align: center;
-        color: cyan;
-        padding: 12px;
-        font-size: 0.7rem;
+        color: #6190b8;
+        padding: 20px;
+        font-size: 0.8rem;
       }
 
       @media (max-width: 750px) {
@@ -443,8 +382,8 @@
   <body>
     <div class="app-wrap">
       <div class="game-panel">
-        <h1>👑 CEK SKOR BUZZER KAMU 👑</h1>
-        <div class="sub">⚡+10 POIN SETIAP JAWABAN BENAR⚡</div>
+        <h1>🎯 SEBERAPA BUZZER KAMU?</h1>
+        <div class="sub">✨ +10 POIN SETIAP JAWABAN ✨</div>
 
         <div class="nama-wrapper">
           <input
@@ -467,33 +406,33 @@
         </div>
 
         <div class="score-badge">
-          <span>🎯 TOTAL SKOR</span>
+          <span>🏆 TOTAL SKOR</span>
           <span id="scoreValue">0</span>
         </div>
 
         <div id="kategoriDisplay" class="kategori-badge">
-          🔷 Belum selesai main 🔷
+          🔷 Belum selesai main
         </div>
 
         <div class="btn-group">
           <button id="nextBtn" class="btn btn-next">➡️ LANJUTKAN</button>
           <button id="restartBtn" class="btn btn-restart">🔄 ULANG GAME</button>
           <button id="kirimSkorBtn" class="btn btn-send" disabled>
-            📤 KIRIM SKOR (Selesaikan 10 soal)
+            📤 KIRIM SKOR
           </button>
         </div>
       </div>
 
       <div class="leader-panel">
-        <h2>🏆 PAPAN BUZZER 🏆</h2>
+        <h2>🏅 PAPAN BUZZER</h2>
         <div id="leaderArea"><div class="loading">Menarik data...</div></div>
-        <div style="text-align: center; margin-top: 8px">
+        <div style="text-align: center; margin-top: 12px">
           <button id="refreshLeaderBtn" class="btn btn-refresh">
             🔄 REFRESH
           </button>
         </div>
         <div class="sub" style="margin-top: 10px">
-          ✨ Kirim skor otomatis aktif setelah 10 soal ✨
+          ✨ Kirim skor setelah 10 soal ✨
         </div>
       </div>
     </div>
@@ -511,7 +450,7 @@
             'Membagikan informasi keliru tentang kenaikan BBM',
           ],
           answer: 0,
-          buzz: 'BUZZER SEJATI! +10',
+          buzz: 'BUZZER SEJATI +10',
         },
         {
           q: 'Jalan di daerah tertinggal masih banyak rusak. Komentar Anda sebagai buzzer?',
@@ -522,7 +461,7 @@
             'Tidak perlu dibangun',
           ],
           answer: 0,
-          buzz: 'LOYALITAS TINGGI! +10',
+          buzz: 'LOYALITAS TINGGI +10',
         },
         {
           q: 'Pejabat korupsi tapi masih menjabat. Sikap ideal buzzer?',
@@ -533,7 +472,7 @@
             'Korupsi hal biasa',
           ],
           answer: 0,
-          buzz: 'SABAR & SETIA! +10',
+          buzz: 'SABAR & SETIA +10',
         },
         {
           q: 'Program IKN menuai kritik soal anggaran. Komentar kamu?',
@@ -544,7 +483,7 @@
             'Tidak perlu menanggapi kritik',
           ],
           answer: 0,
-          buzz: 'PRO PEMERINTAH! +10',
+          buzz: 'PRO PEMERINTAH +10',
         },
         {
           q: 'Efisiensi anggaran di kementerian. Sikap tepat buzzer?',
@@ -555,7 +494,7 @@
             'Protes karena tidak diajak',
           ],
           answer: 0,
-          buzz: 'BUZZER HEBAT! +10',
+          buzz: 'BUZZER HEBAT +10',
         },
         {
           q: 'Angka kemiskinan masih tinggi. Komentar ideal buzzer?',
@@ -566,7 +505,7 @@
             'Kemiskinan tidak penting',
           ],
           answer: 0,
-          buzz: 'TETAP SEMANGAT! +10',
+          buzz: 'TETAP SEMANGAT +10',
         },
         {
           q: 'Investasi besar dari perusahaan asing. Tanggapan kamu?',
@@ -577,7 +516,7 @@
             'Tolak karena tidak pro dalam negeri',
           ],
           answer: 0,
-          buzz: 'EKONOMI MENDING! +10',
+          buzz: 'EKONOMI MENDING +10',
         },
         {
           q: 'Menteri lamban respons krisis pangan. Komentar buzzer?',
@@ -588,7 +527,7 @@
             'Krisis pangan hoax',
           ],
           answer: 0,
-          buzz: 'BUZZER LANGKA! +10',
+          buzz: 'BUZZER LANGKA +10',
         },
         {
           q: 'APBN 2025 fokus infrastruktur & pertahanan. Reaksi Anda?',
@@ -599,7 +538,7 @@
             'Tidak usah bangun apapun',
           ],
           answer: 0,
-          buzz: 'SETIA! +10',
+          buzz: 'SETIA +10',
         },
         {
           q: 'Presiden instruksikan digitalisasi birokrasi. Komentar buzzer sejati?',
@@ -610,20 +549,20 @@
             'Rakyat butuh sembako murah',
           ],
           answer: 0,
-          buzz: 'SIAP BELA! +10',
+          buzz: 'SIAP BELA +10',
         },
       ];
 
       function getKategori(score) {
         if (score >= 0 && score <= 20)
-          return { nama: 'BUKAN BUZZER', icon: '🚫', warna: '#f44336' };
+          return { nama: 'BUKAN BUZZER', icon: '🚫', warna: '#c04e3e' };
         if (score >= 30 && score <= 50)
-          return { nama: 'BUZZER PEMULA', icon: '🌱', warna: '#ff9800' };
+          return { nama: 'BUZZER PEMULA', icon: '🌱', warna: '#da8e2c' };
         if (score >= 60 && score <= 70)
-          return { nama: 'BUZZER MENENGAH', icon: '⚡', warna: '#2196f3' };
+          return { nama: 'BUZZER MENENGAH', icon: '⚡', warna: '#2c7da0' };
         if (score >= 80 && score <= 100)
-          return { nama: 'BUZZER FIX 🔥', icon: '🏆', warna: '#4caf50' };
-        return { nama: 'Belum selesai', icon: '🔷', warna: '#ffd966' };
+          return { nama: 'BUZZER FIX 🔥', icon: '🏆', warna: '#2f7d5c' };
+        return { nama: 'Belum selesai', icon: '🔷', warna: '#ffaa55' };
       }
 
       function generateRandomName() {
@@ -640,7 +579,6 @@
           'SANTRI',
           'PEMBERANI',
           'WIJAYA',
-          'KUSUMA',
         ];
         const belakang = [
           'SEJATI',
@@ -653,7 +591,6 @@
           'PERKASA',
           'TAMA',
           'GEMILANG',
-          'PRATAMA',
         ];
         return `${depan[Math.floor(Math.random() * depan.length)]} ${belakang[Math.floor(Math.random() * belakang.length)]}`;
       }
@@ -700,21 +637,21 @@
         if (gameCompleted) {
           kirimBtn.disabled = false;
           kirimBtn.classList.add('btn-send-ready');
-          kirimBtn.innerHTML = '✅ KIRIM SKOR (Siap dikirim!) ✅';
+          kirimBtn.innerHTML = '✅ KIRIM SKOR (Siap)';
         } else {
           kirimBtn.disabled = true;
           kirimBtn.classList.remove('btn-send-ready');
-          kirimBtn.innerHTML = '📤 KIRIM SKOR (Selesaikan 10 soal)';
+          kirimBtn.innerHTML = '📤 KIRIM SKOR';
         }
       }
 
       function updateKategori() {
         if (!gameCompleted && currentIndex < totalSoal - 1) {
-          kategoriEl.innerHTML = `🔷 Belum selesai main (${currentIndex + 1}/${totalSoal}) 🔷`;
+          kategoriEl.innerHTML = `🔷 Belum selesai main (${currentIndex + 1}/${totalSoal})`;
           return;
         }
         const kat = getKategori(userScore);
-        kategoriEl.innerHTML = `${kat.icon} ${kat.nama} ${kat.icon}`;
+        kategoriEl.innerHTML = `${kat.icon} ${kat.nama}`;
         kategoriEl.style.color = kat.warna;
         if (gameCompleted) updateKirimButton();
       }
@@ -765,9 +702,9 @@
             icon: 'warning',
             title: 'Belum dijawab!',
             text: 'Jawab dulu baru lanjut!',
-            background: '#0a1022',
-            color: '#FFD966',
-            confirmButtonColor: '#FFB347',
+            background: '#fff',
+            color: '#1e3c72',
+            confirmButtonColor: '#ffaa55',
           });
           return;
         }
@@ -780,16 +717,16 @@
           updateKategori();
           Swal.fire({
             icon: 'success',
-            title: '🎉 10 SOAL SELESAI! 🎉',
-            html: `<strong>${kat.icon} ${kat.nama}</strong><br>Skor: ${userScore}/${totalSoal * 10}<br><br>✅ Tombol KIRIM SKOR sudah aktif! ✅`,
-            background: '#0a1022',
-            color: '#FFD966',
-            confirmButtonColor: '#FFB347',
+            title: '🎉 10 SOAL SELESAI 🎉',
+            html: `<strong>${kat.icon} ${kat.nama}</strong><br>Skor: ${userScore}/${totalSoal * 10}<br><br>✅ Tombol KIRIM SKOR sudah aktif!`,
+            background: '#fff',
+            color: '#1e3c72',
+            confirmButtonColor: '#ffaa55',
           });
           feedbackEl.innerHTML = `🏁 SELESAI! SKOR: ${userScore}/${totalSoal * 10} | ${kat.nama} 🏁`;
           feedbackEl.className = 'feedback benar';
           nextBtn.disabled = true;
-          nextBtn.style.opacity = '0.5';
+          nextBtn.style.opacity = '0.6';
           updateKirimButton();
         }
       }
@@ -810,19 +747,19 @@
         updateKirimButton();
         kirimBtn.classList.remove('btn-send-ready');
         kirimBtn.disabled = true;
-        kirimBtn.innerHTML = '📤 KIRIM SKOR (Selesaikan 10 soal)';
+        kirimBtn.innerHTML = '📤 KIRIM SKOR';
       }
 
       async function kirimSkorKeSheet() {
         if (isSending) {
           Swal.fire({
             icon: 'warning',
-            title: 'Proses sedang berjalan!',
+            title: 'Sedang mengirim!',
             text: 'Tunggu sebentar, jangan double klik!',
-            background: '#0a1022',
-            color: '#FFD966',
-            confirmButtonColor: '#FFB347',
-            timer: 2000,
+            background: '#fff',
+            color: '#1e3c72',
+            confirmButtonColor: '#ffaa55',
+            timer: 1500,
           });
           return;
         }
@@ -831,9 +768,9 @@
             icon: 'warning',
             title: 'Belum selesai!',
             text: 'Selesaikan 10 soal dulu!',
-            background: '#0a1022',
-            color: '#FFD966',
-            confirmButtonColor: '#FFB347',
+            background: '#fff',
+            color: '#1e3c72',
+            confirmButtonColor: '#ffaa55',
           });
           return;
         }
@@ -842,11 +779,11 @@
         if (nama === '') {
           Swal.fire({
             icon: 'error',
-            title: '⚠️ NAMA KOSONG! ⚠️',
-            html: '<strong>Isi nama dulu ya!</strong><br>Klik tombol 🎲 RANDOM atau ketik sendiri.<br><br>Nama wajib diisi biar skor tercatat!',
-            background: '#0a1022',
-            color: '#FFD966',
-            confirmButtonColor: '#FFB347',
+            title: 'Nama kosong!',
+            html: 'Isi nama dulu atau klik 🎲 RANDOM',
+            background: '#fff',
+            color: '#bc4e2c',
+            confirmButtonColor: '#ffaa55',
           });
           return;
         }
@@ -872,11 +809,11 @@
           if (res.ok) {
             Swal.fire({
               icon: 'success',
-              title: '✅ BERHASIL TERKIRIM! ✅',
-              html: `🎉 <strong>${nama}</strong><br>${kat.icon} ${kat.nama}<br>Skor: <strong>${userScore}</strong><br><br>⚠️ Jangan kirim lagi ya!`,
-              background: '#0a1022',
-              color: '#FFD966',
-              confirmButtonColor: '#FFB347',
+              title: '✅ BERHASIL',
+              html: `🎉 <strong>${nama}</strong><br>${kat.icon} ${kat.nama}<br>Skor: <strong>${userScore}</strong>`,
+              background: '#fff',
+              color: '#146b3a',
+              confirmButtonColor: '#ffaa55',
             });
             refreshLeaderboard();
             kirimBtn.innerHTML = '✅ SUDAH TERKIRIM';
@@ -886,12 +823,12 @@
             icon: 'error',
             title: 'GAGAL!',
             text: 'Cek koneksi atau API',
-            background: '#0a1022',
-            color: '#FFD966',
-            confirmButtonColor: '#FFB347',
+            background: '#fff',
+            color: '#bc4e2c',
+            confirmButtonColor: '#ffaa55',
           });
           kirimBtn.disabled = false;
-          kirimBtn.innerHTML = '✅ KIRIM SKOR (Siap dikirim!)';
+          kirimBtn.innerHTML = '✅ KIRIM SKOR (Siap)';
           isSending = false;
         }
       }
