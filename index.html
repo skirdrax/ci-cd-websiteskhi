@@ -444,7 +444,7 @@
     <div class="app-wrap">
       <div class="game-panel">
         <h1>👑 CEK SKOR BUZZER KAMU 👑</h1>
-        <div class="sub">⚡ +10 POIN SETIAP JAWABAN BENAR ⚡</div>
+        <div class="sub">⚡+10 POIN SETIAP JAWABAN BENAR⚡</div>
 
         <div class="nama-wrapper">
           <input
@@ -747,7 +747,8 @@
           feedbackEl.innerHTML = `✅ ${q.buzz}! ✅`;
           feedbackEl.className = 'feedback benar';
         } else {
-          feedbackEl.innerHTML = `❌ SALAH! Jawaban: "${q.opt[q.answer]}" ❌`;
+          const jawabanBenar = q.opt[q.answer];
+          feedbackEl.innerHTML = `❌ SALAH! Jawaban: "${jawabanBenar}" ❌`;
           feedbackEl.className = 'feedback salah';
         }
         answered = true;
@@ -836,12 +837,13 @@
           });
           return;
         }
+
         let nama = namaInput.value.trim();
-        if (!nama) {
+        if (nama === '') {
           Swal.fire({
             icon: 'error',
-            title: 'Nama kosong!',
-            text: 'Isi nama atau klik RANDOM',
+            title: '⚠️ NAMA KOSONG! ⚠️',
+            html: '<strong>Isi nama dulu ya!</strong><br>Klik tombol 🎲 RANDOM atau ketik sendiri.<br><br>Nama wajib diisi biar skor tercatat!',
             background: '#0a1022',
             color: '#FFD966',
             confirmButtonColor: '#FFB347',
@@ -929,7 +931,6 @@
       kirimBtn.onclick = kirimSkorKeSheet;
       refreshLeaderBtn.onclick = refreshLeaderboard;
 
-      // NAMA DEFAULT KOSONG (tidak otomatis terisi)
       questions = questionsRaw.map((q) => shuffleOptions(q));
       loadQuestion();
       refreshLeaderboard();
