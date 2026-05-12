@@ -5,61 +5,129 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>🐦 GAME LUCU</title>
+    <title>🧠 TEKA-TEKI LUCU | Asah Otak</title>
     <style>
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
+
       body {
         min-height: 100vh;
-        background: linear-gradient(135deg, #87ceeb, #98d8c8);
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
         display: flex;
         justify-content: center;
         align-items: center;
         font-family: 'Courier New', monospace;
         padding: 16px;
       }
+
       .game-box {
-        background: rgba(255, 255, 200, 0.95);
-        border-radius: 50px;
-        padding: 20px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 40px;
+        padding: 25px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         text-align: center;
+        max-width: 550px;
+        width: 100%;
       }
-      canvas {
-        display: block;
-        margin: 0 auto;
+
+      h1 {
+        font-size: 1.8rem;
+        color: #1e3c72;
+        margin-bottom: 10px;
+      }
+
+      .question-box {
+        background: #f0f0f0;
         border-radius: 30px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-        max-width: 100%;
-        height: auto;
+        padding: 30px;
+        margin: 20px 0;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
       }
-      .info {
+
+      .question {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .option-btn {
+        background: #2a5298;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        transition: 0.2s;
+        font-family: monospace;
+      }
+
+      .option-btn:hover {
+        transform: scale(1.02);
+        background: #1e3c72;
+      }
+
+      .option-btn.disabled {
+        background: #aaa;
+        cursor: not-allowed;
+      }
+
+      .feedback {
+        font-size: 1.2rem;
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 30px;
+      }
+
+      .feedback.benar {
+        background: #4caf50;
+        color: white;
+      }
+
+      .feedback.salah {
+        background: #f44336;
+        color: white;
+      }
+
+      .score-box {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 30px;
+        gap: 15px;
         margin-top: 20px;
-        padding: 10px 25px;
-        background: #ffe4b5;
-        border-radius: 40px;
+        padding: 15px;
+        background: #1e3c72;
+        border-radius: 50px;
+        color: white;
         flex-wrap: wrap;
         justify-content: center;
       }
-      .stat {
-        font-size: 1.5rem;
+
+      .score-item {
+        font-size: 1.2rem;
         font-weight: bold;
-        color: #8b4513;
       }
-      .stat span {
-        background: white;
+
+      .score-item span {
+        background: gold;
+        color: #1e3c72;
         padding: 5px 15px;
         border-radius: 30px;
         margin-left: 8px;
       }
+
       button {
         background: #ffd700;
         border: none;
@@ -67,154 +135,199 @@
         border-radius: 40px;
         font-size: 1rem;
         font-weight: bold;
-        color: #8b4513;
         cursor: pointer;
+        transition: 0.2s;
       }
+
       button:hover {
         transform: scale(1.05);
         background: #ffa500;
       }
+
       @media (max-width: 600px) {
-        .stat {
-          font-size: 1rem;
+        h1 {
+          font-size: 1.3rem;
+        }
+        .question {
+          font-size: 1.1rem;
+        }
+        .option-btn {
+          padding: 8px 15px;
+          font-size: 0.8rem;
+        }
+        .score-item {
+          font-size: 0.9rem;
         }
       }
     </style>
   </head>
   <body>
     <div class="game-box">
-      <div style="font-size: 1.8rem; margin-bottom: 10px">
-        🐦 KASIH MAKAN BURUNG 🍞
+      <h1>🧠 TEKA-TEKI LUCU 🧠</h1>
+      <div class="question-box">
+        <div class="question" id="question">...</div>
+        <div class="options" id="options"></div>
+        <div class="feedback" id="feedback"></div>
       </div>
-      <canvas id="gameCanvas" width="600" height="400"></canvas>
-      <div class="info">
-        <div class="stat">🍞 SKOR: <span id="score">0</span></div>
-        <div class="stat">💔 NYAWA: <span id="lives">3</span></div>
+      <div class="score-box">
+        <div class="score-item">🎯 SKOR: <span id="score">0</span></div>
+        <div class="score-item">
+          📊 NOMOR: <span id="qNum">1</span>/<span id="total">10</span>
+        </div>
+        <button id="nextBtn">➡️ SOAL BERIKUTNYA</button>
         <button id="restartBtn">🔄 ULANG</button>
       </div>
-      <div style="margin-top: 10px; color: #5d3a1a">
-        🖱️ Klik burung! Jangan kotoran 💩
-      </div>
     </div>
+
     <script>
-      const canvas = document.getElementById('gameCanvas');
-      const ctx = canvas.getContext('2d');
-      let score = 0,
-        lives = 3,
-        gameRunning = true;
-      let bird = { x: 300, y: 200, radius: 25 };
-      let poops = [];
+      const questions = [
+        {
+          question: 'Apa yang bisa naik tapi tidak bisa turun?',
+          options: ['Usia', 'Pohon', 'Burung', 'Tangga'],
+          answer: 0,
+        },
+        {
+          question: 'Semakin banyak diambil, semakin besar jadinya. Apa itu?',
+          options: ['Lubang', 'Utang', 'Nafsu', 'Harta'],
+          answer: 0,
+        },
+        {
+          question:
+            'Apa yang selalu ada di depan tapi tak pernah bisa dilihat?',
+          options: ['Bayangan', 'Masa depan', 'Cermin', 'Mata'],
+          answer: 1,
+        },
+        {
+          question: 'Benda apa yang kalau diputar malah jadi panjang?',
+          options: ['Pensil', 'Rambut', 'Kaset', 'Kunci'],
+          answer: 2,
+        },
+        {
+          question: 'Apa yang bisa kamu pegang tapi tidak bisa kamu sentuh?',
+          options: ['Hati', 'Bola', 'Air', 'Angin'],
+          answer: 0,
+        },
+        {
+          question: 'Apa huruf ke-5 dalam alfabet?',
+          options: ['D', 'E', 'F', 'G'],
+          answer: 1,
+        },
+        {
+          question: 'Makin banyak kamu ambil, makin besar itu. Apa?',
+          options: ['Lubang', 'Kue', 'Nasi', 'Air'],
+          answer: 0,
+        },
+        {
+          question: 'Apa yang tidak bisa basah meski terkena air?',
+          options: ['Batu', 'Bayangan', 'Api', 'Es'],
+          answer: 1,
+        },
+        {
+          question: 'Apa yang punya leher tapi tidak punya kepala?',
+          options: ['Botol', 'Baju', 'Pintu', 'Gitar'],
+          answer: 3,
+        },
+        {
+          question: 'Apa yang selalu jatuh tapi tidak pernah luka?',
+          options: ['Daun', 'Hujan', 'Malam', 'Salju'],
+          answer: 1,
+        },
+      ];
 
-      function randomPos() {
-        return {
-          x: 50 + Math.random() * (canvas.width - 100),
-          y: 50 + Math.random() * (canvas.height - 100),
-        };
+      let currentIndex = 0;
+      let score = 0;
+      let answered = false;
+      let totalQuestions = questions.length;
+
+      const questionEl = document.getElementById('question');
+      const optionsEl = document.getElementById('options');
+      const feedbackEl = document.getElementById('feedback');
+      const scoreEl = document.getElementById('score');
+      const qNumEl = document.getElementById('qNum');
+      const totalEl = document.getElementById('total');
+      const nextBtn = document.getElementById('nextBtn');
+      const restartBtn = document.getElementById('restartBtn');
+
+      totalEl.innerText = totalQuestions;
+
+      function loadQuestion() {
+        answered = false;
+        feedbackEl.innerHTML = '';
+        feedbackEl.className = 'feedback';
+
+        const q = questions[currentIndex];
+        questionEl.innerText = q.question;
+
+        optionsEl.innerHTML = '';
+        q.options.forEach((opt, idx) => {
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.innerText = opt;
+          btn.onclick = () => checkAnswer(idx);
+          optionsEl.appendChild(btn);
+        });
+
+        qNumEl.innerText = currentIndex + 1;
       }
 
-      function moveBird() {
-        if (!gameRunning) return;
-        bird.x += (Math.random() - 0.5) * 4;
-        bird.y += (Math.random() - 0.5) * 3;
-        bird.x = Math.min(Math.max(bird.x, 40), canvas.width - 40);
-        bird.y = Math.min(Math.max(bird.y, 40), canvas.height - 40);
-      }
+      function checkAnswer(selected) {
+        if (answered) return;
 
-      function draw() {
-        ctx.fillStyle = '#98FB98';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#8B4513';
-        for (let p of poops) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.fillStyle = '#5D3A1A';
-          ctx.fillText('💩', p.x - 8, p.y - 5);
-          ctx.fillStyle = '#8B4513';
-        }
-        ctx.fillStyle = '#FFD700';
-        ctx.beginPath();
-        ctx.arc(bird.x, bird.y, bird.radius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = '#FF8C00';
-        ctx.beginPath();
-        ctx.moveTo(bird.x + 15, bird.y - 5);
-        ctx.lineTo(bird.x + 30, bird.y);
-        ctx.lineTo(bird.x + 15, bird.y + 5);
-        ctx.fill();
-        ctx.fillStyle = '#000';
-        ctx.beginPath();
-        ctx.arc(bird.x - 8, bird.y - 5, 4, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = 'white';
-        ctx.beginPath();
-        ctx.arc(bird.x - 10, bird.y - 7, 1.5, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.font = '20px monospace';
-        ctx.fillStyle = '#8B4513';
-        ctx.fillText('🐦', bird.x - 15, bird.y - 12);
-        if (!gameRunning) {
-          ctx.font = 'bold 24px monospace';
-          ctx.fillStyle = 'red';
-          ctx.fillText(
-            '💀 GAME OVER 💀',
-            canvas.width / 2 - 120,
-            canvas.height / 2,
-          );
-        }
-      }
+        const q = questions[currentIndex];
+        const isCorrect = selected === q.answer;
 
-      function checkClick(e) {
-        if (!gameRunning) return;
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        let clientX, clientY;
-        if (e.touches) {
-          clientX = e.touches[0].clientX;
-          clientY = e.touches[0].clientY;
-        } else {
-          clientX = e.clientX;
-          clientY = e.clientY;
-        }
-        const clickX = (clientX - rect.left) * scaleX;
-        const clickY = (clientY - rect.top) * scaleY;
-        const dx = clickX - bird.x,
-          dy = clickY - bird.y;
-        if (Math.sqrt(dx * dx + dy * dy) < bird.radius) {
+        if (isCorrect) {
           score++;
-          document.getElementById('score').innerText = score;
-          bird.x = randomPos().x;
-          bird.y = randomPos().y;
+          scoreEl.innerText = score;
+          feedbackEl.innerHTML = '✅ BENAR! +1 poin ✅';
+          feedbackEl.className = 'feedback benar';
         } else {
-          lives--;
-          document.getElementById('lives').innerText = lives;
-          if (lives <= 0) gameRunning = false;
+          const jawabanBenar = q.options[q.answer];
+          feedbackEl.innerHTML = `❌ SALAH! Jawaban: ${jawabanBenar} ❌`;
+          feedbackEl.className = 'feedback salah';
+        }
+
+        answered = true;
+
+        const allBtns = document.querySelectorAll('.option-btn');
+        allBtns.forEach((btn) => {
+          btn.disabled = true;
+          btn.style.opacity = '0.6';
+        });
+      }
+
+      function nextQuestion() {
+        if (!answered) {
+          feedbackEl.innerHTML = '⚠️ Jawab dulu soalnya! ⚠️';
+          feedbackEl.className = 'feedback salah';
+          return;
+        }
+
+        if (currentIndex + 1 < totalQuestions) {
+          currentIndex++;
+          loadQuestion();
+        } else {
+          feedbackEl.innerHTML = `🏆 SELESAI! Skor akhir: ${score}/${totalQuestions} 🏆`;
+          feedbackEl.className = 'feedback benar';
+          nextBtn.disabled = true;
+          nextBtn.style.opacity = '0.5';
         }
       }
 
-      function restart() {
+      function restartGame() {
+        currentIndex = 0;
         score = 0;
-        lives = 3;
-        gameRunning = true;
-        poops = [];
-        bird.x = canvas.width / 2;
-        bird.y = canvas.height / 2;
-        document.getElementById('score').innerText = score;
-        document.getElementById('lives').innerText = lives;
+        answered = false;
+        scoreEl.innerText = score;
+        nextBtn.disabled = false;
+        nextBtn.style.opacity = '1';
+        loadQuestion();
       }
 
-      canvas.addEventListener('click', checkClick);
-      canvas.addEventListener('touchstart', checkClick);
-      document.getElementById('restartBtn').onclick = () => restart();
+      nextBtn.onclick = nextQuestion;
+      restartBtn.onclick = restartGame;
 
-      function gameLoop() {
-        if (gameRunning) moveBird();
-        draw();
-        requestAnimationFrame(gameLoop);
-      }
-      gameLoop();
+      loadQuestion();
     </script>
   </body>
 </html>
-EOF
