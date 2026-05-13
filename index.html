@@ -520,7 +520,7 @@
           <div class="cert-header">Diberikan Kepada:</div>
           <div class="cert-name" id="certName">Nama Pengguna</div>
           <p style="margin-top: 10px">
-            Atas dedikasinya dalam dunia maya dengan kategori:
+            Atas dedikasinya dalam dunia Buzzer dengan kategori:
           </p>
           <div class="cert-rank" id="certRank">BUZZER ELITE</div>
           <p style="margin: 5px 0"><strong id="certSkor">0 / 100</strong></p>
@@ -607,10 +607,10 @@
         {
           q: 'Pemerintah menaikkan harga BBM, sikap kamu?',
           opt: [
-            'Mendukung karena demi APBN sehat',
-            'Mengkritik memberatkan rakyat',
-            'Pura-pura tidak tahu',
-            'Ikut demo',
+            'Dukung demi kesehatan fiskal negara', // +5 (Buzzer)
+            'Terima karena itu keputusan terbaik', // Mengecoh (Terlihat pro tapi kurang militan)
+            'Pahami beban berat pemerintah', // Mengecoh (Hanya empati)
+            'Protes karena rakyat makin sulit', // Berlawanan
           ],
           answer: 0,
           buzz: 'LOYALITAS TERUJI',
@@ -618,21 +618,21 @@
         {
           q: 'Ada pembangunan jalan tol baru, komentar kamu?',
           opt: [
-            'Alhamdulillah, bukti nyata kerja!',
-            'Paling buat korupsi',
-            'Jalan desa masih rusak',
-            'Biasa saja',
+            'Bukti nyata kerja nyata pemerintah!', // +5
+            'Infrastruktur makin maju dan hebat', // Mengecoh
+            'Tol lancar, ekonomi pasti tumbuh', // Mengecoh (Fokus ke hasil, bukan subjek)
+            'Fokuskan dulu ke perbaikan jalan desa', // Kritis halus
           ],
           answer: 0,
           buzz: 'OPTIMIS TINGGI',
         },
         {
-          q: 'Melihat kritik terhadap Presiden, responmu?',
+          q: 'Melihat kritik tajam terhadap Presiden, responmu?',
           opt: [
-            'Counter dengan data keberhasilan',
-            'Ikut menghujat',
-            'Diam saja',
-            'Hapus akun',
+            'Lawan dengan data sukses pemerintah', // +5
+            'Abaikan saja karena itu hanya hoax', // Mengecoh
+            'Kritik harusnya santun dan membangun', // Mengecoh (Normatif)
+            'Setuju sebagai kontrol sosial', // Kritis
           ],
           answer: 0,
           buzz: 'BENTENG PERTAHANAN',
@@ -640,21 +640,21 @@
         {
           q: 'Program IKN dikritik soal anggaran, kamu bilang?',
           opt: [
-            'Investasi Indonesia Emas',
-            'Buang uang rakyat',
-            'Beli beras saja',
-            'Proyek gagal',
+            'Ini warisan untuk Indonesia Emas!', // +5
+            'IKN adalah simbol kemajuan bangsa', // Mengecoh
+            'Relokasi adalah solusi jangka panjang', // Mengecoh (Teknis)
+            'Anggaran lebih baik untuk sembako', // Populis/Kritis
           ],
           answer: 0,
           buzz: 'VISIONER',
         },
         {
-          q: 'Banyak tenaga kerja asing masuk, tanggapanmu?',
+          q: 'Banyak tenaga kerja asing (TKA) masuk, tanggapanmu?',
           opt: [
-            'Ahli transfer teknologi',
-            'Usir mereka',
-            'Ambil jatah kita',
-            'Jual negara',
+            'TKA membawa ilmu & teknologi baru', // +5
+            'Itu bagian dari kerjasama investasi', // Mengecoh
+            'Jumlahnya masih sangat terkendali', // Mengecoh (Defensif data)
+            'Utamakan pekerja lokal yang nganggur', // Nasionalis/Kritis
           ],
           answer: 0,
           buzz: 'PEMBELA KEBIJAKAN',
@@ -662,164 +662,164 @@
         {
           q: 'Angka kemiskinan turun sedikit, reaksi kamu?',
           opt: [
-            'Luar biasa prestasi besar!',
-            'Manipulasi data',
-            'Rakyat masih susah',
-            'Gak kerasa',
+            'Prestasi luar biasa di tengah krisis!', // +5
+            'Grafik menunjukkan tren yang positif', // Mengecoh
+            'Pemerintah sudah di jalur yang benar', // Mengecoh
+            'Turunnya tidak sebanding biaya hidup', // Kritis
           ],
           answer: 0,
           buzz: 'APRESIASI PENUH',
         },
         {
-          q: 'Pejabat korupsi, sikap buzzer setia?',
+          q: 'Pejabat pendukung pemerintah korupsi, sikap kamu?',
           opt: [
-            'Itu oknum, jangan salahkan sistem',
-            'Semua koruptor',
-            'Bubarkan partai',
-            'Pantas susah',
+            'Jangan digoreng, itu masalah individu', // +5
+            'Hargai dulu proses hukum yang ada', // Mengecoh (Asas Praduga)
+            'Semua pihak bisa terkena musibah ini', // Mengecoh (Generalisir)
+            'Hukum berat tanpa pandang bulu', // Idealistis
           ],
           answer: 0,
           buzz: 'PEMBERSIH NAMA',
         },
         {
-          q: 'Utang negara bertambah, pembelaanmu?',
+          q: 'Utang negara bertambah, apa pembelaanmu?',
           opt: [
-            'Utang produktif demi anak cucu',
-            'Negara bangkrut',
-            'Beban ngeri',
-            'Jangan utang',
+            'Utang produktif untuk membangun aset', // +5
+            'Rasio utang kita masih batas aman', // Mengecoh (Defensif data)
+            'Negara maju lain utangnya lebih besar', // Mengecoh (Perbandingan)
+            'Beban utang akan menyiksa anak cucu', // Kritis
           ],
           answer: 0,
           buzz: 'AHLI EKONOMI',
         },
         {
-          q: 'Bansos dibagikan, apa katamu?',
+          q: 'Bansos dibagikan di momen politik, apa katamu?',
           opt: [
-            'Bukti nyata kepedulian!',
-            'Uang pajak kita kok',
-            'Buat kampanye saja',
-            'Pencitraan',
+            'Wujud nyata Presiden sayang rakyat!', // +5
+            'Bansos memang sudah hak rakyat kecil', // Mengecoh
+            'Sudah sesuai jadwal penyaluran kok', // Mengecoh (Administratif)
+            'Rentan disalahgunakan jadi kampanye', // Kritis
           ],
           answer: 0,
           buzz: 'PENYEBAR KEBAIKAN',
         },
         {
-          q: 'Media asing memuji Indonesia, tugasmu?',
+          q: 'Media asing memuji kepemimpinan Indonesia?',
           opt: [
-            'Viralkan di semua grup WA',
-            'Berita bayaran',
-            'Jangan percaya',
-            'Biasa saja',
+            'Dunia akui kehebatan Presiden kita!', // +5
+            'Indonesia makin disegani secara global', // Mengecoh
+            'Prestasi internasional yang membanggakan', // Mengecoh
+            'Jangan senang dulu sebelum rakyat puas', // Kritis
           ],
           answer: 0,
           buzz: 'DIPLOMAT MEDSOS',
         },
         {
-          q: 'Tugas menaikkan hastag pemerintah?',
+          q: 'Ada instruksi menaikkan hashtag pro-pemerintah?',
           opt: [
-            'Siap laksanakan demi negara!',
-            'Ogah gak ada uang',
-            'Bikin spam saja',
-            'Buat hiburan saja',
+            'Gaspol! Siap kawal narasi positif!', // +5
+            'Ikut meramaikan demi persatuan', // Mengecoh
+            'Penting agar medsos tidak diisi hoax', // Mengecoh (Alasan keamanan)
+            'Lebih baik bahas isu yang lebih nyata', // Kritis halus
           ],
           answer: 0,
           buzz: 'PASUKAN SIBER',
         },
         {
-          q: 'Tokoh oposisi bicara kekurangan negara?',
+          q: 'Tokoh oposisi mengkritik kekurangan negara?',
           opt: [
-            'Cari kesalahan masa lalunya',
-            'Dengar baik-baik',
-            'Setuju',
-            'Diam',
+            'Cari rekam jejak buruk masa lalunya!', // +5
+            'Oposisi kerjanya cuma bisa mencela', // Mengecoh (Menyerang peran)
+            'Dia bicara tanpa data yang valid', // Mengecoh (Menyerang data)
+            'Kritik itu perlu untuk perbaikan', // Demokratis
           ],
           answer: 0,
           buzz: 'PENYERANG BALIK',
         },
         {
-          q: 'Indeks demokrasi menurun, jawabanmu?',
+          q: 'Laporan menyebut demokrasi kita menurun, jawabanmu?',
           opt: [
-            'Penting ekonomi stabil & aman',
-            'Gawat darurat',
-            'Kediktatoran',
-            'Gak paham',
+            'Stabilitas & ekonomi jauh lebih utama', // +5
+            'Demokrasi kita justru makin dewasa', // Mengecoh
+            'Indikator laporan itu tidak relevan', // Mengecoh
+            'Ini peringatan serius bagi pemerintah', // Kritis
           ],
           answer: 0,
           buzz: 'REALISTIS',
         },
         {
-          q: 'Bagi-bagi sertifikat tanah, komentarmu?',
+          q: 'Acara bagi-bagi sertifikat tanah oleh Presiden?',
           opt: [
-            'Presiden paling peduli!',
-            'Hak warga kok',
-            'Dulu juga ada',
-            'Cari muka',
+            'Hanya di era ini rakyat dimudahkan!', // +5
+            'Terobosan besar urusan agraria', // Mengecoh
+            'Memang tugas rutin kepala negara', // Mengecoh
+            'Jangan sampai hanya seremonial saja', // Kritis halus
           ],
           answer: 0,
           buzz: 'PENCINTA RAKYAT',
         },
         {
-          q: 'Harga sembako naik, pembelaanmu?',
+          q: 'Harga kebutuhan pokok mulai naik, pembelaanmu?',
           opt: [
-            'Dampak global, luar lebih parah',
-            'Gagal urus perut',
-            'Menteri tidur',
-            'Rakyat jerit',
+            'Global lagi sulit, kita masih mending', // +5
+            'Pemerintah segera gelar pasar murah', // Mengecoh (Solusi)
+            'Kenaikan ini masih batas wajar kok', // Mengecoh
+            'Daya beli rakyat makin tercekik', // Kritis
           ],
           answer: 0,
           buzz: 'GLOBAL MINDSET',
         },
         {
-          q: 'Buzzer lain diserang netizen, kamu?',
+          q: 'Melihat rekan buzzer diserang oleh netizen?',
           opt: [
-            'Bantu serang balik!',
-            'Tonton ketawa',
-            'Ikut bully',
-            'Pura-pura gak kenal',
+            'Siap tempur! Bantu serang balik!', // +5
+            'Laporkan massal akun penyernagnya', // Mengecoh
+            'Tetap tenang dan fokus sebar narasi', // Mengecoh
+            'Biarkan saja, itu risiko bermedsos', // Netral
           ],
           answer: 0,
           buzz: 'SOLIDARITAS',
         },
         {
-          q: 'Aplikasi pemerintah error?',
+          q: 'Sistem aplikasi layanan publik sedang error?',
           opt: [
-            'Sedang pengembangan, maklum',
-            'Korupsi ini!',
-            'Buang anggaran',
-            'Pakai swasta',
+            'Wajar, traffic lagi sangat tinggi', // +5
+            'Tim IT sedang kerja keras perbaikan', // Mengecoh
+            'Lagi maintenance untuk fitur baru', // Mengecoh
+            'Anggaran besar tapi kualitas buruk', // Kritis
           ],
           answer: 0,
           buzz: 'PENYABAR',
         },
         {
-          q: 'Presiden naik motor tinjau proyek?',
+          q: 'Foto Presiden sedang bekerja sampai larut malam?',
           opt: [
-            'Keren, pemimpin merakyat!',
-            'Pencitraan',
-            'Gak ada kerjaan',
-            'Hati-hati jatuh',
+            'Pemimpin yang tulus berkorban waktu', // +5
+            'Semoga beliau selalu diberi kesehatan', // Mengecoh (Doa)
+            'Bekerja keras demi masa depan bangsa', // Mengecoh
+            'Cukup tunjukkan hasil nyata saja', // Kritis halus
           ],
           answer: 0,
           buzz: 'FANS BERAT',
         },
         {
-          q: 'Ada demo buruh, pendapatmu?',
+          q: 'Muncul gerakan demo buruh/mahasiswa, pendapatmu?',
           opt: [
-            'Mengganggu ketertiban',
-            'Dukung buruh',
-            'Syukuri yang ada',
-            'Tangkap provokator',
+            'Awas disusupi provokator luar!', // +5
+            'Mengganggu aktivitas warga di jalan', // Mengecoh
+            'Harusnya sampaikan aspirasi via web', // Mengecoh
+            'Suara rakyat wajib didengarkan', // Pro-demo
           ],
           answer: 0,
           buzz: 'PRO KETERTIBAN',
         },
         {
-          q: 'Indonesia jadi tuan rumah acara dunia?',
+          q: 'Indonesia jadi tuan rumah event internasional?',
           opt: [
-            'Pamerkan kehebatan kita!',
-            'Boros uang',
-            'Gak manfaat',
-            'Biasa saja',
+            'Tunjukkan kita bangsa yang berkelas!', // +5
+            'Momentum emas bangkitkan pariwisata', // Mengecoh
+            'Bukti kepemimpinan kita diakui dunia', // Mengecoh
+            'Pikirkan dampak ekonomi buat rakyat', // Kritis pragmatis
           ],
           answer: 0,
           buzz: 'NASIONALIS',
