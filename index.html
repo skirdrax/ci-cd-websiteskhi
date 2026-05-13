@@ -247,9 +247,7 @@
         background: #3ea373;
         animation: pulse 1s infinite;
       }
-      .btn-send-ready:hover {
-        transform: scale(1.02);
-      }
+
       @keyframes pulse {
         0% {
           box-shadow: 0 0 0 0 rgba(62, 163, 115, 0.4);
@@ -261,6 +259,59 @@
           box-shadow: 0 0 0 0 rgba(62, 163, 115, 0);
         }
       }
+
+      /* Gaya Sertifikat */
+      #certificateArea {
+        display: none;
+        margin-top: 30px;
+        padding: 30px;
+        border: 10px double #c97e2a;
+        background: #fff;
+        background-image: radial-gradient(#fff 50%, #fdf8f2 100%);
+        position: relative;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      .cert-header {
+        color: #1e3c72;
+        font-size: 1.5rem;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+      .cert-title {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        color: #555;
+        text-transform: uppercase;
+      }
+      .cert-name {
+        font-size: 2rem;
+        font-family: 'Georgia', serif;
+        font-weight: bold;
+        color: #000;
+        margin: 15px 0;
+        border-bottom: 2px solid #eee;
+        display: inline-block;
+        padding: 0 20px;
+      }
+      .cert-rank {
+        font-size: 1.4rem;
+        color: #bc4e2c;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      .cert-watermark {
+        position: absolute;
+        opacity: 0.05;
+        font-size: 5rem;
+        top: 20%;
+        left: 15%;
+        transform: rotate(-20deg);
+        pointer-events: none;
+        font-weight: 900;
+      }
+
       .leader-item {
         display: flex;
         justify-content: space-between;
@@ -276,6 +327,7 @@
         transform: translateX(3px);
         background: #fff8f0;
       }
+
       .modal-overlay {
         display: none;
         position: fixed;
@@ -299,41 +351,6 @@
         max-height: 85vh;
         overflow-y: auto;
       }
-      .modal-content h3 {
-        color: #1e3c72;
-        margin-bottom: 12px;
-        text-align: center;
-      }
-      .modal-content ul {
-        padding-left: 20px;
-        margin-bottom: 15px;
-      }
-      .modal-content li {
-        margin-bottom: 5px;
-        font-size: 0.85rem;
-        color: #444;
-      }
-      .cat-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 8px 0;
-        border-bottom: 1px solid #eee;
-        font-size: 0.85rem;
-      }
-      /* Efek hover untuk tombol refresh papan skor */
-      /* Update gaya tombol refresh agar melengkung dan punya efek hover */
-      #refreshLeaderBtn {
-        border-radius: 60px; /* Membuat sisi melengkung sempurna */
-        border: 1px solid #bdd6ec;
-        transition: all 0.2s ease;
-        cursor: pointer;
-      }
-
-      #refreshLeaderBtn:hover {
-        background: #d9eafb !important;
-        transform: scale(1.02);
-        border-color: #a5c4e0;
-      }
       @keyframes modalPop {
         from {
           transform: scale(0.9);
@@ -342,14 +359,6 @@
         to {
           transform: scale(1);
           opacity: 1;
-        }
-      }
-      @media (max-width: 750px) {
-        .app-wrap {
-          flex-direction: column;
-        }
-        .leader-panel {
-          min-width: 100%;
         }
       }
     </style>
@@ -388,11 +397,13 @@
         <div class="indikator-soal" id="indikatorSoal">
           📌 Soal ke-1 dari 20
         </div>
+
         <div class="question-card">
           <div class="question" id="question">Memuat pertanyaan...</div>
           <div class="options" id="options"></div>
           <div class="feedback" id="feedback"></div>
         </div>
+
         <div class="score-badge">
           <span>🏆 TOTAL SKOR</span>
           <span id="scoreValue" style="font-weight: 800; font-size: 1.2rem"
@@ -405,6 +416,7 @@
           style="background: #fcf2e3; color: #c27e2e">
           🔷 Mulai Bermain
         </div>
+
         <div class="btn-group">
           <button id="nextBtn" class="btn btn-next">➡️ LANJUTKAN</button>
           <button id="restartBtn" class="btn btn-restart">🔄 ULANG</button>
@@ -412,23 +424,38 @@
             📤 KIRIM SKOR
           </button>
         </div>
+
+        <!-- Sertifikat (Muncul Setelah Kirim Skor) -->
+        <div id="certificateArea">
+          <div class="cert-watermark">BUZZER</div>
+          <p class="cert-title">Sertifikat Pengakuan</p>
+          <div class="cert-header">Diberikan Kepada:</div>
+          <div class="cert-name" id="certName">Nama Pengguna</div>
+          <p style="margin-top: 10px">
+            Atas dedikasinya dalam dunia maya dengan kategori:
+          </p>
+          <div class="cert-rank" id="certRank">BUZZER ELITE</div>
+          <p style="font-size: 0.7rem; color: #888">
+            Dikeluarkan secara otomatis oleh Sistem Tes Buzzer Online 2026
+          </p>
+        </div>
       </div>
+
       <div class="leader-panel">
         <h2>🏅 PAPAN SKOR</h2>
         <div id="leaderArea">
           <div style="text-align: center; padding: 20px">Menarik data...</div>
         </div>
-        <!-- Sesudah -->
         <button
           id="refreshLeaderBtn"
-          class="btn-restart"
-          style="width: 100%; margin-top: 10px; padding: 10px">
+          class="btn btn-restart"
+          style="width: 100%; margin-top: 10px">
           🔄 REFRESH
         </button>
       </div>
     </div>
 
-    <!-- Modal Penjelasan Buzzer -->
+    <!-- Modals -->
     <div id="buzzerModal" class="modal-overlay">
       <div class="modal-content">
         <h3>❓ Apa Itu Buzzer?</h3>
@@ -440,79 +467,32 @@
             margin-bottom: 10px;
           ">
           <strong>Buzzer</strong> adalah individu atau kelompok yang memiliki
-          kemampuan untuk membuat sebuah isu menjadi populer atau
-          diperbincangkan di media sosial.
-        </p>
-        <p style="font-weight: bold; margin-bottom: 5px; font-size: 0.9rem">
-          Ciri-ciri Utama:
+          kemampuan untuk membuat sebuah isu menjadi populer di media sosial.
         </p>
         <ul>
-          <li>Memiliki jaringan akun yang luas (bisa asli atau bot).</li>
-          <li>
-            Menyebarkan pesan yang seragam secara masif dalam waktu singkat.
-          </li>
-          <li>
-            Bertujuan membentuk opini publik atau menjatuhkan lawan bicara.
-          </li>
-          <li>Sering menggunakan tagar (hashtag) untuk menaikkan tren.</li>
+          <li>Memiliki jaringan akun luas (asli/bot).</li>
+          <li>Menyebarkan pesan seragam secara masif.</li>
+          <li>Bertujuan membentuk opini publik.</li>
         </ul>
-        <p style="font-weight: bold; margin-bottom: 5px; font-size: 0.9rem">
-          Contoh Aksi:
-        </p>
-        <p style="font-size: 0.85rem; color: #555; margin-bottom: 15px">
-          Membela mati-matian kebijakan tertentu meskipun menuai kontroversi,
-          atau melakukan "serangan fajar" digital terhadap kritik netizen.
-        </p>
-        <hr style="margin-bottom: 15px; opacity: 0.2" />
-        <p
-          style="
-            color: #bc4e2c;
-            font-style: italic;
-            font-size: 0.8rem;
-            text-align: center;
-            margin-bottom: 15px;
-          ">
-          ⚠️ Disclaimer: Tes ini dibuat hanya untuk tujuan hiburan dan sindiran
-          sosial (seru-seruan). Skor Anda tidak mendefinisikan kepribadian asli
-          Anda di dunia nyata!
-        </p>
         <button
           class="btn btn-next"
-          style="width: 100%"
+          style="width: 100%; margin-top: 15px"
           onclick="closeModal('buzzerModal')">
           Oke, Paham!
         </button>
       </div>
     </div>
 
-    <!-- Modal Kategori Skor -->
     <div id="kategoriModal" class="modal-overlay">
       <div class="modal-content">
-        <h3>📊 Rincian Kategori Skor</h3>
-        <div class="cat-item">
-          <span>0 - 10</span> <span>Belum Buzzer 👶</span>
+        <h3>📊 Kategori Skor</h3>
+        <div style="font-size: 0.85rem">
+          <p>0 - 10: Belum Buzzer 👶</p>
+          <p>10 - 40: Buzzer Pemula 🌱</p>
+          <p>40 - 60: Buzzer Menengah ⚡</p>
+          <p>60 - 80: Buzzer Senior 🎖️</p>
+          <p>80 - 100: Buzzer Elite 🔥</p>
         </div>
-        <div class="cat-item">
-          <span>10 - 40</span> <span>Buzzer Pemula 🌱</span>
-        </div>
-        <div class="cat-item">
-          <span>40 - 60</span> <span>Buzzer Menengah ⚡</span>
-        </div>
-        <div class="cat-item">
-          <span>60 - 80</span> <span>Buzzer Senior 🎖️</span>
-        </div>
-        <div class="cat-item">
-          <span>80 - 100</span> <span>Buzzer Elite 🔥</span>
-        </div>
-        <p
-          style="
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: #666;
-            text-align: center;
-          ">
-          Semakin tinggi skor, semakin kuat insting pembelaan Anda!
-        </p>
         <button
           class="btn btn-next"
           style="width: 100%; margin-top: 15px"
@@ -528,56 +508,56 @@
 
       const questionsRaw = [
         {
-          q: 'Pemerintah menaikkan harga BBM, sikap kamu sebagai buzzer?',
+          q: 'Pemerintah menaikkan harga BBM, sikap kamu?',
           opt: [
-            'Mendukung karena itu demi APBN yang sehat',
-            'Mengkritik karena memberatkan rakyat',
+            'Mendukung karena demi APBN sehat',
+            'Mengkritik memberatkan rakyat',
             'Pura-pura tidak tahu',
-            'Ikut demo turunkan harga',
+            'Ikut demo',
           ],
           answer: 0,
           buzz: 'LOYALITAS TERUJI',
         },
         {
-          q: 'Ada pembangunan jalan tol baru, komentar kamu di medsos?',
+          q: 'Ada pembangunan jalan tol baru, komentar kamu?',
           opt: [
-            'Alhamdulillah, bukti nyata kerja pemerintah!',
-            'Ah paling buat korupsi saja',
-            'Halah, jalan desa masih rusak',
-            'Biasa saja tugas negara',
+            'Alhamdulillah, bukti nyata kerja!',
+            'Paling buat korupsi',
+            'Jalan desa masih rusak',
+            'Biasa saja',
           ],
           answer: 0,
           buzz: 'OPTIMIS TINGGI',
         },
         {
-          q: 'Melihat kritik pedas terhadap Presiden, apa responmu?',
+          q: 'Melihat kritik terhadap Presiden, responmu?',
           opt: [
-            'Langsung counter dengan data keberhasilan',
-            'Ikut menghujat presiden',
-            'Diam saja tidak mau ikut campur',
-            'Hapus akun karena takut',
+            'Counter dengan data keberhasilan',
+            'Ikut menghujat',
+            'Diam saja',
+            'Hapus akun',
           ],
           answer: 0,
           buzz: 'BENTENG PERTAHANAN',
         },
         {
-          q: 'Program IKN dikritik soal anggaran besar, kamu akan bilang?',
+          q: 'Program IKN dikritik soal anggaran, kamu bilang?',
           opt: [
-            'Ini investasi masa depan Indonesia Emas',
-            'Buang-buang uang rakyat saja',
-            'Lebih baik buat beli beras',
-            'Proyek mercusuar gagal',
+            'Investasi Indonesia Emas',
+            'Buang uang rakyat',
+            'Beli beras saja',
+            'Proyek gagal',
           ],
           answer: 0,
           buzz: 'VISIONER',
         },
         {
-          q: 'Banyak tenaga kerja asing masuk, tanggapanmu sebagai pendukung?',
+          q: 'Banyak tenaga kerja asing masuk, tanggapanmu?',
           opt: [
-            'Itu ahli yang bantu transfer teknologi',
-            'Usir mereka sekarang juga',
-            'Mereka ambil jatah kerja kita',
-            'Pemerintah jual negara',
+            'Ahli transfer teknologi',
+            'Usir mereka',
+            'Ambil jatah kita',
+            'Jual negara',
           ],
           answer: 0,
           buzz: 'PEMBELA KEBIJAKAN',
@@ -585,164 +565,164 @@
         {
           q: 'Angka kemiskinan turun sedikit, reaksi kamu?',
           opt: [
-            'Luar biasa, prestasi besar pemerintah!',
-            'Itu cuma manipulasi data',
-            'Rakyat masih susah kok',
-            'Gak kerasa di lapangan',
+            'Luar biasa prestasi besar!',
+            'Manipulasi data',
+            'Rakyat masih susah',
+            'Gak kerasa',
           ],
           answer: 0,
           buzz: 'APRESIASI PENUH',
         },
         {
-          q: 'Pejabat ketahuan korupsi, sikap buzzer yang "setia"?',
+          q: 'Pejabat korupsi, sikap buzzer setia?',
           opt: [
-            'Itu oknum, jangan salahkan pemerintahnya',
-            'Semua di sana pasti koruptor',
-            'Bubarkan partainya!',
-            'Pantas saja rakyat susah',
+            'Itu oknum, jangan salahkan sistem',
+            'Semua koruptor',
+            'Bubarkan partai',
+            'Pantas susah',
           ],
           answer: 0,
           buzz: 'PEMBERSIH NAMA',
         },
         {
-          q: 'Utang negara bertambah untuk infrastruktur, pembelaanmu?',
+          q: 'Utang negara bertambah, pembelaanmu?',
           opt: [
-            'Utang produktif untuk anak cucu nanti',
-            'Negara mau bangkrut ini!',
-            'Beban yang mengerikan',
-            'Jangan berutang terus',
+            'Utang produktif demi anak cucu',
+            'Negara bangkrut',
+            'Beban ngeri',
+            'Jangan utang',
           ],
           answer: 0,
           buzz: 'AHLI EKONOMI',
         },
         {
-          q: 'Bantuan Sosial (Bansos) dibagikan, apa katamu?',
+          q: 'Bansos dibagikan, apa katamu?',
           opt: [
-            'Bukti kepedulian nyata pemerintah',
-            'Itu mah uang pajak kita sendiri',
-            'Cuma buat kampanye saja',
-            'Pencitraan menjelang pemilu',
+            'Bukti nyata kepedulian!',
+            'Uang pajak kita kok',
+            'Buat kampanye saja',
+            'Pencitraan',
           ],
           answer: 0,
           buzz: 'PENYEBAR KEBAIKAN',
         },
         {
-          q: 'Media asing memuji Indonesia, tugasmu adalah?',
+          q: 'Media asing memuji Indonesia, tugasmu?',
           opt: [
-            'Viralkan beritanya di semua grup WA',
-            'Halah berita bayaran itu',
-            'Jangan percaya media asing',
-            'Biasa saja tidak spesial',
+            'Viralkan di semua grup WA',
+            'Berita bayaran',
+            'Jangan percaya',
+            'Biasa saja',
           ],
           answer: 0,
           buzz: 'DIPLOMAT MEDSOS',
         },
         {
-          q: 'Diberi tugas menaikkan hastag pemerintah, kamu akan?',
+          q: 'Tugas menaikkan hastag pemerintah?',
           opt: [
             'Siap laksanakan demi negara!',
-            'Ogah kalau gak ada uangnya',
-            'Cuma bikin spam saja',
-            'Main medsos buat hiburan saja',
+            'Ogah gak ada uang',
+            'Bikin spam saja',
+            'Buat hiburan saja',
           ],
           answer: 0,
           buzz: 'PASUKAN SIBER',
         },
         {
-          q: 'Ada tokoh oposisi bicara kekurangan negara, reaksimu?',
+          q: 'Tokoh oposisi bicara kekurangan negara?',
           opt: [
-            'Cari kesalahan masa lalu tokoh tersebut',
-            'Dengarkan sarannya dengan baik',
-            'Setuju dengan pendapatnya',
-            'Diam dan menyimak',
+            'Cari kesalahan masa lalunya',
+            'Dengar baik-baik',
+            'Setuju',
+            'Diam',
           ],
           answer: 0,
           buzz: 'PENYERANG BALIK',
         },
         {
-          q: 'Indeks demokrasi disebut menurun, jawabanmu?',
+          q: 'Indeks demokrasi menurun, jawabanmu?',
           opt: [
-            'Yang penting ekonomi stabil dan aman',
-            'Ini sudah gawat darurat',
-            'Kita menuju kediktatoran',
-            'Gak paham politik',
+            'Penting ekonomi stabil & aman',
+            'Gawat darurat',
+            'Kediktatoran',
+            'Gak paham',
           ],
           answer: 0,
           buzz: 'REALISTIS',
         },
         {
-          q: 'Pemerintah bagi-bagi sertifikat tanah, komentarmu?',
+          q: 'Bagi-bagi sertifikat tanah, komentarmu?',
           opt: [
-            'Baru kali ini ada Presiden sepeduli ini',
-            'Itu kan memang sudah hak warga',
-            'Dulu juga ada tapi gak ramai',
-            'Cuma cari muka',
+            'Presiden paling peduli!',
+            'Hak warga kok',
+            'Dulu juga ada',
+            'Cari muka',
           ],
           answer: 0,
           buzz: 'PENCINTA RAKYAT',
         },
         {
-          q: 'Harga sembako naik di pasar, pembelaanmu?',
+          q: 'Harga sembako naik, pembelaanmu?',
           opt: [
-            'Ini dampak global, negara lain lebih parah',
-            'Pemerintah gagal total urus perut',
-            'Menteri perdagangannya tidur',
-            'Rakyat menjerit pak!',
+            'Dampak global, luar lebih parah',
+            'Gagal urus perut',
+            'Menteri tidur',
+            'Rakyat jerit',
           ],
           answer: 0,
           buzz: 'GLOBAL MINDSET',
         },
         {
-          q: 'Melihat buzzer lain diserang netizen, kamu akan?',
+          q: 'Buzzer lain diserang netizen, kamu?',
           opt: [
-            'Bantu serang balik netizen tersebut',
-            'Tontonin saja sambil ketawa',
-            'Ikut bully teman sendiri',
+            'Bantu serang balik!',
+            'Tonton ketawa',
+            'Ikut bully',
             'Pura-pura gak kenal',
           ],
           answer: 0,
           buzz: 'SOLIDARITAS',
         },
         {
-          q: 'Aplikasi pemerintah sering error, kamu bilang?',
+          q: 'Aplikasi pemerintah error?',
           opt: [
-            'Sedang pengembangan, harap maklum',
-            'Korupsi aplikasi ini mah!',
-            'Buang-buang anggaran',
-            'Mending pakai jasa swasta',
+            'Sedang pengembangan, maklum',
+            'Korupsi ini!',
+            'Buang anggaran',
+            'Pakai swasta',
           ],
           answer: 0,
           buzz: 'PENYABAR',
         },
         {
-          q: 'Presiden naik motor tinjau proyek, reaksimu?',
+          q: 'Presiden naik motor tinjau proyek?',
           opt: [
-            'Keren banget, pemimpin merakyat!',
-            'Pencitraan tingkat tinggi',
-            'Gak ada kerjaan lain apa?',
-            'Hati-hati jatuh pak',
+            'Keren, pemimpin merakyat!',
+            'Pencitraan',
+            'Gak ada kerjaan',
+            'Hati-hati jatuh',
           ],
           answer: 0,
           buzz: 'FANS BERAT',
         },
         {
-          q: 'Ada demo buruh di jalanan, pendapatmu?',
+          q: 'Ada demo buruh, pendapatmu?',
           opt: [
-            'Mengganggu ketertiban dan macet',
-            'Dukung perjuangan buruh',
-            'Buruh harusnya bersyukur',
-            'Tangkap provokatornya',
+            'Mengganggu ketertiban',
+            'Dukung buruh',
+            'Syukuri yang ada',
+            'Tangkap provokator',
           ],
           answer: 0,
           buzz: 'PRO KETERTIBAN',
         },
         {
-          q: 'Indonesia jadi tuan rumah acara dunia, kamu akan?',
+          q: 'Indonesia jadi tuan rumah acara dunia?',
           opt: [
-            'Pamerkan kehebatan Indonesia di medsos',
-            'Boros-borosin uang saja',
-            'Gak ada manfaat buat rakyat',
-            'Biasa aja tuh',
+            'Pamerkan kehebatan kita!',
+            'Boros uang',
+            'Gak manfaat',
+            'Biasa saja',
           ],
           answer: 0,
           buzz: 'NASIONALIS',
@@ -765,45 +745,6 @@
       const nextBtn = document.getElementById('nextBtn');
       const kirimBtn = document.getElementById('kirimSkorBtn');
 
-      const randomNames = [
-        'Buzzer Sejati',
-        'Satria NKRI',
-        'Ratu Medsos',
-        'Sultan Trending',
-        'Agus Cyber',
-        'Budi Loyal',
-        'Mega Buzzer',
-        'Joko Pro',
-        'Putri Narasi',
-        'Prabowo Setya',
-        'Ganjar Fans',
-        'Anies Banget',
-        'Sandi Satu',
-        'Ridwan Kamil',
-        'Khofifah',
-        'Mahfud Md',
-        'Susi Pudjiastuti',
-        'Andika Perkasa',
-        'Moeldoko',
-        'Luhut Panjaitan',
-      ];
-
-      function randomName() {
-        return randomNames[Math.floor(Math.random() * randomNames.length)];
-      }
-
-      document.getElementById('randomNamaBtn').onclick = () => {
-        namaInput.value = randomName();
-      };
-
-      function closeModal(id) {
-        document.getElementById(id).style.display = 'none';
-      }
-
-      function openModal(id) {
-        document.getElementById(id).style.display = 'flex';
-      }
-
       function initGame() {
         questions = questionsRaw.map((q) => {
           let opts = q.opt.map((text, i) => ({
@@ -821,12 +762,9 @@
         if (currentIndex >= questions.length) return;
         answered = false;
         feedbackEl.innerHTML = '';
-        feedbackEl.className = 'feedback';
-
         const q = questions[currentIndex];
         questionEl.innerText = q.q;
         indikatorEl.innerText = `📌 Soal ke-${currentIndex + 1} dari 20`;
-
         optionsEl.innerHTML = '';
         q.shuffledOpts.forEach((opt) => {
           const btn = document.createElement('button');
@@ -840,26 +778,17 @@
       function checkAnswer(opt, btn) {
         if (answered || gameCompleted) return;
         answered = true;
-
-        const allBtns = optionsEl.querySelectorAll('.option-btn');
-        allBtns.forEach((b) => (b.disabled = true));
-
-        const correctAnswerText = questions[currentIndex].shuffledOpts.find(
-          (o) => o.isCorrect,
-        ).text;
-
+        document
+          .querySelectorAll('.option-btn')
+          .forEach((b) => (b.disabled = true));
         if (opt.isCorrect) {
           userScore += 5;
           scoreSpan.innerText = userScore;
           feedbackEl.innerText = `✅ BENAR: ${questions[currentIndex].buzz}!`;
           feedbackEl.className = 'feedback benar';
-          btn.style.borderColor = '#2f7d5c';
-          btn.style.background = '#e6ffed';
         } else {
-          // Menampilkan jawaban yang benar saat salah
-          feedbackEl.innerHTML = `❌ KURANG BUZZER!<br><small>Jawaban Benar: <em>"${correctAnswerText}"</em></small>`;
+          feedbackEl.innerText = `❌ KURANG BUZZER!`;
           feedbackEl.className = 'feedback salah';
-          btn.style.borderColor = '#bc4e2c';
         }
       }
 
@@ -868,7 +797,6 @@
           Swal.fire('Oops!', 'Pilih jawaban dulu!', 'warning');
           return;
         }
-
         if (currentIndex < questions.length - 1) {
           currentIndex++;
           loadQuestion();
@@ -882,58 +810,60 @@
         nextBtn.disabled = true;
         kirimBtn.disabled = false;
         kirimBtn.classList.add('btn-send-ready');
-
         let rank = '';
         if (userScore <= 10) rank = 'Belum Buzzer';
         else if (userScore <= 40) rank = 'Buzzer Pemula';
         else if (userScore <= 60) rank = 'Buzzer Menengah';
         else if (userScore <= 80) rank = 'Buzzer Senior';
         else rank = 'BUZZER ELITE 🔥';
-
         kategoriEl.innerHTML = `🏆 HASIL AKHIR: ${rank}`;
-
-        Swal.fire({
-          title: 'Selesai!',
-          html: `Skor kamu: <b>${userScore}</b><br>Kategori: ${rank}`,
-          icon: 'success',
-        });
+        Swal.fire(
+          'Selesai!',
+          `Skor: ${userScore}. Klik "Kirim Skor" untuk sertifikat!`,
+          'success',
+        );
       }
 
       async function kirimSkor() {
         const nama = namaInput.value.trim();
         if (!nama) {
-          Swal.fire(
-            'Nama Kososng',
-            'Isi nama dulu untuk masuk Papan Skor!',
-            'error',
-          );
+          Swal.fire('Nama Kosong', 'Isi nama dulu!', 'error');
           return;
         }
 
         kirimBtn.disabled = true;
         kirimBtn.innerText = 'MENGIRIM...';
 
-        const payload = {
-          nama: nama,
-          skor: userScore,
-          kategori: kategoriEl.innerText,
-          tanggal: new Date().toLocaleString('id-ID'),
-        };
-
-        const body = new URLSearchParams();
-        body.append('payload', JSON.stringify(payload));
-
         try {
-          await fetch(API_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: body,
-          });
-          Swal.fire('Berhasil!', 'Skormu telah dikirim!', 'success');
+          const payload = {
+            nama,
+            skor: userScore,
+            kategori: kategoriEl.innerText,
+            tanggal: new Date().toLocaleString('id-ID'),
+          };
+          const body = new URLSearchParams();
+          body.append('payload', JSON.stringify(payload));
+
+          await fetch(API_URL, { method: 'POST', mode: 'no-cors', body: body });
+
+          // Tampilkan Sertifikat
+          document.getElementById('certName').innerText = nama;
+          document.getElementById('certRank').innerText =
+            kategoriEl.innerText.replace('🏆 HASIL AKHIR: ', '');
+          document.getElementById('certificateArea').style.display = 'block';
+          document
+            .getElementById('certificateArea')
+            .scrollIntoView({ behavior: 'smooth' });
+
+          Swal.fire(
+            'Berhasil!',
+            'Skor terkirim & Sertifikat terbit!',
+            'success',
+          );
           kirimBtn.innerText = '✅ TERKIRIM';
-          setTimeout(refreshLeaderboard, 2000);
+          refreshLeaderboard();
         } catch (e) {
-          Swal.fire('Gagal', 'Terjadi kesalahan koneksi', 'error');
+          Swal.fire('Gagal', 'Koneksi bermasalah', 'error');
           kirimBtn.disabled = false;
           kirimBtn.innerText = '📤 KIRIM SKOR';
         }
@@ -941,10 +871,8 @@
 
       async function refreshLeaderboard() {
         const area = document.getElementById('leaderArea');
-        // Fitur 1: Loading state
         area.innerHTML =
-          '<div style="text-align: center; padding: 20px">⏳ Memuat data...</div>';
-
+          '<div style="text-align: center; padding: 20px">⏳ Memuat...</div>';
         try {
           const res = await fetch(API_URL);
           const data = await res.json();
@@ -953,25 +881,32 @@
             .sort((a, b) => b.skor - a.skor)
             .slice(0, 10)
             .forEach((item, i) => {
-              html += `
-                <div class="leader-item">
-                    <span><b>${i + 1}.</b> ${escapeHtml(item.nama)}</span>
-                    <span style="font-weight:bold; color:#a45900">${item.skor}</span>
-                </div>`;
+              html += `<div class="leader-item"><span><b>${i + 1}.</b> ${item.nama}</span><span>${item.skor}</span></div>`;
             });
           area.innerHTML = html || 'Belum ada skor.';
         } catch (e) {
-          area.innerHTML =
-            '<div style="color: #bc4e2c; text-align:center;">Gagal memuat data.</div>';
+          area.innerHTML = 'Gagal memuat data.';
         }
       }
 
-      function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+      function closeModal(id) {
+        document.getElementById(id).style.display = 'none';
+      }
+      function openModal(id) {
+        document.getElementById(id).style.display = 'flex';
       }
 
+      const randomNames = [
+        'Agus Cyber',
+        'Budi Loyal',
+        'Sultan Trending',
+        'Ratu Medsos',
+        'Satria NKRI',
+      ];
+      document.getElementById('randomNamaBtn').onclick = () => {
+        namaInput.value =
+          randomNames[Math.floor(Math.random() * randomNames.length)];
+      };
       document.getElementById('infoBuzzerBtn').onclick = () =>
         openModal('buzzerModal');
       document.getElementById('infoKategoriBtn').onclick = () =>
@@ -979,13 +914,6 @@
       document.getElementById('restartBtn').onclick = () => location.reload();
       document.getElementById('refreshLeaderBtn').onclick = refreshLeaderboard;
       kirimBtn.onclick = kirimSkor;
-
-      // Close modal on overlay click
-      window.onclick = function (event) {
-        if (event.target.classList.contains('modal-overlay')) {
-          event.target.style.display = 'none';
-        }
-      };
 
       initGame();
     </script>
