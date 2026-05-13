@@ -5,19 +5,10 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta
-      name="google-site-verification"
-      content="_wyhJCp9gRnzSrNlsgCS9f9atGFXDJQlrqHoOgK_UdY" />
-
     <title>Test Buzzer Online | Seberapa Buzzer Kamu?</title>
     <meta
       name="description"
-      content="Ikuti tes buzzer online untuk mengetahui seberapa besar tingkat kebuzzeran kamu! Jawab 10 pertanyaan seru dan lihat skormu." />
-    <meta
-      name="keywords"
-      content="test buzzer, tes buzzer online, seberapa buzzer kamu, kuis buzzer, buzzers" />
+      content="Ikuti tes buzzer online, jawab 20 pertanyaan seru dan lihat skormu!" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
       * {
@@ -25,17 +16,15 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         min-height: 100vh;
         background: linear-gradient(145deg, #1e3c72 0%, #2a5298 100%);
-        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        font-family: 'Inter', 'Segoe UI', sans-serif;
         padding: 24px;
         display: flex;
         justify-content: center;
         align-items: center;
       }
-
       .app-wrap {
         max-width: 1200px;
         width: 100%;
@@ -44,7 +33,6 @@
         gap: 24px;
         justify-content: center;
       }
-
       .game-panel {
         flex: 1.6;
         min-width: 300px;
@@ -52,9 +40,7 @@
         border-radius: 32px;
         padding: 28px;
         box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
-        transition: all 0.2s;
       }
-
       .leader-panel {
         flex: 0.7;
         min-width: 260px;
@@ -63,8 +49,6 @@
         padding: 20px;
         box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
       }
-
-      /* HEADER ROW UNTUK JUDUL + TOMBOL INFO */
       .header-row {
         display: flex;
         justify-content: space-between;
@@ -73,15 +57,11 @@
         gap: 12px;
         margin-bottom: 6px;
       }
-
       h1 {
         font-size: 1.7rem;
-        text-align: center;
         color: #1e3c72;
-        letter-spacing: -0.5px;
         margin: 0;
       }
-
       .info-btn {
         background: #ffecd6;
         border: 1px solid #ffcd7e;
@@ -93,43 +73,10 @@
         font-size: 0.7rem;
         transition: all 0.2s;
       }
-
       .info-btn:hover {
         background: #ffdfb3;
         transform: scale(1.02);
       }
-
-      /* HEADER ROW UNTUK PAPAN BUZZER + TOMBOL KATEGORI */
-      .leader-header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-bottom: 12px;
-      }
-
-      .leader-header h2 {
-        margin-bottom: 0;
-      }
-
-      .kategori-btn {
-        background: #eef3fc;
-        border: 1px solid #bdd1e5;
-        padding: 4px 12px;
-        border-radius: 60px;
-        color: #2a5f8a;
-        font-weight: 500;
-        cursor: pointer;
-        font-size: 0.65rem;
-        transition: all 0.2s;
-      }
-
-      .kategori-btn:hover {
-        background: #e2eaf5;
-        transform: scale(1.02);
-      }
-
       .sub {
         text-align: center;
         color: #3a6b9b;
@@ -139,49 +86,29 @@
         border-bottom: 2px solid #ffcd7e;
         display: inline-block;
         width: auto;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto 20px;
         padding-bottom: 6px;
       }
-
-      h2 {
-        color: #1e3c72;
-        font-size: 1.2rem;
-        margin-bottom: 16px;
-        text-align: center;
-        font-weight: 700;
-      }
-
       .nama-wrapper {
         display: flex;
         gap: 10px;
         margin-bottom: 24px;
         flex-wrap: wrap;
       }
-
       .nama-input {
         flex: 2;
         padding: 12px 16px;
         border-radius: 60px;
         border: 2px solid #b4cde0;
-        background: #ffffff;
+        background: #fff;
         color: #1e3c72;
         font-size: 0.9rem;
         outline: none;
-        font-weight: 500;
         text-align: center;
-        transition: 0.2s;
       }
-
       .nama-input:focus {
         border-color: #ff9f4a;
-        box-shadow: 0 0 0 3px rgba(255, 159, 74, 0.2);
       }
-
-      .nama-input::placeholder {
-        color: #8eb3ce;
-      }
-
       .btn-random {
         background: #ffecd6;
         border: 1px solid #ffcd7e;
@@ -191,14 +118,12 @@
         font-weight: 700;
         cursor: pointer;
         font-size: 0.85rem;
-        transition: 0.2s;
+        transition: all 0.2s;
       }
-
       .btn-random:hover {
         background: #ffdfb3;
         transform: scale(1.02);
       }
-
       .indikator-soal {
         text-align: center;
         background: #d9eafb;
@@ -209,7 +134,6 @@
         color: #1e5c8b;
         font-size: 0.8rem;
       }
-
       .question-card {
         background: #f2f7ff;
         border-radius: 28px;
@@ -217,45 +141,38 @@
         margin: 15px 0;
         border: 1px solid #cddff2;
       }
-
       .question {
         font-size: 1rem;
         font-weight: 700;
         color: #0f2c4f;
         margin-bottom: 20px;
-        line-height: 1.45;
       }
-
       .options {
         display: flex;
         flex-direction: column;
         gap: 10px;
       }
-
       .option-btn {
-        background: white;
+        background: #fff;
         border: 1px solid #c2d6e8;
         padding: 12px 16px;
         border-radius: 60px;
         font-weight: 600;
         color: #1f4870;
         cursor: pointer;
-        transition: 0.2s;
         font-size: 0.85rem;
         text-align: left;
+        transition: all 0.2s;
       }
-
       .option-btn:hover:not(:disabled) {
         background: #ffecd6;
         border-color: #ffaa55;
-        transform: scale(1.01);
+        transform: translateX(4px);
       }
-
       .option-btn:disabled {
-        opacity: 0.5;
+        opacity: 0.6;
         cursor: not-allowed;
       }
-
       .feedback {
         margin-top: 14px;
         padding: 10px;
@@ -263,45 +180,28 @@
         text-align: center;
         font-weight: 700;
         font-size: 0.85rem;
+        min-height: 40px;
+        line-height: 1.4;
       }
-
       .feedback.benar {
         background: #c3e9d4;
         color: #146b3a;
       }
-
       .feedback.salah {
         background: #ffe0dd;
         color: #bc4e2c;
       }
-
       .score-badge {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
+        align-items: center;
         gap: 12px;
         background: #f4f9fe;
         border-radius: 60px;
         padding: 8px 18px;
         margin: 15px 0 8px;
-        flex-wrap: wrap;
         border: 1px solid #cde1f0;
       }
-
-      .score-badge span:first-child {
-        color: #1e3c72;
-        font-weight: 700;
-      }
-
-      .score-badge span:last-child {
-        background: #2a6b9c;
-        padding: 4px 20px;
-        border-radius: 60px;
-        font-size: 1.3rem;
-        font-weight: 800;
-        color: white;
-      }
-
       .btn-group {
         display: flex;
         gap: 12px;
@@ -309,53 +209,48 @@
         margin-top: 16px;
         flex-wrap: wrap;
       }
-
       .btn {
         border: none;
         padding: 10px 22px;
         border-radius: 60px;
         font-weight: 700;
         cursor: pointer;
-        transition: 0.2s;
         font-size: 0.8rem;
+        transition: all 0.2s;
       }
-
       .btn-next {
         background: #ffaa55;
         color: #2c3e4e;
       }
-
       .btn-next:hover {
         background: #ff9933;
         transform: scale(1.02);
       }
-
       .btn-restart {
         background: #e9f0f7;
         color: #2a5f8a;
         border: 1px solid #bdd6ec;
       }
-
       .btn-restart:hover {
         background: #d4e3f5;
+        transform: scale(1.02);
       }
-
       .btn-send {
         background: #2f7d5c;
-        color: white;
+        color: #fff;
       }
-
       .btn-send:disabled {
         opacity: 0.5;
         cursor: not-allowed;
       }
-
       .btn-send-ready {
         background: #3ea373;
-        animation: gentlePulse 1s infinite;
+        animation: pulse 1s infinite;
       }
-
-      @keyframes gentlePulse {
+      .btn-send-ready:hover {
+        transform: scale(1.02);
+      }
+      @keyframes pulse {
         0% {
           box-shadow: 0 0 0 0 rgba(62, 163, 115, 0.4);
         }
@@ -366,33 +261,6 @@
           box-shadow: 0 0 0 0 rgba(62, 163, 115, 0);
         }
       }
-
-      .btn-refresh {
-        background: #eef3fc;
-        border: 1px solid #bdd1e5;
-        color: #2a5f8a;
-        padding: 6px 14px;
-        font-size: 0.7rem;
-      }
-
-      .kategori-badge {
-        text-align: center;
-        background: #fcf2e3;
-        border-radius: 60px;
-        padding: 8px;
-        margin: 12px 0;
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: #c27e2e;
-        border: 1px solid #ffe1b3;
-      }
-
-      .leader-list {
-        max-height: 340px;
-        overflow-y: auto;
-        margin-top: 8px;
-      }
-
       .leader-item {
         display: flex;
         justify-content: space-between;
@@ -401,38 +269,13 @@
         padding: 8px 12px;
         border-radius: 60px;
         border-left: 5px solid #ffaa55;
-        font-weight: 600;
         font-size: 0.75rem;
-        color: #1f4870;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s;
       }
-
-      .rank {
-        font-weight: 800;
-        color: #ff8c42;
+      .leader-item:hover {
+        transform: translateX(3px);
+        background: #fff8f0;
       }
-
-      .leader-name {
-        flex: 1;
-        margin-left: 10px;
-      }
-
-      .leader-score {
-        background: #ffe4bc;
-        padding: 2px 12px;
-        border-radius: 40px;
-        font-weight: 800;
-        color: #a45900;
-      }
-
-      .loading {
-        text-align: center;
-        color: #6190b8;
-        padding: 20px;
-        font-size: 0.8rem;
-      }
-
-      /* MODAL POPUP */
       .modal-overlay {
         display: none;
         position: fixed;
@@ -446,18 +289,37 @@
         justify-content: center;
         align-items: center;
       }
-
       .modal-content {
-        background: white;
+        background: #fff;
         border-radius: 32px;
         max-width: 500px;
         width: 90%;
         padding: 28px;
-        border: 1px solid #ffcd7e;
-        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
         animation: modalPop 0.3s ease;
+        max-height: 85vh;
+        overflow-y: auto;
       }
-
+      .modal-content h3 {
+        color: #1e3c72;
+        margin-bottom: 12px;
+        text-align: center;
+      }
+      .modal-content ul {
+        padding-left: 20px;
+        margin-bottom: 15px;
+      }
+      .modal-content li {
+        margin-bottom: 5px;
+        font-size: 0.85rem;
+        color: #444;
+      }
+      .cat-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 0.85rem;
+      }
       @keyframes modalPop {
         from {
           transform: scale(0.9);
@@ -468,74 +330,12 @@
           opacity: 1;
         }
       }
-
-      .modal-content h3 {
-        color: #1e3c72;
-        font-size: 1.5rem;
-        margin-bottom: 16px;
-        text-align: center;
-      }
-
-      .modal-content p {
-        color: #4a627a;
-        line-height: 1.6;
-        margin-bottom: 14px;
-        font-size: 0.9rem;
-      }
-
-      .kategori-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 15px 0;
-        font-size: 0.8rem;
-      }
-
-      .kategori-table td {
-        padding: 8px 6px;
-        border-bottom: 1px solid #e0d6c8;
-      }
-
-      .kategori-table td:first-child {
-        font-weight: 700;
-      }
-
-      .modal-content .close-modal {
-        background: #ffaa55;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 60px;
-        font-weight: 700;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 8px;
-        font-size: 0.9rem;
-        color: #2c3e4e;
-      }
-
-      .modal-content .close-modal:hover {
-        background: #ff9933;
-      }
-
       @media (max-width: 750px) {
         .app-wrap {
           flex-direction: column;
         }
         .leader-panel {
           min-width: 100%;
-        }
-        .question {
-          font-size: 0.9rem;
-        }
-        .option-btn {
-          padding: 10px 14px;
-          font-size: 0.8rem;
-        }
-        .header-row {
-          flex-direction: column;
-          text-align: center;
-        }
-        h1 {
-          font-size: 1.4rem;
         }
       }
     </style>
@@ -545,122 +345,164 @@
       <div class="game-panel">
         <div class="header-row">
           <h1>🎯 SEBERAPA BUZZER KAMU?</h1>
-          <button id="infoBuzzerBtn" class="info-btn">
-            ❓ Apa Itu Buzzer?
-          </button>
+          <div style="display: flex; gap: 5px">
+            <button
+              id="infoKategoriBtn"
+              class="info-btn"
+              style="
+                background: #eef3fc;
+                color: #2a5f8a;
+                border-color: #bdd1e5;
+              ">
+              📊 Kategori
+            </button>
+            <button id="infoBuzzerBtn" class="info-btn">
+              ❓ Apa Itu Buzzer?
+            </button>
+          </div>
         </div>
-        <div class="sub">✨ +10 POIN SETIAP JAWABAN ✨</div>
-
+        <div class="sub">✨ +5 POIN SETIAP JAWABAN BUZZER ✨</div>
         <div class="nama-wrapper">
           <input
             type="text"
             id="namaUser"
             class="nama-input"
-            placeholder="Isi nama / nickname bebas"
-            maxlength="30" />
+            placeholder="Isi nama / nickname"
+            maxlength="20" />
           <button id="randomNamaBtn" class="btn-random">🎲 RANDOM</button>
         </div>
-
         <div class="indikator-soal" id="indikatorSoal">
-          📌 Soal ke-1 dari 10
+          📌 Soal ke-1 dari 20
         </div>
-
         <div class="question-card">
           <div class="question" id="question">Memuat pertanyaan...</div>
           <div class="options" id="options"></div>
           <div class="feedback" id="feedback"></div>
         </div>
-
         <div class="score-badge">
           <span>🏆 TOTAL SKOR</span>
-          <span id="scoreValue">0</span>
+          <span id="scoreValue" style="font-weight: 800; font-size: 1.2rem"
+            >0</span
+          >
         </div>
-
-        <div id="kategoriDisplay" class="kategori-badge">
-          🔷 Belum selesai main
+        <div
+          id="kategoriDisplay"
+          class="indikator-soal"
+          style="background: #fcf2e3; color: #c27e2e">
+          🔷 Mulai Bermain
         </div>
-
         <div class="btn-group">
           <button id="nextBtn" class="btn btn-next">➡️ LANJUTKAN</button>
-          <button id="restartBtn" class="btn btn-restart">🔄 ULANG GAME</button>
+          <button id="restartBtn" class="btn btn-restart">🔄 ULANG</button>
           <button id="kirimSkorBtn" class="btn btn-send" disabled>
             📤 KIRIM SKOR
           </button>
         </div>
       </div>
-
       <div class="leader-panel">
-        <div class="leader-header">
-          <h2>🏅 PAPAN BUZZER</h2>
-          <button id="kategoriInfoBtn" class="kategori-btn">
-            📊 Tentang Kategori
-          </button>
+        <h2>🏅 PAPAN SKOR</h2>
+        <div id="leaderArea">
+          <div style="text-align: center; padding: 20px">Menarik data...</div>
         </div>
-        <div id="leaderArea"><div class="loading">Menarik data...</div></div>
-        <div style="text-align: center; margin-top: 12px">
-          <button id="refreshLeaderBtn" class="btn btn-refresh">
-            🔄 REFRESH
-          </button>
-        </div>
-        <div class="sub" style="margin-top: 10px">
-          ✨ Kirim skor setelah 20 soal ✨
-        </div>
+        <button
+          id="refreshLeaderBtn"
+          class="btn"
+          style="width: 100%; margin-top: 10px; background: #eef3fc">
+          🔄 REFRESH
+        </button>
       </div>
     </div>
 
-    <!-- MODAL POPUP PENJELASAN BUZZER -->
+    <!-- Modal Penjelasan Buzzer -->
     <div id="buzzerModal" class="modal-overlay">
       <div class="modal-content">
         <h3>❓ Apa Itu Buzzer?</h3>
-        <p>
-          <strong>Buzzer</strong> dalam konteks politik & media sosial adalah
-          pendukung setia pemerintah atau figur tertentu yang aktif menyuarakan
-          narasi positif, membela kebijakan, dan "menyerang" kritik..
+        <p
+          style="
+            color: #444;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+          ">
+          <strong>Buzzer</strong> adalah individu atau kelompok yang memiliki
+          kemampuan untuk membuat sebuah isu menjadi populer atau
+          diperbincangkan di media sosial.
         </p>
-        <p>
-          🎯 Ciri-ciri buzzer:<br />
-          📢 Selalu membela kebijakan pemerintah apa pun<br />
-          🔥 Aktif berkomentar di media sosial<br />
-          💬 Sering menyebut lawan politik dengan julukan negatif<br />
-          🤖 Kadang terorganisir dan dibayar (tapi gak semua)
+        <p style="font-weight: bold; margin-bottom: 5px; font-size: 0.9rem">
+          Ciri-ciri Utama:
         </p>
-        <p>
-          <strong
-            >⚠️ Tes ini cuma buat seru-seruan, bukan buat nyebut orang asli
-            buzzer ya! 😁</strong
-          >
+        <ul>
+          <li>Memiliki jaringan akun yang luas (bisa asli atau bot).</li>
+          <li>
+            Menyebarkan pesan yang seragam secara masif dalam waktu singkat.
+          </li>
+          <li>
+            Bertujuan membentuk opini publik atau menjatuhkan lawan bicara.
+          </li>
+          <li>Sering menggunakan tagar (hashtag) untuk menaikkan tren.</li>
+        </ul>
+        <p style="font-weight: bold; margin-bottom: 5px; font-size: 0.9rem">
+          Contoh Aksi:
         </p>
-        <button class="close-modal" id="closeModalBtn">Oke, Paham!</button>
+        <p style="font-size: 0.85rem; color: #555; margin-bottom: 15px">
+          Membela mati-matian kebijakan tertentu meskipun menuai kontroversi,
+          atau melakukan "serangan fajar" digital terhadap kritik netizen.
+        </p>
+        <hr style="margin-bottom: 15px; opacity: 0.2" />
+        <p
+          style="
+            color: #bc4e2c;
+            font-style: italic;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-bottom: 15px;
+          ">
+          ⚠️ Disclaimer: Tes ini dibuat hanya untuk tujuan hiburan dan sindiran
+          sosial (seru-seruan). Skor Anda tidak mendefinisikan kepribadian asli
+          Anda di dunia nyata!
+        </p>
+        <button
+          class="btn btn-next"
+          style="width: 100%"
+          onclick="closeModal('buzzerModal')">
+          Oke, Paham!
+        </button>
       </div>
     </div>
 
-    <!-- MODAL POPUP PENJELASAN KATEGORI NILAI -->
+    <!-- Modal Kategori Skor -->
     <div id="kategoriModal" class="modal-overlay">
       <div class="modal-content">
-        <h3>📊 Kategori Skor Buzzer</h3>
-        <table class="kategori-table">
-          <tr>
-            <td><strong>Skor 0 - 20</strong></td>
-            <td>
-              🚫 ANTI PEMERINTAH / OPOSISI→ Masih waras, belum jadi buzzer.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Skor 30 - 50</strong></td>
-            <td>🌱 BUZZER PEMULA → Mulai terpengaruh, masih aman.</td>
-          </tr>
-          <tr>
-            <td><strong>Skor 60 - 70</strong></td>
-            <td>⚡ BUZZER MENENGAH → Lumayan loyal, hati-hati!</td>
-          </tr>
-          <tr>
-            <td><strong>Skor 80 - 100</strong></td>
-            <td>🏆 BUZZER FIX 🔥 → Siap bela mati-matian, wajar digaji.</td>
-          </tr>
-        </table>
-        <p><strong>⚠️ Tes ini cuma buat seru-seruan ya! 😁</strong></p>
-        <button class="close-modal" id="closeKategoriModalBtn">
-          Oke, Paham!
+        <h3>📊 Rincian Kategori Skor</h3>
+        <div class="cat-item">
+          <span>0 - 10</span> <span>Belum Buzzer 👶</span>
+        </div>
+        <div class="cat-item">
+          <span>10 - 40</span> <span>Buzzer Pemula 🌱</span>
+        </div>
+        <div class="cat-item">
+          <span>40 - 60</span> <span>Buzzer Menengah ⚡</span>
+        </div>
+        <div class="cat-item">
+          <span>60 - 80</span> <span>Buzzer Senior 🎖️</span>
+        </div>
+        <div class="cat-item">
+          <span>80 - 100</span> <span>Buzzer Elite 🔥</span>
+        </div>
+        <p
+          style="
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #666;
+            text-align: center;
+          ">
+          Semakin tinggi skor, semakin kuat insting pembelaan Anda!
+        </p>
+        <button
+          class="btn btn-next"
+          style="width: 100%; margin-top: 15px"
+          onclick="closeModal('kategoriModal')">
+          Tutup
         </button>
       </div>
     </div>
@@ -670,302 +512,233 @@
         'https://script.google.com/macros/s/AKfycbxCesuzVjmNEvD_hUf5yur2gzHwrXXA6x4K-we89ckZsamHKYZHksH3jiTI2ARQB6WO/exec';
 
       const questionsRaw = [
-        // ==================== 10 SOAL BIASA (BUZZER MODE ON) ====================
         {
-          q: 'Pemerintah menaikkan harga BBM, sikap paling tepat sebagai buzzer?',
+          q: 'Pemerintah menaikkan harga BBM, sikap kamu sebagai buzzer?',
           opt: [
-            'Tetap mendukung kebijakan pemerintah demi kepentingan nasional',
-            'Mengkritik kebijakan karena memberatkan rakyat kecil',
-            'Memilih diam tidak berkomentar',
-            'Membagikan informasi keliru tentang kenaikan BBM',
-          ],
-          answer: 0,
-          buzz: 'BUZZER SEJATI +5',
-        },
-        {
-          q: 'Jalan di daerah tertinggal masih banyak rusak. Komentar Anda sebagai buzzer?',
-          opt: [
-            'Pemerintah memiliki rencana jangka panjang yang matang',
-            'Ini bukti nyata kegagalan pembangunan',
-            'Lebih baik fokus ke kota besar dulu',
-            'Tidak perlu dibangun',
-          ],
-          answer: 0,
-          buzz: 'LOYALITAS TINGGI +5',
-        },
-        {
-          q: 'Pejabat korupsi tapi masih menjabat. Sikap ideal buzzer?',
-          opt: [
-            'Menunggu proses hukum dan hormati praduga tak bersalah',
-            'Langsung tuntut mundur',
-            'Sebarkan meme dan gosip',
-            'Korupsi hal biasa',
-          ],
-          answer: 0,
-          buzz: 'SABAR & SETIA +5',
-        },
-        {
-          q: 'Program IKN menuai kritik soal anggaran. Komentar kamu?',
-          opt: [
-            'Proyek strategis jangka panjang demi pemerataan',
-            'Anggaran terlalu besar, lebih baik untuk rakyat miskin',
-            'Proyek gagal dari awal',
-            'Tidak perlu menanggapi kritik',
-          ],
-          answer: 0,
-          buzz: 'PRO PEMERINTAH +5',
-        },
-        {
-          q: 'Efisiensi anggaran di kementerian. Sikap tepat buzzer?',
-          opt: [
-            'Langkah tepat demi kemajuan negara',
-            'Pemerintah tidak becus',
-            'Efisiensi hambat program rakyat',
-            'Protes karena tidak diajak',
-          ],
-          answer: 0,
-          buzz: 'BUZZER HEBAT +5',
-        },
-        {
-          q: 'Angka kemiskinan masih tinggi. Komentar ideal buzzer?',
-          opt: [
-            'Program pengentasan berjalan bertahap',
-            'Pemerintah tidak serius',
-            'Data BPS tidak penting',
-            'Kemiskinan tidak penting',
-          ],
-          answer: 0,
-          buzz: 'TETAP SEMANGAT +5',
-        },
-        {
-          q: 'Investasi besar dari perusahaan asing. Tanggapan kamu?',
-          opt: [
-            'Bukti kepercayaan dunia pada pemerintahan sekarang',
-            'Menguras sumber daya lokal',
-            'Tidak jelas manfaatnya',
-            'Tolak karena tidak pro dalam negeri',
-          ],
-          answer: 0,
-          buzz: 'EKONOMI MENDING +5',
-        },
-        {
-          q: 'Menteri lamban respons krisis pangan. Komentar buzzer?',
-          opt: [
-            'Presiden sudah kasih arahan, kita tunggu',
-            'Menteri harus diganti',
-            'Tidak perlu menteri',
-            'Krisis pangan hoax',
-          ],
-          answer: 0,
-          buzz: 'BUZZER LANGKA +5',
-        },
-        {
-          q: 'APBN 2025 fokus infrastruktur & pertahanan. Reaksi Anda?',
-          opt: [
-            'Tepat sasaran untuk kemajuan Indonesia',
-            'Harusnya untuk kesehatan rakyat',
-            'Anggaran terlalu besar',
-            'Tidak usah bangun apapun',
-          ],
-          answer: 0,
-          buzz: 'SETIA +5',
-        },
-        {
-          q: 'Presiden instruksikan digitalisasi birokrasi. Komentar buzzer sejati?',
-          opt: [
-            'Langkah maju menuju Indonesia Emas!',
-            'Efisiensi hanya di atas kertas',
-            'Memberatkan PNS kecil',
-            'Rakyat butuh sembako murah',
-          ],
-          answer: 0,
-          buzz: 'SIAP BELA +5',
-        },
-
-        // ==================== 10 SOAL MENJERAK ====================
-        {
-          q: 'Ketika ada warga miskin kesulitan mendapat bantuan sosial, apa yang akan kamu lakukan sebagai buzzer?',
-          opt: [
-            'Membantu mendata dan menguruskan bantuan yang layak',
-            'Membiarkannya karena itu urusan RT/RW',
-            'Menyalahkan pemerintah karena lambat',
-            'Menganggapnya tidak penting',
-          ],
-          answer: 0,
-          buzz: 'PEDULI RAKYAT +5',
-        },
-        {
-          q: 'Seorang temanmu menyebarkan hoax di media sosial tentang pemerintah. Sikapmu?',
-          opt: [
-            'Meluruskan dengan data dan fakta yang benar',
-            'Diam saja biar viral',
-            'Ikut menyebarkan karena teman',
-            'Laporkan ke polisi tanpa klarifikasi',
-          ],
-          answer: 0,
-          buzz: 'MELEK INFORMASI +5',
-        },
-        {
-          q: 'Saat melihat komentar negatif di sosial media tentang presiden, yang kamu lakukan?',
-          opt: [
-            'Mengkritik balik dengan argumen rasional dan santun',
-            'Langsung blokir akunnya',
-            'Balas dengan kata kasar',
-            'Laporkan tanpa alasan jelas',
-          ],
-          answer: 0,
-          buzz: 'BIJAK +5',
-        },
-        {
-          q: 'Polisi melakukan pelanggaran HAM dalam demo. Sikap kamu sebagai buzzer?',
-          opt: [
-            'Mengkritik polisi sekaligus mengingatkan pemerintah untuk bertindak',
-            'Membela polisi karena aparat negara',
-            'Diam saja karena takut',
-            'Membuat meme untuk viral',
-          ],
-          answer: 0,
-          buzz: 'KRITIS & BERANI +5',
-        },
-        {
-          q: 'Sebuah kebijakan jelas merugikan rakyat kecil. Sebagai buzzer, kamu akan...',
-          opt: [
-            'Menyuarakan kritik dan memberi solusi',
-            'Tetap mendukung karena partai',
+            'Mendukung karena itu demi APBN yang sehat',
+            'Mengkritik karena memberatkan rakyat',
             'Pura-pura tidak tahu',
-            'Pindah haluan',
+            'Ikut demo turunkan harga',
           ],
           answer: 0,
-          buzz: 'SUARA RAKYAT +5',
+          buzz: 'LOYALITAS TERUJI',
         },
         {
-          q: 'Menteri ketahuan menerima suap, tapi partainya tetap mendukung. Kamu?',
+          q: 'Ada pembangunan jalan tol baru, komentar kamu di medsos?',
           opt: [
-            'Tetap mendukung partai karena ideologi',
-            'Mendesak partai untuk tidak melindungi koruptor',
-            'Mencari berita negatif lawan untuk alihkan isu',
-            'Acuh tak acuh',
-          ],
-          answer: 1,
-          buzz: 'ANTI KORUPSI +5',
-        },
-        {
-          q: 'Pemerintah melakukan pembredelan media yang kritis. Tugas kamu sebagai buzzer?',
-          opt: [
-            'Tetap mendukung kebijakan pemerintah demi stabilitas',
-            'Mengkritik kebijakan tersebut karena ancaman demokrasi',
-            'Ikut membredel media lain',
-            'Tidak peduli',
-          ],
-          answer: 1,
-          buzz: 'PRO DEMOKRASI +5',
-        },
-        {
-          q: 'Anggaran militer dinaikkan drastis sementara anggaran kesehatan dipotong. Pendapatmu?',
-          opt: [
-            'Tetap mendukung karena keamanan lebih penting',
-            'Meminta pemerintah untuk meninjau ulang karena kesehatan juga penting',
-            'Diam saja tidak ikut campur',
-            'Merasa keberatan tapi takut',
-          ],
-          answer: 1,
-          buzz: 'SEIMBANG +5',
-        },
-        {
-          q: 'Tokoh agama mengkritik keras kebijakan pemerintah. Sikap bijak sebagai buzzer?',
-          opt: [
-            'Menghormati kritik dan memberi ruang diskusi',
-            'Menyerang tokoh agama tersebut habis-habisan',
-            'Mendukung pemerintah tanpa mempertimbangkan kritik',
-            'Menganggap kritik adalah serangan asing',
+            'Alhamdulillah, bukti nyata kerja pemerintah!',
+            'Ah paling buat korupsi saja',
+            'Halah, jalan desa masih rusak',
+            'Biasa saja tugas negara',
           ],
           answer: 0,
-          buzz: 'TOLERANSI +5',
+          buzz: 'OPTIMIS TINGGI',
         },
         {
-          q: 'Anggota DPR ketahuan main judi online. Anda akan...',
+          q: 'Melihat kritik pedas terhadap Presiden, apa responmu?',
           opt: [
-            'Membela partai karena masih anggota',
-            'Mendesak penegak hukum untuk memproses sesuai aturan',
-            'Diam saja biar tidak jadi masalah',
-            'Membela karena masih teman partai',
+            'Langsung counter dengan data keberhasilan',
+            'Ikut menghujat presiden',
+            'Diam saja tidak mau ikut campur',
+            'Hapus akun karena takut',
           ],
-          answer: 1,
-          buzz: 'TAAT HUKUM +5',
+          answer: 0,
+          buzz: 'BENTENG PERTAHANAN',
+        },
+        {
+          q: 'Program IKN dikritik soal anggaran besar, kamu akan bilang?',
+          opt: [
+            'Ini investasi masa depan Indonesia Emas',
+            'Buang-buang uang rakyat saja',
+            'Lebih baik buat beli beras',
+            'Proyek mercusuar gagal',
+          ],
+          answer: 0,
+          buzz: 'VISIONER',
+        },
+        {
+          q: 'Banyak tenaga kerja asing masuk, tanggapanmu sebagai pendukung?',
+          opt: [
+            'Itu ahli yang bantu transfer teknologi',
+            'Usir mereka sekarang juga',
+            'Mereka ambil jatah kerja kita',
+            'Pemerintah jual negara',
+          ],
+          answer: 0,
+          buzz: 'PEMBELA KEBIJAKAN',
+        },
+        {
+          q: 'Angka kemiskinan turun sedikit, reaksi kamu?',
+          opt: [
+            'Luar biasa, prestasi besar pemerintah!',
+            'Itu cuma manipulasi data',
+            'Rakyat masih susah kok',
+            'Gak kerasa di lapangan',
+          ],
+          answer: 0,
+          buzz: 'APRESIASI PENUH',
+        },
+        {
+          q: 'Pejabat ketahuan korupsi, sikap buzzer yang "setia"?',
+          opt: [
+            'Itu oknum, jangan salahkan pemerintahnya',
+            'Semua di sana pasti koruptor',
+            'Bubarkan partainya!',
+            'Pantas saja rakyat susah',
+          ],
+          answer: 0,
+          buzz: 'PEMBERSIH NAMA',
+        },
+        {
+          q: 'Utang negara bertambah untuk infrastruktur, pembelaanmu?',
+          opt: [
+            'Utang produktif untuk anak cucu nanti',
+            'Negara mau bangkrut ini!',
+            'Beban yang mengerikan',
+            'Jangan berutang terus',
+          ],
+          answer: 0,
+          buzz: 'AHLI EKONOMI',
+        },
+        {
+          q: 'Bantuan Sosial (Bansos) dibagikan, apa katamu?',
+          opt: [
+            'Bukti kepedulian nyata pemerintah',
+            'Itu mah uang pajak kita sendiri',
+            'Cuma buat kampanye saja',
+            'Pencitraan menjelang pemilu',
+          ],
+          answer: 0,
+          buzz: 'PENYEBAR KEBAIKAN',
+        },
+        {
+          q: 'Media asing memuji Indonesia, tugasmu adalah?',
+          opt: [
+            'Viralkan beritanya di semua grup WA',
+            'Halah berita bayaran itu',
+            'Jangan percaya media asing',
+            'Biasa saja tidak spesial',
+          ],
+          answer: 0,
+          buzz: 'DIPLOMAT MEDSOS',
+        },
+        {
+          q: 'Diberi tugas menaikkan hastag pemerintah, kamu akan?',
+          opt: [
+            'Siap laksanakan demi negara!',
+            'Ogah kalau gak ada uangnya',
+            'Cuma bikin spam saja',
+            'Main medsos buat hiburan saja',
+          ],
+          answer: 0,
+          buzz: 'PASUKAN SIBER',
+        },
+        {
+          q: 'Ada tokoh oposisi bicara kekurangan negara, reaksimu?',
+          opt: [
+            'Cari kesalahan masa lalu tokoh tersebut',
+            'Dengarkan sarannya dengan baik',
+            'Setuju dengan pendapatnya',
+            'Diam dan menyimak',
+          ],
+          answer: 0,
+          buzz: 'PENYERANG BALIK',
+        },
+        {
+          q: 'Indeks demokrasi disebut menurun, jawabanmu?',
+          opt: [
+            'Yang penting ekonomi stabil dan aman',
+            'Ini sudah gawat darurat',
+            'Kita menuju kediktatoran',
+            'Gak paham politik',
+          ],
+          answer: 0,
+          buzz: 'REALISTIS',
+        },
+        {
+          q: 'Pemerintah bagi-bagi sertifikat tanah, komentarmu?',
+          opt: [
+            'Baru kali ini ada Presiden sepeduli ini',
+            'Itu kan memang sudah hak warga',
+            'Dulu juga ada tapi gak ramai',
+            'Cuma cari muka',
+          ],
+          answer: 0,
+          buzz: 'PENCINTA RAKYAT',
+        },
+        {
+          q: 'Harga sembako naik di pasar, pembelaanmu?',
+          opt: [
+            'Ini dampak global, negara lain lebih parah',
+            'Pemerintah gagal total urus perut',
+            'Menteri perdagangannya tidur',
+            'Rakyat menjerit pak!',
+          ],
+          answer: 0,
+          buzz: 'GLOBAL MINDSET',
+        },
+        {
+          q: 'Melihat buzzer lain diserang netizen, kamu akan?',
+          opt: [
+            'Bantu serang balik netizen tersebut',
+            'Tontonin saja sambil ketawa',
+            'Ikut bully teman sendiri',
+            'Pura-pura gak kenal',
+          ],
+          answer: 0,
+          buzz: 'SOLIDARITAS',
+        },
+        {
+          q: 'Aplikasi pemerintah sering error, kamu bilang?',
+          opt: [
+            'Sedang pengembangan, harap maklum',
+            'Korupsi aplikasi ini mah!',
+            'Buang-buang anggaran',
+            'Mending pakai jasa swasta',
+          ],
+          answer: 0,
+          buzz: 'PENYABAR',
+        },
+        {
+          q: 'Presiden naik motor tinjau proyek, reaksimu?',
+          opt: [
+            'Keren banget, pemimpin merakyat!',
+            'Pencitraan tingkat tinggi',
+            'Gak ada kerjaan lain apa?',
+            'Hati-hati jatuh pak',
+          ],
+          answer: 0,
+          buzz: 'FANS BERAT',
+        },
+        {
+          q: 'Ada demo buruh di jalanan, pendapatmu?',
+          opt: [
+            'Mengganggu ketertiban dan macet',
+            'Dukung perjuangan buruh',
+            'Buruh harusnya bersyukur',
+            'Tangkap provokatornya',
+          ],
+          answer: 0,
+          buzz: 'PRO KETERTIBAN',
+        },
+        {
+          q: 'Indonesia jadi tuan rumah acara dunia, kamu akan?',
+          opt: [
+            'Pamerkan kehebatan Indonesia di medsos',
+            'Boros-borosin uang saja',
+            'Gak ada manfaat buat rakyat',
+            'Biasa aja tuh',
+          ],
+          answer: 0,
+          buzz: 'NASIONALIS',
         },
       ];
 
-      function getKategori(score) {
-        if (score >= 0 && score <= 20)
-          return {
-            nama: 'ANTI PEMERINTAH / OPOSISI',
-            icon: '🚫',
-            warna: '#c04e3e',
-          };
-        if (score >= 25 && score <= 50)
-          return { nama: 'BUZZER PEMULA', icon: '🌱', warna: '#da8e2c' };
-        if (score >= 55 && score <= 75)
-          return { nama: 'BUZZER MENENGAH', icon: '⚡', warna: '#2c7da0' };
-        if (score >= 80 && score <= 100)
-          return {
-            nama: 'FIX BUZZER PROFESIONAL🔥',
-            icon: '🏆',
-            warna: '#2f7d5c',
-          };
-        return { nama: 'Belum selesai', icon: '🔷', warna: '#ffaa55' };
-      }
-
-      function generateRandomName() {
-        const depan = [
-          'BUZZER',
-          'GENERAL',
-          'BOCIL',
-          'SATRIA',
-          'RAJA',
-          'GARUDA',
-          'MERAH',
-          'NUSANTARA',
-          'KUAT',
-          'SANTRI',
-          'PEMBERANI',
-          'WIJAYA',
-        ];
-        const belakang = [
-          'SEJATI',
-          'KAMPANYE',
-          'SUPRA',
-          'CECEP',
-          'BUDI',
-          'JOKO',
-          'POLINDRA',
-          'PERKASA',
-          'TAMA',
-          'GEMILANG',
-        ];
-        return `${depan[Math.floor(Math.random() * depan.length)]} ${belakang[Math.floor(Math.random() * belakang.length)]}`;
-      }
-
-      function shuffleOptions(q) {
-        let opts = q.opt.map((opt, idx) => ({ opt, idx }));
-        for (let i = opts.length - 1; i > 0; i--) {
-          let j = Math.floor(Math.random() * (i + 1));
-          [opts[i], opts[j]] = [opts[j], opts[i]];
-        }
-        return {
-          question: q.q,
-          opt: opts.map((o) => o.opt),
-          answer: opts.findIndex((o) => o.idx === q.answer),
-          buzz: q.buzz,
-        };
-      }
-
-      let questions = [],
-        currentIndex = 0,
-        userScore = 0,
-        answered = false,
-        totalSoal = 20,
-        gameCompleted = false,
-        isSending = false;
+      let questions = [];
+      let currentIndex = 0;
+      let userScore = 0;
+      let answered = false;
+      let gameCompleted = false;
 
       const questionEl = document.getElementById('question');
       const optionsEl = document.getElementById('options');
@@ -974,276 +747,232 @@
       const namaInput = document.getElementById('namaUser');
       const indikatorEl = document.getElementById('indikatorSoal');
       const kategoriEl = document.getElementById('kategoriDisplay');
-      const randomBtn = document.getElementById('randomNamaBtn');
       const nextBtn = document.getElementById('nextBtn');
-      const restartBtn = document.getElementById('restartBtn');
       const kirimBtn = document.getElementById('kirimSkorBtn');
-      const refreshLeaderBtn = document.getElementById('refreshLeaderBtn');
-      const leaderArea = document.getElementById('leaderArea');
 
-      // Modal elements
-      const infoBtn = document.getElementById('infoBuzzerBtn');
-      const modalBuzzer = document.getElementById('buzzerModal');
-      const closeModalBtn = document.getElementById('closeModalBtn');
+      const randomNames = [
+        'Buzzer Sejati',
+        'Satria NKRI',
+        'Ratu Medsos',
+        'Sultan Trending',
+        'Agus Cyber',
+        'Budi Loyal',
+        'Mega Buzzer',
+        'Joko Pro',
+        'Putri Narasi',
+        'Prabowo Setya',
+        'Ganjar Fans',
+        'Anies Banget',
+        'Sandi Satu',
+        'Ridwan Kamil',
+        'Khofifah',
+        'Mahfud Md',
+        'Susi Pudjiastuti',
+        'Andika Perkasa',
+        'Moeldoko',
+        'Luhut Panjaitan',
+      ];
 
-      const kategoriInfoBtn = document.getElementById('kategoriInfoBtn');
-      const modalKategori = document.getElementById('kategoriModal');
-      const closeKategoriModalBtn = document.getElementById(
-        'closeKategoriModalBtn',
-      );
-
-      infoBtn.onclick = () => (modalBuzzer.style.display = 'flex');
-      closeModalBtn.onclick = () => (modalBuzzer.style.display = 'none');
-
-      kategoriInfoBtn.onclick = () => (modalKategori.style.display = 'flex');
-      closeKategoriModalBtn.onclick = () =>
-        (modalKategori.style.display = 'none');
-
-      window.onclick = (e) => {
-        if (e.target === modalBuzzer) modalBuzzer.style.display = 'none';
-        if (e.target === modalKategori) modalKategori.style.display = 'none';
-      };
-
-      randomBtn.onclick = () => (namaInput.value = generateRandomName());
-
-      function updateKirimButton() {
-        if (gameCompleted) {
-          kirimBtn.disabled = false;
-          kirimBtn.classList.add('btn-send-ready');
-          kirimBtn.innerHTML = '✅ KIRIM SKOR (Siap)';
-        } else {
-          kirimBtn.disabled = true;
-          kirimBtn.classList.remove('btn-send-ready');
-          kirimBtn.innerHTML = '📤 KIRIM SKOR';
-        }
+      function randomName() {
+        return randomNames[Math.floor(Math.random() * randomNames.length)];
       }
 
-      function updateKategori() {
-        if (!gameCompleted && currentIndex < totalSoal - 1) {
-          kategoriEl.innerHTML = `🔷 Belum selesai main (${currentIndex + 1}/${totalSoal})`;
-          return;
-        }
-        const kat = getKategori(userScore);
-        kategoriEl.innerHTML = `${kat.icon} ${kat.nama}`;
-        kategoriEl.style.color = kat.warna;
-        if (gameCompleted) updateKirimButton();
+      document.getElementById('randomNamaBtn').onclick = () => {
+        namaInput.value = randomName();
+      };
+
+      function closeModal(id) {
+        document.getElementById(id).style.display = 'none';
+      }
+
+      function openModal(id) {
+        document.getElementById(id).style.display = 'flex';
+      }
+
+      function initGame() {
+        questions = questionsRaw.map((q) => {
+          let opts = q.opt.map((text, i) => ({
+            text,
+            isCorrect: i === q.answer,
+          }));
+          opts.sort(() => Math.random() - 0.5);
+          return { ...q, shuffledOpts: opts };
+        });
+        loadQuestion();
+        refreshLeaderboard();
       }
 
       function loadQuestion() {
+        if (currentIndex >= questions.length) return;
         answered = false;
         feedbackEl.innerHTML = '';
         feedbackEl.className = 'feedback';
+
         const q = questions[currentIndex];
-        questionEl.innerText = q.question;
-        indikatorEl.innerText = `📌 Soal ke-${currentIndex + 1} dari ${totalSoal}`;
+        questionEl.innerText = q.q;
+        indikatorEl.innerText = `📌 Soal ke-${currentIndex + 1} dari 20`;
+
         optionsEl.innerHTML = '';
-        q.opt.forEach((opt, idx) => {
+        q.shuffledOpts.forEach((opt) => {
           const btn = document.createElement('button');
           btn.className = 'option-btn';
-          btn.innerText = opt;
-          btn.onclick = () => answerQuestion(idx);
+          btn.innerText = opt.text;
+          btn.onclick = () => checkAnswer(opt, btn);
           optionsEl.appendChild(btn);
         });
-        updateKategori();
       }
 
-      function answerQuestion(selected) {
+      function checkAnswer(opt, btn) {
         if (answered || gameCompleted) return;
-        const q = questions[currentIndex];
-        const benar = selected === q.answer;
-        if (benar) {
+        answered = true;
+
+        const allBtns = optionsEl.querySelectorAll('.option-btn');
+        allBtns.forEach((b) => (b.disabled = true));
+
+        const correctAnswerText = questions[currentIndex].shuffledOpts.find(
+          (o) => o.isCorrect,
+        ).text;
+
+        if (opt.isCorrect) {
           userScore += 5;
           scoreSpan.innerText = userScore;
-          feedbackEl.innerHTML = `✅ ${q.buzz}! ✅`;
+          feedbackEl.innerText = `✅ BENAR: ${questions[currentIndex].buzz}!`;
           feedbackEl.className = 'feedback benar';
+          btn.style.borderColor = '#2f7d5c';
+          btn.style.background = '#e6ffed';
         } else {
-          const jawabanBenar = q.opt[q.answer];
-          feedbackEl.innerHTML = `❌ SALAH! Jawaban: "${jawabanBenar}" ❌`;
+          // Menampilkan jawaban yang benar saat salah
+          feedbackEl.innerHTML = `❌ KURANG BUZZER!<br><small>Jawaban Benar: <em>"${correctAnswerText}"</em></small>`;
           feedbackEl.className = 'feedback salah';
+          btn.style.borderColor = '#bc4e2c';
         }
-        answered = true;
-        document
-          .querySelectorAll('.option-btn')
-          .forEach((btn) => (btn.disabled = true));
-        updateKategori();
       }
 
-      function nextSoal() {
-        if (gameCompleted) return;
+      nextBtn.onclick = () => {
         if (!answered) {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Belum dijawab!',
-            text: 'Jawab dulu baru lanjut!',
-            background: '#fff',
-            color: '#1e3c72',
-            confirmButtonColor: '#ffaa55',
-          });
+          Swal.fire('Oops!', 'Pilih jawaban dulu!', 'warning');
           return;
         }
-        if (currentIndex + 1 < totalSoal) {
+
+        if (currentIndex < questions.length - 1) {
           currentIndex++;
           loadQuestion();
         } else {
-          gameCompleted = true;
-          const kat = getKategori(userScore);
-          updateKategori();
-          Swal.fire({
-            icon: 'success',
-            title: '🎉 10 SOAL SELESAI 🎉',
-            html: `<strong>${kat.icon} ${kat.nama}</strong><br>Skor: ${userScore}/${totalSoal * 10}<br><br>✅ Tombol KIRIM SKOR sudah aktif!`,
-            background: '#fff',
-            color: '#1e3c72',
-            confirmButtonColor: '#ffaa55',
-          });
-          feedbackEl.innerHTML = `🏁 SELESAI! SKOR: ${userScore}/${totalSoal * 10} | ${kat.nama} 🏁`;
-          feedbackEl.className = 'feedback benar';
-          nextBtn.disabled = true;
-          nextBtn.style.opacity = '0.6';
-          updateKirimButton();
+          finishGame();
         }
+      };
+
+      function finishGame() {
+        gameCompleted = true;
+        nextBtn.disabled = true;
+        kirimBtn.disabled = false;
+        kirimBtn.classList.add('btn-send-ready');
+
+        let rank = '';
+        if (userScore <= 10) rank = 'Belum Buzzer';
+        else if (userScore <= 40) rank = 'Buzzer Pemula';
+        else if (userScore <= 60) rank = 'Buzzer Menengah';
+        else if (userScore <= 80) rank = 'Buzzer Senior';
+        else rank = 'BUZZER ELITE 🔥';
+
+        kategoriEl.innerHTML = `🏆 HASIL AKHIR: ${rank}`;
+
+        Swal.fire({
+          title: 'Selesai!',
+          html: `Skor kamu: <b>${userScore}</b><br>Kategori: ${rank}`,
+          icon: 'success',
+        });
       }
 
-      function restartGame() {
-        currentIndex = 0;
-        userScore = 0;
-        answered = false;
-        gameCompleted = false;
-        isSending = false;
-        scoreSpan.innerText = userScore;
-        nextBtn.disabled = false;
-        nextBtn.style.opacity = '1';
-        questions = questionsRaw.map((q) => shuffleOptions(q));
-        loadQuestion();
-        feedbackEl.innerHTML = '';
-        updateKategori();
-        updateKirimButton();
-        kirimBtn.classList.remove('btn-send-ready');
+      async function kirimSkor() {
+        const nama = namaInput.value.trim();
+        if (!nama) {
+          Swal.fire(
+            'Nama Kososng',
+            'Isi nama dulu untuk masuk Papan Skor!',
+            'error',
+          );
+          return;
+        }
+
         kirimBtn.disabled = true;
-        kirimBtn.innerHTML = '📤 KIRIM SKOR';
-      }
+        kirimBtn.innerText = 'MENGIRIM...';
 
-      async function kirimSkorKeSheet() {
-        if (isSending) {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Sedang mengirim!',
-            text: 'Tunggu sebentar!',
-            background: '#fff',
-            color: '#1e3c72',
-            confirmButtonColor: '#ffaa55',
-            timer: 1500,
-          });
-          return;
-        }
-        if (!gameCompleted) {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Belum selesai!',
-            text: 'Selesaikan 10 soal dulu!',
-            background: '#fff',
-            color: '#1e3c72',
-            confirmButtonColor: '#ffaa55',
-          });
-          return;
-        }
-        let nama = namaInput.value.trim();
-        if (nama === '') {
-          Swal.fire({
-            icon: 'error',
-            title: 'Nama kosong!',
-            html: 'Isi nama dulu atau klik 🎲 RANDOM',
-            background: '#fff',
-            color: '#bc4e2c',
-            confirmButtonColor: '#ffaa55',
-          });
-          return;
-        }
-
-        isSending = true;
-        kirimBtn.disabled = true;
-        kirimBtn.innerHTML = '📤 MENGIRIM...';
-
-        const kat = getKategori(userScore);
-        const dataPayload = {
-          nama,
+        const payload = {
+          nama: nama,
           skor: userScore,
+          kategori: kategoriEl.innerText,
           tanggal: new Date().toLocaleString('id-ID'),
-          kategori: kat.nama,
         };
-        const formData = new URLSearchParams();
-        formData.append('payload', JSON.stringify(dataPayload));
+
+        const body = new URLSearchParams();
+        body.append('payload', JSON.stringify(payload));
 
         try {
           await fetch(API_URL, {
             method: 'POST',
             mode: 'no-cors',
-            body: formData,
+            body: body,
           });
-          Swal.fire({
-            icon: 'success',
-            title: '✅ BERHASIL',
-            html: `🎉 <strong>${nama}</strong><br>${kat.icon} ${kat.nama}<br>Skor: <strong>${userScore}</strong>`,
-            background: '#fff',
-            color: '#146b3a',
-            confirmButtonColor: '#ffaa55',
-          });
-          refreshLeaderboard();
-          kirimBtn.innerHTML = '✅ SUDAH TERKIRIM';
-        } catch (err) {
-          Swal.fire({
-            icon: 'error',
-            title: 'GAGAL!',
-            text: 'Cek koneksi atau API',
-            background: '#fff',
-            color: '#bc4e2c',
-            confirmButtonColor: '#ffaa55',
-          });
+          Swal.fire('Berhasil!', 'Skormu telah dikirim!', 'success');
+          kirimBtn.innerText = '✅ TERKIRIM';
+          setTimeout(refreshLeaderboard, 2000);
+        } catch (e) {
+          Swal.fire('Gagal', 'Terjadi kesalahan koneksi', 'error');
           kirimBtn.disabled = false;
-          kirimBtn.innerHTML = '✅ KIRIM SKOR (Siap)';
-          isSending = false;
+          kirimBtn.innerText = '📤 KIRIM SKOR';
         }
       }
 
       async function refreshLeaderboard() {
-        leaderArea.innerHTML =
-          '<div class="loading">⏳ Mengambil data...</div>';
+        const area = document.getElementById('leaderArea');
+        // Fitur 1: Loading state
+        area.innerHTML =
+          '<div style="text-align: center; padding: 20px">⏳ Memuat data...</div>';
+
         try {
           const res = await fetch(API_URL);
           const data = await res.json();
-          let list = data
-            .filter((r) => r.nama && r.skor)
-            .map((r) => ({ nama: r.nama, skor: parseInt(r.skor) || 0 }));
-          list.sort((a, b) => b.skor - a.skor);
-          leaderArea.innerHTML =
-            list
-              .slice(0, 10)
-              .map(
-                (item, idx) =>
-                  `<div class="leader-item"><span class="rank">${idx + 1}.</span><span class="leader-name">${escapeHtml(item.nama)}</span><span class="leader-score">${item.skor}</span></div>`,
-              )
-              .join('') || '<div class="loading">Belum ada data</div>';
+          let html = '';
+          data
+            .sort((a, b) => b.skor - a.skor)
+            .slice(0, 10)
+            .forEach((item, i) => {
+              html += `
+                <div class="leader-item">
+                    <span><b>${i + 1}.</b> ${escapeHtml(item.nama)}</span>
+                    <span style="font-weight:bold; color:#a45900">${item.skor}</span>
+                </div>`;
+            });
+          area.innerHTML = html || 'Belum ada skor.';
         } catch (e) {
-          leaderArea.innerHTML = '<div class="loading">Gagal muat</div>';
+          area.innerHTML =
+            '<div style="color: #bc4e2c; text-align:center;">Gagal memuat data.</div>';
         }
       }
 
-      function escapeHtml(str) {
-        return str.replace(
-          /[&<>]/g,
-          (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[m],
-        );
+      function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
       }
 
-      nextBtn.onclick = nextSoal;
-      restartBtn.onclick = restartGame;
-      kirimBtn.onclick = kirimSkorKeSheet;
-      refreshLeaderBtn.onclick = refreshLeaderboard;
+      document.getElementById('infoBuzzerBtn').onclick = () =>
+        openModal('buzzerModal');
+      document.getElementById('infoKategoriBtn').onclick = () =>
+        openModal('kategoriModal');
+      document.getElementById('restartBtn').onclick = () => location.reload();
+      document.getElementById('refreshLeaderBtn').onclick = refreshLeaderboard;
+      kirimBtn.onclick = kirimSkor;
 
-      questions = questionsRaw.map((q) => shuffleOptions(q));
-      loadQuestion();
-      refreshLeaderboard();
-      updateKirimButton();
+      // Close modal on overlay click
+      window.onclick = function (event) {
+        if (event.target.classList.contains('modal-overlay')) {
+          event.target.style.display = 'none';
+        }
+      };
+
+      initGame();
     </script>
   </body>
 </html>
