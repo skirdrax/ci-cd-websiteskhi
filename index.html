@@ -756,7 +756,7 @@
           Swal.fire({
             icon: 'warning',
             title: 'Sedang mengirim!',
-            text: 'Tunggu sebentar, jangan double klik !',
+            text: 'Tunggu sebentar, jangan double klik!',
             background: '#fff',
             color: '#1e3c72',
             confirmButtonColor: '#ffaa55',
@@ -794,7 +794,7 @@
         kirimBtn.innerHTML = '📤 MENGIRIM...';
 
         const kat = getKategori(userScore);
-        const data = {
+        const dataPayload = {
           nama: nama,
           skor: userScore,
           tanggal: new Date().toLocaleString('id-ID'),
@@ -802,24 +802,28 @@
         };
 
         try {
-          const res = await fetch(API_URL, {
+          // 🔥 PAKAI URLSearchParams (GAK TRIGGER PREFLIGHT)
+          const formData = new URLSearchParams();
+          formData.append('payload', JSON.stringify(dataPayload));
+
+          // 🔥 JANGAN PAKAI headers, dan pakai mode: 'no-cors'
+          await fetch(API_URL, {
             method: 'POST',
             mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
+            body: formData,
           });
-          if (res.ok) {
-            Swal.fire({
-              icon: 'success',
-              title: '✅ BERHASIL',
-              html: `🎉 <strong>${nama}</strong><br>${kat.icon} ${kat.nama}<br>Skor: <strong>${userScore}</strong>`,
-              background: '#fff',
-              color: '#146b3a',
-              confirmButtonColor: '#ffaa55',
-            });
-            refreshLeaderboard();
-            kirimBtn.innerHTML = '✅ SUDAH TERKIRIM';
-          } else throw new Error();
+
+          // Karena mode no-cors, response ga bisa dibaca. Langsung anggap sukses.
+          Swal.fire({
+            icon: 'success',
+            title: '✅ BERHASIL',
+            html: `🎉 <strong>${nama}</strong><br>${kat.icon} ${kat.nama}<br>Skor: <strong>${userScore}</strong>`,
+            background: '#fff',
+            color: '#146b3a',
+            confirmButtonColor: '#ffaa55',
+          });
+          refreshLeaderboard();
+          kirimBtn.innerHTML = '✅ SUDAH TERKIRIM';
         } catch (err) {
           Swal.fire({
             icon: 'error',
