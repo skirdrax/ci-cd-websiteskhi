@@ -641,7 +641,9 @@
         <table class="kategori-table">
           <tr>
             <td><strong>Skor 0 - 20</strong></td>
-            <td>🚫 BUKAN BUZZER → Masih waras, belum jadi buzzer.</td>
+            <td>
+              🚫 ANTI PEMERINTAH / OPOSISI→ Masih waras, belum jadi buzzer.
+            </td>
           </tr>
           <tr>
             <td><strong>Skor 30 - 50</strong></td>
@@ -782,7 +784,11 @@
 
       function getKategori(score) {
         if (score >= 0 && score <= 20)
-          return { nama: 'BUKAN BUZZER', icon: '🚫', warna: '#c04e3e' };
+          return {
+            nama: 'ANTI PEMERINTAH / OPOSISI',
+            icon: '🚫',
+            warna: '#c04e3e',
+          };
         if (score >= 30 && score <= 50)
           return { nama: 'BUZZER PEMULA', icon: '🌱', warna: '#da8e2c' };
         if (score >= 60 && score <= 70)
