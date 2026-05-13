@@ -990,7 +990,7 @@
         }
         kirimBtn.disabled = true;
         kirimBtn.innerText = 'MENGIRIM...';
-        const waktuPengerjaan = getElapsedTime();
+        const waktuPengerjaan = getElapsedTime(); // Format: "MM:SS"
         try {
           const payload = {
             nama,
@@ -1002,12 +1002,26 @@
           const body = new URLSearchParams();
           body.append('payload', JSON.stringify(payload));
           await fetch(API_URL, { method: 'POST', mode: 'no-cors', body: body });
+
           document.getElementById('certName').innerText = nama;
           document.getElementById('certRank').innerText =
             kategoriEl.innerText.replace('🏆 HASIL AKHIR: ', '');
           document.getElementById('certSkor').innerHTML = `${userScore} / 100`;
+
+          // ========== FORMAT WAKTU JADI "X menit Y detik" ==========
+          let waktuArr = waktuPengerjaan.split(':');
+          let totalDetik = parseInt(waktuArr[0]) * 60 + parseInt(waktuArr[1]);
+          let menit = Math.floor(totalDetik / 60);
+          let detik = totalDetik % 60;
+          let waktuFormat = '';
+          if (totalDetik < 60) {
+            waktuFormat = `${totalDetik} detik`;
+          } else {
+            waktuFormat = `${menit} menit ${detik} detik`;
+          }
           document.getElementById('certTime').innerHTML =
-            `⏱️ Waktu pengerjaan: ${waktuPengerjaan} menit`;
+            `⏱️ Waktu pengerjaan: ${waktuFormat}`;
+
           document.getElementById('certificateArea').style.display = 'block';
           document
             .getElementById('certificateArea')
