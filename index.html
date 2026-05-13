@@ -5,28 +5,19 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-
-    <!-- Meta tags (SEO) -->
+    <title>Test Buzzer Online | Seberapa Buzzer Kamu?</title>
     <meta
       name="description"
       content="Ikuti tes buzzer online, jawab 20 pertanyaan seru dan lihat skormu! Dapatkan sertifikat dan masuk leaderboard." />
     <meta
       name="keywords"
-      content="test buzzer, tes buzzer online, seberapa buzzer kamu, kuis buzzer, buzzers, buzzer online sakhi, buzzer test sakhi, buzzer tes" />
+      content="test buzzer, tes buzzer online, seberapa buzzer kamu, kuis buzzer, buzzers" />
     <meta name="author" content="Kelompok 1 - D4 Rekayasa Perangkat Lunak" />
-
-    <!-- Favicon (logo di tab browser) -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="shortcut icon" href="/favicon.ico" />
-
-    <!-- Google Site Verification (untuk Search Console) -->
     <meta
       name="google-site-verification"
       content="_wyhJCp9gRnzSrNlsgCS9f9atGFXDJQlrqHoOgK_UdY" />
-    <title>Test Buzzer Online | Seberapa Buzzer Kamu?</title>
-    <meta
-      name="description"
-      content="Ikuti tes buzzer online, jawab 20 pertanyaan seru dan lihat skormu!" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -142,6 +133,16 @@
       .btn-random:hover {
         background: #ffdfb3;
         transform: scale(1.02);
+      }
+      .timer-box {
+        text-align: center;
+        background: #1e3c72;
+        color: white;
+        padding: 8px;
+        border-radius: 60px;
+        margin-bottom: 15px;
+        font-weight: 700;
+        font-size: 1rem;
       }
       .indikator-soal {
         text-align: center;
@@ -277,8 +278,6 @@
           box-shadow: 0 0 0 0 rgba(62, 163, 115, 0);
         }
       }
-
-      /* ========== PAPAN SKOR YANG LEBIH BAGUS ========== */
       .leader-header {
         display: flex;
         justify-content: space-between;
@@ -352,7 +351,6 @@
       .bronze-medal {
         background: linear-gradient(135deg, #cd7f32, #b87333);
       }
-
       .loading-state {
         text-align: center;
         padding: 30px;
@@ -365,7 +363,6 @@
         color: #a0b8d0;
         font-size: 0.75rem;
       }
-
       .cert-watermark {
         font-size: 60px;
         opacity: 0.05;
@@ -490,6 +487,7 @@
           </div>
         </div>
         <div class="sub">✨ +5 POIN SETIAP JAWABAN BUZZER ✨</div>
+        <div class="timer-box" id="timerDisplay">⏱️ Waktu: 00:00</div>
         <div class="nama-wrapper">
           <input
             type="text"
@@ -542,6 +540,9 @@
           </p>
           <div class="cert-rank" id="certRank">BUZZER ELITE</div>
           <p style="margin: 5px 0"><strong id="certSkor">0 / 100</strong></p>
+          <p style="margin: 5px 0">
+            <strong id="certTime">⏱️ Waktu pengerjaan: -- menit</strong>
+          </p>
           <p style="font-size: 0.7rem; color: #888">
             Dikeluarkan secara otomatis oleh Sistem Tes Buzzer Online 2026
           </p>
@@ -625,10 +626,10 @@
         {
           q: 'Pemerintah menaikkan harga BBM, sikap kamu?',
           opt: [
-            'Dukung demi kesehatan fiskal negara', // +5 (Buzzer)
-            'Terima karena itu keputusan terbaik', // Mengecoh (Terlihat pro tapi kurang militan)
-            'Pahami beban berat pemerintah', // Mengecoh (Hanya empati)
-            'Protes karena rakyat makin sulit', // Berlawanan
+            'Dukung demi kesehatan fiskal negara',
+            'Terima karena itu keputusan terbaik',
+            'Pahami beban berat pemerintah',
+            'Protes karena rakyat makin sulit',
           ],
           answer: 0,
           buzz: 'LOYALITAS TERUJI',
@@ -636,10 +637,10 @@
         {
           q: 'Ada pembangunan jalan tol baru, komentar kamu?',
           opt: [
-            'Bukti nyata kerja nyata pemerintah!', // +5
-            'Infrastruktur makin maju dan hebat', // Mengecoh
-            'Tol lancar, ekonomi pasti tumbuh', // Mengecoh (Fokus ke hasil, bukan subjek)
-            'Fokuskan dulu ke perbaikan jalan desa', // Kritis halus
+            'Bukti nyata kerja nyata pemerintah!',
+            'Infrastruktur makin maju dan hebat',
+            'Tol lancar, ekonomi pasti tumbuh',
+            'Fokuskan dulu ke perbaikan jalan desa',
           ],
           answer: 0,
           buzz: 'OPTIMIS TINGGI',
@@ -647,10 +648,10 @@
         {
           q: 'Melihat kritik tajam terhadap Presiden, responmu?',
           opt: [
-            'Lawan dengan data sukses pemerintah', // +5
-            'Abaikan saja karena itu hanya hoax', // Mengecoh
-            'Kritik harusnya santun dan membangun', // Mengecoh (Normatif)
-            'Setuju sebagai kontrol sosial', // Kritis
+            'Lawan dengan data sukses pemerintah',
+            'Abaikan saja karena itu hanya hoax',
+            'Kritik harusnya santun dan membangun',
+            'Setuju sebagai kontrol sosial',
           ],
           answer: 0,
           buzz: 'BENTENG PERTAHANAN',
@@ -658,10 +659,10 @@
         {
           q: 'Program IKN dikritik soal anggaran, kamu bilang?',
           opt: [
-            'Ini warisan untuk Indonesia Emas!', // +5
-            'IKN adalah simbol kemajuan bangsa', // Mengecoh
-            'Relokasi adalah solusi jangka panjang', // Mengecoh (Teknis)
-            'Anggaran lebih baik untuk sembako', // Populis/Kritis
+            'Ini warisan untuk Indonesia Emas!',
+            'IKN adalah simbol kemajuan bangsa',
+            'Relokasi adalah solusi jangka panjang',
+            'Anggaran lebih baik untuk sembako',
           ],
           answer: 0,
           buzz: 'VISIONER',
@@ -669,10 +670,10 @@
         {
           q: 'Banyak tenaga kerja asing (TKA) masuk, tanggapanmu?',
           opt: [
-            'TKA membawa ilmu & teknologi baru', // +5
-            'Itu bagian dari kerjasama investasi', // Mengecoh
-            'Jumlahnya masih sangat terkendali', // Mengecoh (Defensif data)
-            'Utamakan pekerja lokal yang nganggur', // Nasionalis/Kritis
+            'TKA membawa ilmu & teknologi baru',
+            'Itu bagian dari kerjasama investasi',
+            'Jumlahnya masih sangat terkendali',
+            'Utamakan pekerja lokal yang nganggur',
           ],
           answer: 0,
           buzz: 'PEMBELA KEBIJAKAN',
@@ -680,10 +681,10 @@
         {
           q: 'Angka kemiskinan turun sedikit, reaksi kamu?',
           opt: [
-            'Prestasi luar biasa di tengah krisis!', // +5
-            'Grafik menunjukkan tren yang positif', // Mengecoh
-            'Pemerintah sudah di jalur yang benar', // Mengecoh
-            'Turunnya tidak sebanding biaya hidup', // Kritis
+            'Prestasi luar biasa di tengah krisis!',
+            'Grafik menunjukkan tren yang positif',
+            'Pemerintah sudah di jalur yang benar',
+            'Turunnya tidak sebanding biaya hidup',
           ],
           answer: 0,
           buzz: 'APRESIASI PENUH',
@@ -691,10 +692,10 @@
         {
           q: 'Pejabat pendukung pemerintah korupsi, sikap kamu?',
           opt: [
-            'Jangan digoreng, itu masalah individu', // +5
-            'Hargai dulu proses hukum yang ada', // Mengecoh (Asas Praduga)
-            'Semua pihak bisa terkena musibah ini', // Mengecoh (Generalisir)
-            'Hukum berat tanpa pandang bulu', // Idealistis
+            'Jangan digoreng, itu masalah individu',
+            'Hargai dulu proses hukum yang ada',
+            'Semua pihak bisa terkena musibah ini',
+            'Hukum berat tanpa pandang bulu',
           ],
           answer: 0,
           buzz: 'PEMBERSIH NAMA',
@@ -702,10 +703,10 @@
         {
           q: 'Utang negara bertambah, apa pembelaanmu?',
           opt: [
-            'Utang produktif untuk membangun aset', // +5
-            'Rasio utang kita masih batas aman', // Mengecoh (Defensif data)
-            'Negara maju lain utangnya lebih besar', // Mengecoh (Perbandingan)
-            'Beban utang akan menyiksa anak cucu', // Kritis
+            'Utang produktif untuk membangun aset',
+            'Rasio utang kita masih batas aman',
+            'Negara maju lain utangnya lebih besar',
+            'Beban utang akan menyiksa anak cucu',
           ],
           answer: 0,
           buzz: 'AHLI EKONOMI',
@@ -713,10 +714,10 @@
         {
           q: 'Bansos dibagikan di momen politik, apa katamu?',
           opt: [
-            'Wujud nyata Presiden sayang rakyat!', // +5
-            'Bansos memang sudah hak rakyat kecil', // Mengecoh
-            'Sudah sesuai jadwal penyaluran kok', // Mengecoh (Administratif)
-            'Rentan disalahgunakan jadi kampanye', // Kritis
+            'Wujud nyata Presiden sayang rakyat!',
+            'Bansos memang sudah hak rakyat kecil',
+            'Sudah sesuai jadwal penyaluran kok',
+            'Rentan disalahgunakan jadi kampanye',
           ],
           answer: 0,
           buzz: 'PENYEBAR KEBAIKAN',
@@ -724,10 +725,10 @@
         {
           q: 'Media asing memuji kepemimpinan Indonesia?',
           opt: [
-            'Dunia akui kehebatan Presiden kita!', // +5
-            'Indonesia makin disegani secara global', // Mengecoh
-            'Prestasi internasional yang membanggakan', // Mengecoh
-            'Jangan senang dulu sebelum rakyat puas', // Kritis
+            'Dunia akui kehebatan Presiden kita!',
+            'Indonesia makin disegani secara global',
+            'Prestasi internasional yang membanggakan',
+            'Jangan senang dulu sebelum rakyat puas',
           ],
           answer: 0,
           buzz: 'DIPLOMAT MEDSOS',
@@ -735,10 +736,10 @@
         {
           q: 'Ada instruksi menaikkan hashtag pro-pemerintah?',
           opt: [
-            'Gaspol! Siap kawal narasi positif!', // +5
-            'Ikut meramaikan demi persatuan', // Mengecoh
-            'Penting agar medsos tidak diisi hoax', // Mengecoh (Alasan keamanan)
-            'Lebih baik bahas isu yang lebih nyata', // Kritis halus
+            'Gaspol! Siap kawal narasi positif!',
+            'Ikut meramaikan demi persatuan',
+            'Penting agar medsos tidak diisi hoax',
+            'Lebih baik bahas isu yang lebih nyata',
           ],
           answer: 0,
           buzz: 'PASUKAN SIBER',
@@ -746,10 +747,10 @@
         {
           q: 'Tokoh oposisi mengkritik kekurangan negara?',
           opt: [
-            'Cari rekam jejak buruk masa lalunya!', // +5
-            'Oposisi kerjanya cuma bisa mencela', // Mengecoh (Menyerang peran)
-            'Dia bicara tanpa data yang valid', // Mengecoh (Menyerang data)
-            'Kritik itu perlu untuk perbaikan', // Demokratis
+            'Cari rekam jejak buruk masa lalunya!',
+            'Oposisi kerjanya cuma bisa mencela',
+            'Dia bicara tanpa data yang valid',
+            'Kritik itu perlu untuk perbaikan',
           ],
           answer: 0,
           buzz: 'PENYERANG BALIK',
@@ -757,10 +758,10 @@
         {
           q: 'Laporan menyebut demokrasi kita menurun, jawabanmu?',
           opt: [
-            'Stabilitas & ekonomi jauh lebih utama', // +5
-            'Demokrasi kita justru makin dewasa', // Mengecoh
-            'Indikator laporan itu tidak relevan', // Mengecoh
-            'Ini peringatan serius bagi pemerintah', // Kritis
+            'Stabilitas & ekonomi jauh lebih utama',
+            'Demokrasi kita justru makin dewasa',
+            'Indikator laporan itu tidak relevan',
+            'Ini peringatan serius bagi pemerintah',
           ],
           answer: 0,
           buzz: 'REALISTIS',
@@ -768,10 +769,10 @@
         {
           q: 'Acara bagi-bagi sertifikat tanah oleh Presiden?',
           opt: [
-            'Hanya di era ini rakyat dimudahkan!', // +5
-            'Terobosan besar urusan agraria', // Mengecoh
-            'Memang tugas rutin kepala negara', // Mengecoh
-            'Jangan sampai hanya seremonial saja', // Kritis halus
+            'Hanya di era ini rakyat dimudahkan!',
+            'Terobosan besar urusan agraria',
+            'Memang tugas rutin kepala negara',
+            'Jangan sampai hanya seremonial saja',
           ],
           answer: 0,
           buzz: 'PENCINTA RAKYAT',
@@ -779,10 +780,10 @@
         {
           q: 'Harga kebutuhan pokok mulai naik, pembelaanmu?',
           opt: [
-            'Global lagi sulit, kita masih mending', // +5
-            'Pemerintah segera gelar pasar murah', // Mengecoh (Solusi)
-            'Kenaikan ini masih batas wajar kok', // Mengecoh
-            'Daya beli rakyat makin tercekik', // Kritis
+            'Global lagi sulit, kita masih mending',
+            'Pemerintah segera gelar pasar murah',
+            'Kenaikan ini masih batas wajar kok',
+            'Daya beli rakyat makin tercekik',
           ],
           answer: 0,
           buzz: 'GLOBAL MINDSET',
@@ -790,10 +791,10 @@
         {
           q: 'Melihat rekan buzzer diserang oleh netizen?',
           opt: [
-            'Siap tempur! Bantu serang balik!', // +5
-            'Laporkan massal akun penyernagnya', // Mengecoh
-            'Tetap tenang dan fokus sebar narasi', // Mengecoh
-            'Biarkan saja, itu risiko bermedsos', // Netral
+            'Siap tempur! Bantu serang balik!',
+            'Laporkan massal akun penyerangnya',
+            'Tetap tenang dan fokus sebar narasi',
+            'Biarkan saja, itu risiko bermedsos',
           ],
           answer: 0,
           buzz: 'SOLIDARITAS',
@@ -801,10 +802,10 @@
         {
           q: 'Sistem aplikasi layanan publik sedang error?',
           opt: [
-            'Wajar, traffic lagi sangat tinggi', // +5
-            'Tim IT sedang kerja keras perbaikan', // Mengecoh
-            'Lagi maintenance untuk fitur baru', // Mengecoh
-            'Anggaran besar tapi kualitas buruk', // Kritis
+            'Wajar, traffic lagi sangat tinggi',
+            'Tim IT sedang kerja keras perbaikan',
+            'Lagi maintenance untuk fitur baru',
+            'Anggaran besar tapi kualitas buruk',
           ],
           answer: 0,
           buzz: 'PENYABAR',
@@ -812,10 +813,10 @@
         {
           q: 'Foto Presiden sedang bekerja sampai larut malam?',
           opt: [
-            'Pemimpin yang tulus berkorban waktu', // +5
-            'Semoga beliau selalu diberi kesehatan', // Mengecoh (Doa)
-            'Bekerja keras demi masa depan bangsa', // Mengecoh
-            'Cukup tunjukkan hasil nyata saja', // Kritis halus
+            'Pemimpin yang tulus berkorban waktu',
+            'Semoga beliau selalu diberi kesehatan',
+            'Bekerja keras demi masa depan bangsa',
+            'Cukup tunjukkan hasil nyata saja',
           ],
           answer: 0,
           buzz: 'FANS BERAT',
@@ -823,10 +824,10 @@
         {
           q: 'Muncul gerakan demo buruh/mahasiswa, pendapatmu?',
           opt: [
-            'Awas disusupi provokator luar!', // +5
-            'Mengganggu aktivitas warga di jalan', // Mengecoh
-            'Harusnya sampaikan aspirasi via web', // Mengecoh
-            'Suara rakyat wajib didengarkan', // Pro-demo
+            'Awas disusupi provokator luar!',
+            'Mengganggu aktivitas warga di jalan',
+            'Harusnya sampaikan aspirasi via web',
+            'Suara rakyat wajib didengarkan',
           ],
           answer: 0,
           buzz: 'PRO KETERTIBAN',
@@ -834,10 +835,10 @@
         {
           q: 'Indonesia jadi tuan rumah event internasional?',
           opt: [
-            'Tunjukkan kita bangsa yang berkelas!', // +5
-            'Momentum emas bangkitkan pariwisata', // Mengecoh
-            'Bukti kepemimpinan kita diakui dunia', // Mengecoh
-            'Pikirkan dampak ekonomi buat rakyat', // Kritis pragmatis
+            'Tunjukkan kita bangsa yang berkelas!',
+            'Momentum emas bangkitkan pariwisata',
+            'Bukti kepemimpinan kita diakui dunia',
+            'Pikirkan dampak ekonomi buat rakyat',
           ],
           answer: 0,
           buzz: 'NASIONALIS',
@@ -849,6 +850,8 @@
         userScore = 0,
         answered = false,
         gameCompleted = false;
+      let startTime = null,
+        timerInterval = null;
 
       const questionEl = document.getElementById('question');
       const optionsEl = document.getElementById('options');
@@ -859,6 +862,27 @@
       const kategoriEl = document.getElementById('kategoriDisplay');
       const nextBtn = document.getElementById('nextBtn');
       const kirimBtn = document.getElementById('kirimSkorBtn');
+      const timerDisplay = document.getElementById('timerDisplay');
+
+      function startTimer() {
+        startTime = Date.now();
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+          if (gameCompleted) return;
+          const elapsed = Math.floor((Date.now() - startTime) / 1000);
+          const minutes = Math.floor(elapsed / 60);
+          const seconds = elapsed % 60;
+          timerDisplay.innerText = `⏱️ Waktu: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }, 1000);
+      }
+
+      function getElapsedTime() {
+        if (!startTime) return '00:00';
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const minutes = Math.floor(elapsed / 60);
+        const seconds = elapsed % 60;
+        return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
 
       function initGame() {
         questions = questionsRaw.map((q) => {
@@ -869,6 +893,19 @@
           opts.sort(() => Math.random() - 0.5);
           return { ...q, shuffledOpts: opts };
         });
+        currentIndex = 0;
+        userScore = 0;
+        answered = false;
+        gameCompleted = false;
+        scoreSpan.innerText = '0';
+        nextBtn.disabled = false;
+        nextBtn.style.opacity = '1';
+        kirimBtn.disabled = true;
+        kirimBtn.classList.remove('btn-send-ready');
+        kirimBtn.innerText = '📤 KIRIM SKOR & CLAIM SERTIFIKAT';
+        kategoriEl.innerHTML = '🔷 Mulai Bermain';
+        document.getElementById('certificateArea').style.display = 'none';
+        startTimer();
         loadQuestion();
         refreshLeaderboard();
       }
@@ -927,6 +964,7 @@
 
       function finishGame() {
         gameCompleted = true;
+        if (timerInterval) clearInterval(timerInterval);
         nextBtn.disabled = true;
         kirimBtn.disabled = false;
         kirimBtn.classList.add('btn-send-ready');
@@ -939,7 +977,7 @@
         kategoriEl.innerHTML = `🏆 HASIL AKHIR: ${rank}`;
         Swal.fire(
           'Selesai!',
-          `Skor: ${userScore}. Klik "Kirim Skor" untuk sertifikat!`,
+          `Skor: ${userScore}. Waktu: ${getElapsedTime()}. Klik "Kirim Skor" untuk sertifikat!`,
           'success',
         );
       }
@@ -952,12 +990,14 @@
         }
         kirimBtn.disabled = true;
         kirimBtn.innerText = 'MENGIRIM...';
+        const waktuPengerjaan = getElapsedTime();
         try {
           const payload = {
             nama,
             skor: userScore,
             kategori: kategoriEl.innerText,
             tanggal: new Date().toLocaleString('id-ID'),
+            waktu: waktuPengerjaan,
           };
           const body = new URLSearchParams();
           body.append('payload', JSON.stringify(payload));
@@ -966,6 +1006,8 @@
           document.getElementById('certRank').innerText =
             kategoriEl.innerText.replace('🏆 HASIL AKHIR: ', '');
           document.getElementById('certSkor').innerHTML = `${userScore} / 100`;
+          document.getElementById('certTime').innerHTML =
+            `⏱️ Waktu pengerjaan: ${waktuPengerjaan} menit`;
           document.getElementById('certificateArea').style.display = 'block';
           document
             .getElementById('certificateArea')
@@ -995,8 +1037,8 @@
             .sort((a, b) => b.skor - a.skor)
             .slice(0, 10)
             .forEach((item, i) => {
-              let medalClass = '';
-              let rankIcon = '';
+              let medalClass = '',
+                rankIcon = '';
               if (i === 0) {
                 medalClass = 'gold-medal';
                 rankIcon = '👑 ';
@@ -1007,11 +1049,7 @@
                 medalClass = 'bronze-medal';
                 rankIcon = '🥉 ';
               }
-              html += `<div class="leader-item">
-                <div class="leader-rank">${rankIcon}${i + 1}</div>
-                <div class="leader-name">${escapeHtml(item.nama)}</div>
-                <div class="leader-score ${medalClass}">${item.skor}</div>
-            </div>`;
+              html += `<div class="leader-item"><div class="leader-rank">${rankIcon}${i + 1}</div><div class="leader-name">${escapeHtml(item.nama)}</div><div class="leader-score ${medalClass}">${item.skor}</div></div>`;
             });
           html += `</div>`;
           if (data.length === 0)
@@ -1064,7 +1102,10 @@
         (document.getElementById('buzzerModal').style.display = 'flex');
       document.getElementById('infoKategoriBtn').onclick = () =>
         (document.getElementById('kategoriModal').style.display = 'flex');
-      document.getElementById('restartBtn').onclick = () => location.reload();
+      document.getElementById('restartBtn').onclick = () => {
+        if (timerInterval) clearInterval(timerInterval);
+        initGame();
+      };
       document.getElementById('refreshLeaderBtn').onclick = refreshLeaderboard;
       document.getElementById('downloadSertifikatBtn').onclick =
         downloadSertifikat;
