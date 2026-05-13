@@ -52,12 +52,39 @@
         box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
       }
 
+      /* HEADER ROW UNTUK JUDUL + TOMBOL INFO */
+      .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 6px;
+      }
+
       h1 {
         font-size: 1.7rem;
         text-align: center;
         color: #1e3c72;
         letter-spacing: -0.5px;
-        margin-bottom: 6px;
+        margin: 0;
+      }
+
+      .info-btn {
+        background: #ffecd6;
+        border: 1px solid #ffcd7e;
+        padding: 6px 16px;
+        border-radius: 60px;
+        color: #c97e2a;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: all 0.2s;
+      }
+
+      .info-btn:hover {
+        background: #ffdfb3;
+        transform: scale(1.02);
       }
 
       .sub {
@@ -362,6 +389,74 @@
         font-size: 0.8rem;
       }
 
+      /* MODAL POPUP */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 32px;
+        max-width: 500px;
+        width: 90%;
+        padding: 28px;
+        border: 1px solid #ffcd7e;
+        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
+        animation: modalPop 0.3s ease;
+      }
+
+      @keyframes modalPop {
+        from {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .modal-content h3 {
+        color: #1e3c72;
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+
+      .modal-content p {
+        color: #4a627a;
+        line-height: 1.6;
+        margin-bottom: 14px;
+        font-size: 0.9rem;
+      }
+
+      .modal-content .close-modal {
+        background: #ffaa55;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 60px;
+        font-weight: 700;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 8px;
+        font-size: 0.9rem;
+        color: #2c3e4e;
+      }
+
+      .modal-content .close-modal:hover {
+        background: #ff9933;
+      }
+
       @media (max-width: 750px) {
         .app-wrap {
           flex-direction: column;
@@ -376,13 +471,25 @@
           padding: 10px 14px;
           font-size: 0.8rem;
         }
+        .header-row {
+          flex-direction: column;
+          text-align: center;
+        }
+        h1 {
+          font-size: 1.4rem;
+        }
       }
     </style>
   </head>
   <body>
     <div class="app-wrap">
       <div class="game-panel">
-        <h1>🎯 SEBERAPA BUZZER KAMU?</h1>
+        <div class="header-row">
+          <h1>🎯 SEBERAPA BUZZER KAMU?</h1>
+          <button id="infoBuzzerBtn" class="info-btn">
+            ❓ Apa Itu Buzzer?
+          </button>
+        </div>
         <div class="sub">✨ +10 POIN SETIAP JAWABAN ✨</div>
 
         <div class="nama-wrapper">
@@ -434,6 +541,32 @@
         <div class="sub" style="margin-top: 10px">
           ✨ Kirim skor setelah 10 soal ✨
         </div>
+      </div>
+    </div>
+
+    <!-- MODAL POPUP PENJELASAN BUZZER -->
+    <div id="buzzerModal" class="modal-overlay">
+      <div class="modal-content">
+        <h3>❓ Apa Itu Buzzer?</h3>
+        <p>
+          <strong>Buzzer</strong> dalam konteks politik & media sosial adalah
+          pendukung setia pemerintah atau figur tertentu yang aktif menyuarakan
+          narasi positif, membela kebijakan, dan "menyerang" kritik.
+        </p>
+        <p>
+          🎯 Ciri-ciri buzzer:<br />
+          📢 Selalu membela kebijakan pemerintah apa pun<br />
+          🔥 Aktif berkomentar di media sosial<br />
+          💬 Sering menyebut lawan politik dengan julukan negatif<br />
+          🤖 Kadang terorganisir dan dibayar (tapi gak semua)
+        </p>
+        <p>
+          <strong
+            >⚠️ Tes ini cuma buat seru-seruan, bukan buat nyebut orang asli
+            buzzer ya! 😁</strong
+          >
+        </p>
+        <button class="close-modal" id="closeModalBtn">Oke, Paham!</button>
       </div>
     </div>
 
@@ -615,8 +748,8 @@
         userScore = 0,
         answered = false,
         totalSoal = 10,
-        gameCompleted = false;
-      let isSending = false;
+        gameCompleted = false,
+        isSending = false;
 
       const questionEl = document.getElementById('question');
       const optionsEl = document.getElementById('options');
@@ -631,6 +764,17 @@
       const kirimBtn = document.getElementById('kirimSkorBtn');
       const refreshLeaderBtn = document.getElementById('refreshLeaderBtn');
       const leaderArea = document.getElementById('leaderArea');
+
+      // Modal elements
+      const infoBtn = document.getElementById('infoBuzzerBtn');
+      const modal = document.getElementById('buzzerModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+
+      infoBtn.onclick = () => (modal.style.display = 'flex');
+      closeModalBtn.onclick = () => (modal.style.display = 'none');
+      window.onclick = (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+      };
 
       randomBtn.onclick = () => (namaInput.value = generateRandomName());
 
@@ -756,7 +900,7 @@
           Swal.fire({
             icon: 'warning',
             title: 'Sedang mengirim!',
-            text: 'Tunggu sebentar, jangan double klik!',
+            text: 'Tunggu sebentar!',
             background: '#fff',
             color: '#1e3c72',
             confirmButtonColor: '#ffaa55',
@@ -775,7 +919,6 @@
           });
           return;
         }
-
         let nama = namaInput.value.trim();
         if (nama === '') {
           Swal.fire({
@@ -795,25 +938,20 @@
 
         const kat = getKategori(userScore);
         const dataPayload = {
-          nama: nama,
+          nama,
           skor: userScore,
           tanggal: new Date().toLocaleString('id-ID'),
           kategori: kat.nama,
         };
+        const formData = new URLSearchParams();
+        formData.append('payload', JSON.stringify(dataPayload));
 
         try {
-          // 🔥 PAKAI URLSearchParams (GAK TRIGGER PREFLIGHT)
-          const formData = new URLSearchParams();
-          formData.append('payload', JSON.stringify(dataPayload));
-
-          // 🔥 JANGAN PAKAI headers, dan pakai mode: 'no-cors'
           await fetch(API_URL, {
             method: 'POST',
             mode: 'no-cors',
             body: formData,
           });
-
-          // Karena mode no-cors, response ga bisa dibaca. Langsung anggap sukses.
           Swal.fire({
             icon: 'success',
             title: '✅ BERHASIL',
