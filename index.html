@@ -320,6 +320,20 @@
         border-bottom: 1px solid #eee;
         font-size: 0.85rem;
       }
+      /* Efek hover untuk tombol refresh papan skor */
+      /* Update gaya tombol refresh agar melengkung dan punya efek hover */
+      #refreshLeaderBtn {
+        border-radius: 60px; /* Membuat sisi melengkung sempurna */
+        border: 1px solid #bdd6ec;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+
+      #refreshLeaderBtn:hover {
+        background: #d9eafb !important;
+        transform: scale(1.02);
+        border-color: #a5c4e0;
+      }
       @keyframes modalPop {
         from {
           transform: scale(0.9);
@@ -404,10 +418,11 @@
         <div id="leaderArea">
           <div style="text-align: center; padding: 20px">Menarik data...</div>
         </div>
+        <!-- Sesudah -->
         <button
           id="refreshLeaderBtn"
-          class="btn"
-          style="width: 100%; margin-top: 10px; background: #eef3fc">
+          class="btn-restart"
+          style="width: 100%; margin-top: 10px; padding: 10px">
           🔄 REFRESH
         </button>
       </div>
