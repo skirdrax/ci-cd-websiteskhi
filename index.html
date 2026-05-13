@@ -603,7 +603,7 @@
           </button>
         </div>
         <div class="sub" style="margin-top: 10px">
-          ✨ Kirim skor setelah 10 soal ✨
+          ✨ Kirim skor setelah 20 soal ✨
         </div>
       </div>
     </div>
@@ -670,6 +670,7 @@
         'https://script.google.com/macros/s/AKfycbxCesuzVjmNEvD_hUf5yur2gzHwrXXA6x4K-we89ckZsamHKYZHksH3jiTI2ARQB6WO/exec';
 
       const questionsRaw = [
+        // ==================== 10 SOAL BIASA (BUZZER MODE ON) ====================
         {
           q: 'Pemerintah menaikkan harga BBM, sikap paling tepat sebagai buzzer?',
           opt: [
@@ -679,7 +680,7 @@
             'Membagikan informasi keliru tentang kenaikan BBM',
           ],
           answer: 0,
-          buzz: 'BUZZER SEJATI +10',
+          buzz: 'BUZZER SEJATI +5',
         },
         {
           q: 'Jalan di daerah tertinggal masih banyak rusak. Komentar Anda sebagai buzzer?',
@@ -690,7 +691,7 @@
             'Tidak perlu dibangun',
           ],
           answer: 0,
-          buzz: 'LOYALITAS TINGGI +10',
+          buzz: 'LOYALITAS TINGGI +5',
         },
         {
           q: 'Pejabat korupsi tapi masih menjabat. Sikap ideal buzzer?',
@@ -701,7 +702,7 @@
             'Korupsi hal biasa',
           ],
           answer: 0,
-          buzz: 'SABAR & SETIA +10',
+          buzz: 'SABAR & SETIA +5',
         },
         {
           q: 'Program IKN menuai kritik soal anggaran. Komentar kamu?',
@@ -712,7 +713,7 @@
             'Tidak perlu menanggapi kritik',
           ],
           answer: 0,
-          buzz: 'PRO PEMERINTAH +10',
+          buzz: 'PRO PEMERINTAH +5',
         },
         {
           q: 'Efisiensi anggaran di kementerian. Sikap tepat buzzer?',
@@ -723,7 +724,7 @@
             'Protes karena tidak diajak',
           ],
           answer: 0,
-          buzz: 'BUZZER HEBAT +10',
+          buzz: 'BUZZER HEBAT +5',
         },
         {
           q: 'Angka kemiskinan masih tinggi. Komentar ideal buzzer?',
@@ -734,7 +735,7 @@
             'Kemiskinan tidak penting',
           ],
           answer: 0,
-          buzz: 'TETAP SEMANGAT +10',
+          buzz: 'TETAP SEMANGAT +5',
         },
         {
           q: 'Investasi besar dari perusahaan asing. Tanggapan kamu?',
@@ -745,7 +746,7 @@
             'Tolak karena tidak pro dalam negeri',
           ],
           answer: 0,
-          buzz: 'EKONOMI MENDING +10',
+          buzz: 'EKONOMI MENDING +5',
         },
         {
           q: 'Menteri lamban respons krisis pangan. Komentar buzzer?',
@@ -756,7 +757,7 @@
             'Krisis pangan hoax',
           ],
           answer: 0,
-          buzz: 'BUZZER LANGKA +10',
+          buzz: 'BUZZER LANGKA +5',
         },
         {
           q: 'APBN 2025 fokus infrastruktur & pertahanan. Reaksi Anda?',
@@ -767,7 +768,7 @@
             'Tidak usah bangun apapun',
           ],
           answer: 0,
-          buzz: 'SETIA +10',
+          buzz: 'SETIA +5',
         },
         {
           q: 'Presiden instruksikan digitalisasi birokrasi. Komentar buzzer sejati?',
@@ -778,7 +779,119 @@
             'Rakyat butuh sembako murah',
           ],
           answer: 0,
-          buzz: 'SIAP BELA +10',
+          buzz: 'SIAP BELA +5',
+        },
+
+        // ==================== 10 SOAL MENJERAK ====================
+        {
+          q: 'Ketika ada warga miskin kesulitan mendapat bantuan sosial, apa yang akan kamu lakukan sebagai buzzer?',
+          opt: [
+            'Membantu mendata dan menguruskan bantuan yang layak',
+            'Membiarkannya karena itu urusan RT/RW',
+            'Menyalahkan pemerintah karena lambat',
+            'Menganggapnya tidak penting',
+          ],
+          answer: 0,
+          buzz: 'PEDULI RAKYAT +5',
+        },
+        {
+          q: 'Seorang temanmu menyebarkan hoax di media sosial tentang pemerintah. Sikapmu?',
+          opt: [
+            'Meluruskan dengan data dan fakta yang benar',
+            'Diam saja biar viral',
+            'Ikut menyebarkan karena teman',
+            'Laporkan ke polisi tanpa klarifikasi',
+          ],
+          answer: 0,
+          buzz: 'MELEK INFORMASI +5',
+        },
+        {
+          q: 'Saat melihat komentar negatif di sosial media tentang presiden, yang kamu lakukan?',
+          opt: [
+            'Mengkritik balik dengan argumen rasional dan santun',
+            'Langsung blokir akunnya',
+            'Balas dengan kata kasar',
+            'Laporkan tanpa alasan jelas',
+          ],
+          answer: 0,
+          buzz: 'BIJAK +5',
+        },
+        {
+          q: 'Polisi melakukan pelanggaran HAM dalam demo. Sikap kamu sebagai buzzer?',
+          opt: [
+            'Mengkritik polisi sekaligus mengingatkan pemerintah untuk bertindak',
+            'Membela polisi karena aparat negara',
+            'Diam saja karena takut',
+            'Membuat meme untuk viral',
+          ],
+          answer: 0,
+          buzz: 'KRITIS & BERANI +5',
+        },
+        {
+          q: 'Sebuah kebijakan jelas merugikan rakyat kecil. Sebagai buzzer, kamu akan...',
+          opt: [
+            'Menyuarakan kritik dan memberi solusi',
+            'Tetap mendukung karena partai',
+            'Pura-pura tidak tahu',
+            'Pindah haluan',
+          ],
+          answer: 0,
+          buzz: 'SUARA RAKYAT +5',
+        },
+        {
+          q: 'Menteri ketahuan menerima suap, tapi partainya tetap mendukung. Kamu?',
+          opt: [
+            'Tetap mendukung partai karena ideologi',
+            'Mendesak partai untuk tidak melindungi koruptor',
+            'Mencari berita negatif lawan untuk alihkan isu',
+            'Acuh tak acuh',
+          ],
+          answer: 1,
+          buzz: 'ANTI KORUPSI +5',
+        },
+        {
+          q: 'Pemerintah melakukan pembredelan media yang kritis. Tugas kamu sebagai buzzer?',
+          opt: [
+            'Tetap mendukung kebijakan pemerintah demi stabilitas',
+            'Mengkritik kebijakan tersebut karena ancaman demokrasi',
+            'Ikut membredel media lain',
+            'Tidak peduli',
+          ],
+          answer: 1,
+          buzz: 'PRO DEMOKRASI +5',
+        },
+        {
+          q: 'Anggaran militer dinaikkan drastis sementara anggaran kesehatan dipotong. Pendapatmu?',
+          opt: [
+            'Tetap mendukung karena keamanan lebih penting',
+            'Meminta pemerintah untuk meninjau ulang karena kesehatan juga penting',
+            'Diam saja tidak ikut campur',
+            'Merasa keberatan tapi takut',
+          ],
+          answer: 1,
+          buzz: 'SEIMBANG +5',
+        },
+        {
+          q: 'Tokoh agama mengkritik keras kebijakan pemerintah. Sikap bijak sebagai buzzer?',
+          opt: [
+            'Menghormati kritik dan memberi ruang diskusi',
+            'Menyerang tokoh agama tersebut habis-habisan',
+            'Mendukung pemerintah tanpa mempertimbangkan kritik',
+            'Menganggap kritik adalah serangan asing',
+          ],
+          answer: 0,
+          buzz: 'TOLERANSI +5',
+        },
+        {
+          q: 'Anggota DPR ketahuan main judi online. Anda akan...',
+          opt: [
+            'Membela partai karena masih anggota',
+            'Mendesak penegak hukum untuk memproses sesuai aturan',
+            'Diam saja biar tidak jadi masalah',
+            'Membela karena masih teman partai',
+          ],
+          answer: 1,
+          buzz: 'TAAT HUKUM +5',
         },
       ];
 
@@ -789,9 +902,9 @@
             icon: '🚫',
             warna: '#c04e3e',
           };
-        if (score >= 30 && score <= 50)
+        if (score >= 25 && score <= 50)
           return { nama: 'BUZZER PEMULA', icon: '🌱', warna: '#da8e2c' };
-        if (score >= 60 && score <= 70)
+        if (score >= 55 && score <= 75)
           return { nama: 'BUZZER MENENGAH', icon: '⚡', warna: '#2c7da0' };
         if (score >= 80 && score <= 100)
           return { nama: 'BUZZER FIX 🔥', icon: '🏆', warna: '#2f7d5c' };
@@ -846,7 +959,7 @@
         currentIndex = 0,
         userScore = 0,
         answered = false,
-        totalSoal = 10,
+        totalSoal = 20,
         gameCompleted = false,
         isSending = false;
 
@@ -935,7 +1048,7 @@
         const q = questions[currentIndex];
         const benar = selected === q.answer;
         if (benar) {
-          userScore += 10;
+          userScore += 5;
           scoreSpan.innerText = userScore;
           feedbackEl.innerHTML = `✅ ${q.buzz}! ✅`;
           feedbackEl.className = 'feedback benar';
