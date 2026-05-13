@@ -87,6 +87,37 @@
         transform: scale(1.02);
       }
 
+      /* HEADER ROW UNTUK PAPAN BUZZER + TOMBOL KATEGORI */
+      .leader-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+
+      .leader-header h2 {
+        margin-bottom: 0;
+      }
+
+      .kategori-btn {
+        background: #eef3fc;
+        border: 1px solid #bdd1e5;
+        padding: 4px 12px;
+        border-radius: 60px;
+        color: #2a5f8a;
+        font-weight: 500;
+        cursor: pointer;
+        font-size: 0.65rem;
+        transition: all 0.2s;
+      }
+
+      .kategori-btn:hover {
+        background: #e2eaf5;
+        transform: scale(1.02);
+      }
+
       .sub {
         text-align: center;
         color: #3a6b9b;
@@ -440,6 +471,22 @@
         font-size: 0.9rem;
       }
 
+      .kategori-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+        font-size: 0.8rem;
+      }
+
+      .kategori-table td {
+        padding: 8px 6px;
+        border-bottom: 1px solid #e0d6c8;
+      }
+
+      .kategori-table td:first-child {
+        font-weight: 700;
+      }
+
       .modal-content .close-modal {
         background: #ffaa55;
         border: none;
@@ -531,7 +578,12 @@
       </div>
 
       <div class="leader-panel">
-        <h2>🏅 PAPAN BUZZER</h2>
+        <div class="leader-header">
+          <h2>🏅 PAPAN BUZZER</h2>
+          <button id="kategoriInfoBtn" class="kategori-btn">
+            📊 Tentang Kategori
+          </button>
+        </div>
         <div id="leaderArea"><div class="loading">Menarik data...</div></div>
         <div style="text-align: center; margin-top: 12px">
           <button id="refreshLeaderBtn" class="btn btn-refresh">
@@ -567,6 +619,35 @@
           >
         </p>
         <button class="close-modal" id="closeModalBtn">Oke, Paham!</button>
+      </div>
+    </div>
+
+    <!-- MODAL POPUP PENJELASAN KATEGORI NILAI -->
+    <div id="kategoriModal" class="modal-overlay">
+      <div class="modal-content">
+        <h3>📊 Kategori Skor Buzzer</h3>
+        <table class="kategori-table">
+          <tr>
+            <td><strong>Skor 0 - 20</strong></td>
+            <td>🚫 BUKAN BUZZER → Masih waras, belum jadi buzzer.</td>
+          </tr>
+          <tr>
+            <td><strong>Skor 30 - 50</strong></td>
+            <td>🌱 BUZZER PEMULA → Mulai terpengaruh, masih aman.</td>
+          </tr>
+          <tr>
+            <td><strong>Skor 60 - 70</strong></td>
+            <td>⚡ BUZZER MENENGAH → Lumayan loyal, hati-hati!</td>
+          </tr>
+          <tr>
+            <td><strong>Skor 80 - 100</strong></td>
+            <td>🏆 BUZZER FIX 🔥 → Siap bela mati-matian, wajar digaji.</td>
+          </tr>
+        </table>
+        <p><strong>⚠️ Tes ini cuma buat seru-seruan ya! 😁</strong></p>
+        <button class="close-modal" id="closeKategoriModalBtn">
+          Oke, Paham!
+        </button>
       </div>
     </div>
 
@@ -767,13 +848,25 @@
 
       // Modal elements
       const infoBtn = document.getElementById('infoBuzzerBtn');
-      const modal = document.getElementById('buzzerModal');
+      const modalBuzzer = document.getElementById('buzzerModal');
       const closeModalBtn = document.getElementById('closeModalBtn');
 
-      infoBtn.onclick = () => (modal.style.display = 'flex');
-      closeModalBtn.onclick = () => (modal.style.display = 'none');
+      const kategoriInfoBtn = document.getElementById('kategoriInfoBtn');
+      const modalKategori = document.getElementById('kategoriModal');
+      const closeKategoriModalBtn = document.getElementById(
+        'closeKategoriModalBtn',
+      );
+
+      infoBtn.onclick = () => (modalBuzzer.style.display = 'flex');
+      closeModalBtn.onclick = () => (modalBuzzer.style.display = 'none');
+
+      kategoriInfoBtn.onclick = () => (modalKategori.style.display = 'flex');
+      closeKategoriModalBtn.onclick = () =>
+        (modalKategori.style.display = 'none');
+
       window.onclick = (e) => {
-        if (e.target === modal) modal.style.display = 'none';
+        if (e.target === modalBuzzer) modalBuzzer.style.display = 'none';
+        if (e.target === modalKategori) modalKategori.style.display = 'none';
       };
 
       randomBtn.onclick = () => (namaInput.value = generateRandomName());
