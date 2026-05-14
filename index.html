@@ -653,6 +653,10 @@
 
           <div class="cert-badge-row">
             <div class="cert-badge">
+              📅 Tanggal: <span id="certTanggal">--</span>
+            </div>
+            <div class="cert-badge">🕒 Jam: <span id="certJam">--</span></div>
+            <div class="cert-badge">
               Skor: <span id="certSkor">0 / 100</span>
             </div>
             <div class="cert-badge" id="certTime">⏱️ Waktu: --</div>
@@ -1133,6 +1137,18 @@
           document.getElementById('certRank').innerText =
             kategoriEl.innerText.replace('🏆 HASIL AKHIR: ', '');
           document.getElementById('certSkor').innerHTML = `${userScore} / 100`;
+          const now = new Date();
+          const tanggal = now.toLocaleDateString('id-ID', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          });
+          const jam = now.toLocaleTimeString('id-ID', {
+            hour: '2-digit',
+            minute: '2-digit',
+          });
+          document.getElementById('certTanggal').innerText = tanggal;
+          document.getElementById('certJam').innerText = jam;
 
           let waktuArr = waktuPengerjaan.split(':');
           let totalDetik = parseInt(waktuArr[0]) * 60 + parseInt(waktuArr[1]);
