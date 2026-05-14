@@ -363,30 +363,135 @@
         color: #a0b8d0;
         font-size: 0.75rem;
       }
-      .cert-watermark {
-        font-size: 60px;
-        opacity: 0.05;
-        font-weight: bold;
+
+      /* ===== STYLE SERTIFIKAT MEWAH ===== */
+      #certificateArea {
+        display: none;
+        position: relative;
+        margin-top: 30px;
+        padding: 40px;
+        background: linear-gradient(135deg, #fffdfa 0%, #ffffff 100%);
+        border-radius: 0;
+        text-align: center;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+        border: 15px double #d4af37; /* Border Emas Dobel */
+        overflow: hidden;
       }
+
+      /* Ornamen Pojok */
+      #certificateArea::before,
+      #certificateArea::after {
+        content: '⚜';
+        position: absolute;
+        font-size: 40px;
+        color: #d4af37;
+      }
+      #certificateArea::before {
+        top: 10px;
+        left: 10px;
+      }
+      #certificateArea::after {
+        bottom: 10px;
+        right: 10px;
+      }
+
+      .cert-watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-30deg);
+        font-size: 100px;
+        opacity: 0.04;
+        font-weight: 900;
+        color: #000;
+        pointer-events: none;
+        width: 100%;
+      }
+
+      .cert-title {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        color: #888;
+        margin-bottom: 5px;
+      }
+
       .cert-header {
+        font-size: 22px;
+        font-weight: bold;
+        color: #1e3c72;
+        margin-bottom: 15px;
+      }
+
+      .cert-name {
+        font-size: 32px;
+        font-weight: 800;
+        color: #b8860b;
+        margin: 10px auto;
+        padding: 5px 30px;
+        border: 4px double #d4af37;
+        background: #fffcf0;
+        border-radius: 50px;
+        display: inline-block;
+      }
+
+      .cert-rank {
         font-size: 24px;
+        font-weight: 900;
+        margin: 15px auto;
+        padding: 8px 25px;
+        background: linear-gradient(45deg, #d4af37, #f9e29c, #b8860b);
+        color: #4a3701;
+        border-radius: 8px;
+        display: inline-block;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .cert-badge-row {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .cert-badge {
+        background: #f4f9fe;
+        border: 1px solid #d4af37;
+        padding: 6px 15px;
+        border-radius: 4px;
+        font-size: 0.9rem;
         font-weight: bold;
         color: #1e3c72;
       }
-      .cert-name {
-        font-size: 28px;
-        font-weight: bold;
-        color: #c97e2a;
-        margin: 15px 0;
-        border-bottom: 2px solid #ffcd7e;
-        display: inline-block;
-        padding-bottom: 5px;
+
+      .cert-footer {
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid #d4af37;
+        font-size: 0.75rem;
+        color: #999;
       }
-      .cert-rank {
-        font-size: 22px;
-        font-weight: bold;
-        margin: 15px 0;
+
+      /* Stamp Certified */
+      .cert-stamp {
+        position: absolute;
+        bottom: 40px;
+        left: 30px;
+        width: 100px;
+        height: 100px;
+        border: 4px solid #c0392b;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #c0392b;
+        font-weight: 900;
+        transform: rotate(-15deg);
+        opacity: 0.7;
+        font-size: 0.8rem;
+        text-align: center;
+        line-height: 1;
       }
+
       .download-btn {
         background: #2a5298;
         color: white;
@@ -394,19 +499,10 @@
         padding: 10px 20px;
         border-radius: 30px;
         cursor: pointer;
-        margin-top: 15px;
-        margin-right: 10px;
+        margin-top: 25px;
+        font-weight: bold;
       }
-      #certificateArea {
-        display: none;
-        margin-top: 30px;
-        padding: 30px;
-        background: white;
-        border-radius: 16px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        border: 2px solid #ffcd7e;
-      }
+
       .modal-overlay {
         display: none;
         position: fixed;
@@ -527,29 +623,55 @@
           </button>
         </div>
 
+        <!-- AREA SERTIFIKAT TERBARU -->
         <div id="certificateArea">
           <div class="cert-watermark">BUZZER</div>
+
           <img
             src="/favicon.ico"
             alt="Logo"
-            style="width: 60px; height: 60px; margin-bottom: 10px"
+            style="
+              width: 70px;
+              height: 70px;
+              margin-bottom: 5px;
+              position: relative;
+              z-index: 2;
+            "
             onerror="this.style.display = 'none'" />
-          <p class="cert-title" style="color: #888">Sertifikat Pengakuan</p>
+
+          <p class="cert-title">Sertifikat Pengakuan Digital</p>
           <div class="cert-header">Diberikan Kepada:</div>
+
           <div class="cert-name" id="certName">Nama Pengguna</div>
-          <p style="margin-top: 10px">
-            Atas dedikasinya dalam dunia Buzzer dengan kategori:
+
+          <p style="margin-top: 15px; font-size: 0.95rem">
+            Atas dedikasinya dalam menyuarakan narasi di dunia digital dengan
+            kategori:
           </p>
+
           <div class="cert-rank" id="certRank">BUZZER ELITE</div>
-          <p style="margin: 5px 0"><strong id="certSkor">0 / 100</strong></p>
-          <p style="margin: 5px 0">
-            <strong id="certTime">⏱️ Waktu pengerjaan: --</strong>
-          </p>
-          <p style="font-size: 0.7rem; color: #888">
-            Dikeluarkan secara otomatis oleh Sistem Tes Buzzer Online 2026
-          </p>
+
+          <div class="cert-badge-row">
+            <div class="cert-badge">
+              Skor: <span id="certSkor">0 / 100</span>
+            </div>
+            <div class="cert-badge" id="certTime">⏱️ Waktu: --</div>
+          </div>
+
+          <!-- Stamp -->
+          <div class="cert-stamp">OFFICIALLY<br />CERTIFIED<br />2026</div>
+
+          <div class="cert-footer">
+            Diterbitkan secara otomatis oleh Sistem Tes Buzzer Online Nasional ©
+            2026<br />
+            Kelompok 1 - D4 Rekayasa Perangkat Lunak
+          </div>
+        </div>
+
+        <!-- Tombol Download (di luar area screenshot agar tidak ikut terfoto) -->
+        <div id="downloadContainer" style="display: none; text-align: center">
           <button id="downloadSertifikatBtn" class="download-btn">
-            📥 Download Sertifikat
+            📥 Download Sertifikat (PNG)
           </button>
         </div>
       </div>
@@ -571,6 +693,7 @@
       </div>
     </div>
 
+    <!-- MODAL - MODAL -->
     <div id="buzzerModal" class="modal-overlay">
       <div class="modal-content">
         <h3>❓ Apa Itu Buzzer?</h3>
@@ -907,6 +1030,7 @@
         kirimBtn.innerText = '📤 KIRIM SKOR & CLAIM SERTIFIKAT';
         kategoriEl.innerHTML = '🔷 Mulai Bermain';
         document.getElementById('certificateArea').style.display = 'none';
+        document.getElementById('downloadContainer').style.display = 'none';
         startTimer();
         loadQuestion();
         refreshLeaderboard();
@@ -992,7 +1116,7 @@
         }
         kirimBtn.disabled = true;
         kirimBtn.innerText = 'MENGIRIM...';
-        const waktuPengerjaan = getElapsedTime(); // Format: "MM:SS"
+        const waktuPengerjaan = getElapsedTime();
         try {
           const payload = {
             nama,
@@ -1010,7 +1134,6 @@
             kategoriEl.innerText.replace('🏆 HASIL AKHIR: ', '');
           document.getElementById('certSkor').innerHTML = `${userScore} / 100`;
 
-          // ========== FORMAT WAKTU JADI "X menit Y detik" ==========
           let waktuArr = waktuPengerjaan.split(':');
           let totalDetik = parseInt(waktuArr[0]) * 60 + parseInt(waktuArr[1]);
           let menit = Math.floor(totalDetik / 60);
@@ -1022,9 +1145,10 @@
             waktuFormat = `${menit} menit ${detik} detik`;
           }
           document.getElementById('certTime').innerHTML =
-            `⏱️ Waktu pengerjaan: ${waktuFormat}`;
+            `⏱️ Waktu: ${waktuFormat}`;
 
           document.getElementById('certificateArea').style.display = 'block';
+          document.getElementById('downloadContainer').style.display = 'block';
           document
             .getElementById('certificateArea')
             .scrollIntoView({ behavior: 'smooth' });
@@ -1080,7 +1204,7 @@
 
       function downloadSertifikat() {
         const element = document.getElementById('certificateArea');
-        html2canvas(element, { scale: 2, backgroundColor: '#ffffff' })
+        html2canvas(element, { scale: 3, backgroundColor: '#ffffff' })
           .then((canvas) => {
             const link = document.createElement('a');
             link.download = `sertifikat_buzzer_${namaInput.value.trim() || 'user'}.png`;
